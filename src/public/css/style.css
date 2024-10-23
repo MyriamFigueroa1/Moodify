@@ -1,33 +1,55 @@
-nav {
-    background-color: #333;
-    overflow: hidden;
+/* Estilos para el menú lateral */
+#wrapper {
+    display: flex;
+    flex-wrap: nowrap;
 }
 
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+#sidebar-wrapper {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    background-color: #1e1e1e;
 }
 
-nav ul li {
-    float: left;
+/* Cambiar el color de los enlaces en el sidebar */
+#sidebar-wrapper .list-group-item {
+    color: #ffffff;
 }
 
-nav ul li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 20px;
-    text-decoration: none;
+#sidebar-wrapper .list-group-item:hover {
+    background-color: #444444;
 }
 
-nav ul li a:hover {
-    background-color: #111;
+.navbar {
+    background-color: #222222;
 }
 
-/* Limpiar flotados */
-nav::after {
-    content: "";
-    display: table;
-    clear: both;
+#page-content-wrapper {
+    width: 100%;
+    padding-left: 250px;
+    transition: all 0.3s ease;
+}
+
+.box {
+    border: 1px solid #ddd;
+}
+
+/* Personalización de botones */
+.btn-primary {
+    background-color: #5cb85c;
+    border-color: #5cb85c;
+}
+
+/* Ocultar menú lateral en pantallas pequeñas */
+@media (max-width: 768px) {
+    #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding-left: 0;
+    }
 }
