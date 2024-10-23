@@ -24,8 +24,11 @@
 }
 
 .navbar {
-    background-color: #222222;
+    background-color: #343a40;
 }
+.navbar-brand, .navbar-nav .nav-link {
+    color: #ffffff !important; /* Texto blanco */
+  }
 
 #page-content-wrapper {
     width: 100%;
@@ -35,6 +38,10 @@
 
 .box {
     border: 1px solid #ddd;
+}
+
+.dropdown-menu {
+    width: 300px; /* Ajustar el tamaño del menú de notificaciones */
 }
 
 /* Personalización de botones */
