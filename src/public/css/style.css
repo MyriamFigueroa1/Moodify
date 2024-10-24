@@ -1,10 +1,15 @@
-/* Definir variables para la paleta de colores */
 :root {
-    --primary-color: #4B0082; /* Morado oscuro */
-    --secondary-color: #00BFFF; /* Azul vibrante */
-    --accent-color: #FF69B4; /* Rosa degradado */
-    --background-light: #FFFFFF; /* Blanco */
-    --text-dark: #333333; /* Gris oscuro */
+    --primary-color: #1f232a;
+    --secondary-color: #45b69c;
+    --accent-color: #a084d1;
+    --background-color: #f2f2f2;
+    --text-color: #121212;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
 }
 
 /* Estilos para el menú lateral */
@@ -20,42 +25,45 @@
     top: 0;
     left: 0;
     overflow-y: auto;
-    background-color: #1e1e1e;
+    background-color: var(--primary-color);
 }
 
-/* Cambiar el color de los enlaces en el sidebar */
 #sidebar-wrapper .list-group-item {
-    color: #ffffff;
+    color: var(--background-color);
 }
 
 #sidebar-wrapper .list-group-item:hover {
-    background-color: #444444;
+    background-color: var(--secondary-color);
 }
 
 .navbar {
-    background-color: #343a40;
-}
-
-.navbar-brand {
-    font-size: 2rem; /* Ajusta este valor según cómo quieras el tamaño del texto */
-    font-weight: bold; /* Opcional: para darle más presencia */
-    display: flex;
-    align-items: center; /* Alinea el texto con el logo */
+    background-color: var(--primary-color);
 }
 
 .navbar-brand, .navbar-nav .nav-link {
-    color: #ffffff !important;
-    
-  }
+    color: var(--background-color) !important;
+}
 
 .navbar-brand, .sidebar-heading {
     font-family: 'Pacifico', cursive;
 }
 
-.navbar-brand img {
-    width: 50px; /* Cambia el tamaño según sea necesario */
-    height: auto;
-    border-radius: 50%; /* Si deseas que sea un círculo perfecto */
+.navbar-toggler-icon {
+    color: var(--secondary-color);
+}
+
+/* Efecto hover personalizado para el botón de despliegue del menú lateral */
+#menu-toggle {
+    background-color: transparent;
+    border: 1px solid var(--secondary-color);
+    color: var(--secondary-color);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#menu-toggle:hover {
+    background-color: var(--accent-color);
+    color: var(--background-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 #page-content-wrapper {
@@ -64,18 +72,16 @@
     transition: all 0.3s ease;
 }
 
-.box {
-    border: 1px solid #ddd;
-}
-
-.dropdown-menu {
-    width: 300px;
-}
-
-/* Personalización de botones */
 .btn-primary {
-    background-color: #5cb85c;
-    border-color: #5cb85c;
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    font-weight: 500;
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Ocultar menú lateral en pantallas pequeñas */
