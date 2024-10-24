@@ -1,3 +1,12 @@
+/* Definir variables para la paleta de colores */
+:root {
+    --primary-color: #4B0082; /* Morado oscuro */
+    --secondary-color: #00BFFF; /* Azul vibrante */
+    --accent-color: #FF69B4; /* Rosa degradado */
+    --background-light: #FFFFFF; /* Blanco */
+    --text-dark: #333333; /* Gris oscuro */
+}
+
 /* Estilos para el menú lateral */
 #wrapper {
     display: flex;
@@ -26,9 +35,28 @@
 .navbar {
     background-color: #343a40;
 }
+
+.navbar-brand {
+    font-size: 2rem; /* Ajusta este valor según cómo quieras el tamaño del texto */
+    font-weight: bold; /* Opcional: para darle más presencia */
+    display: flex;
+    align-items: center; /* Alinea el texto con el logo */
+}
+
 .navbar-brand, .navbar-nav .nav-link {
-    color: #ffffff !important; /* Texto blanco */
+    color: #ffffff !important;
+    
   }
+
+.navbar-brand, .sidebar-heading {
+    font-family: 'Pacifico', cursive;
+}
+
+.navbar-brand img {
+    width: 50px; /* Cambia el tamaño según sea necesario */
+    height: auto;
+    border-radius: 50%; /* Si deseas que sea un círculo perfecto */
+}
 
 #page-content-wrapper {
     width: 100%;
@@ -41,7 +69,7 @@
 }
 
 .dropdown-menu {
-    width: 300px; /* Ajustar el tamaño del menú de notificaciones */
+    width: 300px;
 }
 
 /* Personalización de botones */
