@@ -4,34 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moodify - Dashboard</title>
-    <link rel="icon" type="image/x-icon" href="img/moodify_loog_blue_backgr.png">
-    <!-- Bootstrap CSS -->
+    <link rel="icon" type="image/x-icon" href="img/moodify_logo_blue_backgr.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <!-- Google Fonts - Pacifico -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <!-- Google Fonts - Rubik -->
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Rubik:wght@300..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Menú lateral -->
     <div class="d-flex" id="wrapper">
         <div class="bg-dark text-white" id="sidebar-wrapper">
             <div class="sidebar-heading py-4 text-center fs-4">Moodify</div>
             <div class="list-group list-group-flush">
-                <a href="#" class="list-group-item list-group-item-action bg-dark text-white"><i class="bi bi-house-door"></i> Inicio</a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white active"><i class="bi bi-house-door"></i> Inicio</a>
                 <a href="#" class="list-group-item list-group-item-action bg-dark text-white"><i class="bi bi-person"></i> Perfil</a>
                 <a href="#" class="list-group-item list-group-item-action bg-dark text-white"><i class="bi bi-camera"></i> Reconocimiento Facial</a>
                 <a href="#" class="list-group-item list-group-item-action bg-dark text-white"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</a>
             </div>
         </div>
-        <!-- Contenido de la página -->
         <div id="page-content-wrapper">
-            <!-- Navbar superior -->
             <nav class="navbar navbar-expand-lg navbar-dark">
                 <div class="container-fluid">
                     <button id="menu-toggle" class="btn btn-outline-light me-3"><i class="bi bi-list"></i></button>
@@ -44,16 +34,15 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-auto">
-                            <!-- Icono de perfil -->
                             <li class="nav-item">
                                 <a class="nav-link" href="mi-perfil.html">
-                                    <i class="bi bi-person-circle" style="font-size: 1.5rem;"></i>
+                                    <i class="bi bi-person-circle" style="font-size: 1.5rem;" aria-label="Perfil"></i>
                                 </a>
                             </li>
-                            <!-- Icono de notificaciones -->
                             <li class="nav-item dropdown">
-                                <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-bell" style="font-size: 1.5rem;"></i>
+                                <a class="nav-link position-relative" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-bell" style="font-size: 1.5rem;" aria-label="Notificaciones"></i>
+                                    <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">3</span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <li><h6 class="dropdown-header">Notificaciones</h6></li>
@@ -66,16 +55,12 @@
                     </div>
                 </div>
             </nav>
-
-            <!-- Contenido principal -->
             <div class="container-fluid mt-4">
                 <!--AQUI DENTRO VA TODO EL CODIGO PERSONALIZADO DE CADA PAGINA-->
             </div>
         </div>
     </div>
-
-    <!-- Bootstrap JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/scripts.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="js/scripts.js"></script>
 </body>
 </html>
