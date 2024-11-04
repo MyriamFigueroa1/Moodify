@@ -57,38 +57,35 @@
             </nav>
             <div class="container-fluid mt-4">
                 <!--AQUI DENTRO VA TODO EL CODIGO PERSONALIZADO DE CADA PAGINA-->
-
-                <!--Caja para subir publicación-->
-                <div class="widget-post" aria-labelledby="post-header-title">
-                    <div class="widget-post__header">
-                      <h2 class="widget-post__title" id="post-header-title">
-                         <i class="fa fa-pencil" aria-hidden="true"></i>
-                        ¡Hola! ¿Cómo te sientes hoy?
-                      </h2>
+                <div class="container-fluid mt-4">
+                    <!-- Post Widget -->
+                    <div class="widget-post" aria-labelledby="post-header-title">
+                        <div class="widget-post__header">
+                          <h2 class="widget-post__title" id="post-header-title">
+                             <i class="bi bi-pencil-square"></i> ¿Cómo te sientes hoy?
+                          </h2>
+                        </div>
+                        <form id="widget-form" class="widget-post__form" name="form" aria-label="post widget">
+                          <div class="widget-post__content">
+                            <textarea name="post" id="post-content" class="widget-post__textarea" placeholder="Me siento..."></textarea>
+                          </div>
+                        <div class="widget-post__actions post--actions">
+                            <button type="button" class="btn attachments--btn">
+                                <i class="bi bi-emoji-smile"></i> Me siento...
+                            </button>
+                            <button type="button" class="btn attachments--btn">
+                                <i class="bi bi-music-note"></i> Compartir música
+                            </button>
+                            <button type="submit" class="btn post-actions__publish">Publicar</button>
+                        </div>
+                        <!--button type="button" class="btn post-actions__upload attachments--btn">
+                                <label for="upload-image" class="post-actions__label">
+                                <i class="fa fa-upload" aria-hidden="true"></i> Subir imagen
+                                </label>
+                        </button-->
+                        <!--input type="file" id="upload-image" accept="image/*" multiple-->
+                        </form>
                     </div>
-                    <form id="widget-form" class="widget-post__form" name="form" aria-label="post widget">
-                      <div class="widget-post__content">
-                        <label for="post-content" class="sr-only">Share</label>
-                        <textarea name="post" id="post-content" class="widget-post__textarea scroller" placeholder="Me siento..."></textarea>
-                      </div>
-                      <div class="widget-post__options is--hidden" id="stock-options"></div>
-                      <div class="widget-post__actions post--actions">
-                        <div class="post-actions__attachments">
-                          <button type="button" class="btn post-actions__stock attachments--btn" aria-controls="stock-options" aria-haspopup="true">
-                            <i class="fa fa-usd" aria-hidden="true"></i> Buscar música
-                          </button>
-                          <button type="button" class="btn post-actions__upload attachments--btn">
-                            <label for="upload-image" class="post-actions__label">
-                               <i class="fa fa-upload" aria-hidden="true"></i> Subir imagen
-                            </label>
-                          </button>
-                          <input type="file" id="upload-image" accept="image/*" multiple>
-                        </div>
-                        <div class="post-actions__widget">
-                          <button class="btn post-actions__publish">Publicar</button>
-                        </div>
-                      </div>
-                    </form>
                 </div>
 
                 <!--Feed de amigos-->
