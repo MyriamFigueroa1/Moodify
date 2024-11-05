@@ -8,112 +8,200 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Rubik:wght@300..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style_dashboard.css">
+    <link rel="stylesheet" href="css/dashboard.css">
 </head>
 <body>
     <div class="d-flex" id="wrapper">
-        <div class="bg-dark text-white" id="sidebar-wrapper">
-            <div class="sidebar-heading py-4 text-center fs-4">Moodify</div>
-            <div class="list-group list-group-flush">
-                <a href="dashboard.html" class="list-group-item list-group-item-action bg-dark text-white active"><i class="bi bi-house-door"></i> Inicio</a>
-                <a href="#" class="list-group-item list-group-item-action bg-dark text-white"><i class="bi bi-person"></i> Perfil</a>
-                <a href="facialR.html" class="list-group-item list-group-item-action bg-dark text-white"><i class="bi bi-camera"></i> Reconocimiento Facial</a>
-                <a href="#" class="list-group-item list-group-item-action bg-dark text-white"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</a>
-            </div>
-        </div>
-        <div id="page-content-wrapper">
-            <nav class="navbar navbar-expand-lg navbar-dark">
-                <div class="container-fluid">
-                    <button id="menu-toggle" class="btn btn-outline-light me-3"><i class="bi bi-list"></i></button>
-                    <a class="navbar-brand" href="#">
-                        <img src="img/moodify_logo.png" alt="Moodify Logo" style="width: 50px; height: auto; margin-right: 10px;">
-                        Moodify
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="mi-perfil.html">
-                                    <i class="bi bi-person-circle" style="font-size: 1.5rem;" aria-label="Perfil"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link position-relative" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-bell" style="font-size: 1.5rem;" aria-label="Notificaciones"></i>
-                                    <!--span class="badge bg-danger position-absolute top-0 start-100 translate-middle">3</span-->
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <li><h6 class="dropdown-header">Notificaciones</h6></li>
-                                    <li><a class="dropdown-item" href="#">No tienes notificaciones nuevas</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Ver todas las notificaciones</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+        <!-- Sidebar -->
+        <aside class="bg-dark text-white" id="sidebar-wrapper" role="navigation" aria-label="Menú lateral">
+            <header class="sidebar-heading py-4 text-center fs-4">Moodify</header>
+            <nav class="list-group list-group-flush">
+                <a href="dashboard.html" class="list-group-item list-group-item-action bg-dark text-white active" aria-current="page">
+                    <i class="bi bi-house-door"></i> Inicio
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                    <i class="bi bi-person"></i> Perfil
+                </a>
+                <a href="facialR.html" class="list-group-item list-group-item-action bg-dark text-white">
+                    <i class="bi bi-camera"></i> Reconocimiento Facial
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                    <i class="bi bi-box-arrow-right"></i> Cerrar sesión
+                </a>
             </nav>
-            <div class="container-fluid mt-4">
-                <!--AQUI DENTRO VA TODO EL CODIGO PERSONALIZADO DE CADA PAGINA-->
-                <div class="container-fluid mt-4">
-                    <!-- Post Widget -->
-                    <div class="widget-post" aria-labelledby="post-header-title">
-                        <div class="widget-post__header">
-                          <h2 class="widget-post__title" id="post-header-title">
-                             <i class="bi bi-pencil-square"></i> ¿Cómo te sientes hoy?
-                          </h2>
+        </aside>
+
+        <!-- Page Content -->
+        <main id="page-content-wrapper">
+            <!-- Navbar -->
+            <header>
+                <nav class="navbar navbar-expand-lg navbar-dark">
+                    <div class="container-fluid">
+                        <button id="menu-toggle" class="btn btn-outline-light me-3"><i class="bi bi-list"></i></button>
+                        <a class="navbar-brand" href="#">
+                            <img src="img/moodify_logo.png" alt="Moodify Logo" style="width: 50px; height: auto; margin-right: 10px;">
+                            Moodify
+                        </a>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav ms-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="mi-perfil.html" aria-label="Perfil">
+                                        <i class="bi bi-person-circle" style="font-size: 1.5rem;"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link position-relative" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-bell" style="font-size: 1.5rem;" aria-label="Notificaciones"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                        <li><h6 class="dropdown-header">Notificaciones</h6></li>
+                                        <li><a class="dropdown-item" href="#">No tienes notificaciones nuevas</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="#">Ver todas las notificaciones</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
                         </div>
-                        <form id="widget-form" class="widget-post__form" name="form" aria-label="post widget">
-                          <div class="widget-post__content">
-                            <textarea name="post" id="post-content" class="widget-post__textarea" placeholder="Me siento..."></textarea>
-                          </div>
-                        <div class="widget-post__actions post--actions">
-                            <button type="button" class="btn attachments--btn">
-                                <i class="bi bi-emoji-smile"></i> Me siento...
-                            </button>
-                            <button type="button" class="btn attachments--btn">
-                                <i class="bi bi-music-note"></i> Compartir música
-                            </button>
-                            <button type="submit" class="btn post-actions__publish">Publicar</button>
+                    </div>
+                </nav>
+            </header>
+
+            <!-- Main Content -->
+            <section class="container-fluid mt-4">
+                <div class="container text-center main-content">
+                    <!-- Mood + Music selector -->
+                    <div class="row mood-header text-bg-dark p-3">
+                        <div class="col">
+                            <h2>¿Cómo te sientes hoy?</h2>
                         </div>
-                        <!--button type="button" class="btn post-actions__upload attachments--btn">
-                                <label for="upload-image" class="post-actions__label">
-                                <i class="fa fa-upload" aria-hidden="true"></i> Subir imagen
-                                </label>
-                        </button-->
-                        <!--input type="file" id="upload-image" accept="image/*" multiple-->
-                        </form>
+                    </div>
+                     <!-- Selección de emoji y música -->
+                    <div class="row mood-selector">
+                        <div class="col emoji-section p-3">
+                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#emojiModal" aria-label="Seleccionar emoji">
+                                <span class="fs-1">&#128533;</span>
+                            </button>
+                        </div>
+                        <div class="col song-section p-3">
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#songModal" aria-label="Seleccionar canción">
+                                <span class="fs-1">&#127925;</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-                <!--Feed de amigos-->
-                <div class="container d-flex flex-column align-items-center">
-                    <h1 class="feed-title"> </h1>
-                    <div class="col-lg-8 col-md-10 col-sm-12">
-                        <div class="post-item">
-                            <img src="img/avatar1.jpg" alt="Usuario" class="post-avatar">
-                            <div class="post-body">
-                                <h4 class="post-author">Jhon Doe</h4>
-                                <span class="post-date">- 20 Octubre, 2024</span>
-                                <p class="post-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus numquam assumenda hic aliquam vero sequi velit molestias doloremque molestiae dicta?</p>
+                <!-- Friends Feed -->
+                <section class="container-sm friends-feed mt-5">
+                    <h3 style="color:black">Publicaciones de Amigos</h3>
+                    
+                    <!-- Publicación 1 -->
+                    <div class="post">
+                        <span class="post-emoji">&#128512;</span> <!-- Emoji feliz -->
+                        <div class="post-content">
+                            <h4 class="post-author">Ana López</h4>
+                            <div class="post-songs">
+                                <span class="post-song">🎵 Happy - Pharrell Williams</span><br>
+                                <span class="post-song">🎵 Walking on Sunshine - Katrina and the Waves</span><br>
+                                <span class="post-song">🎵 Can’t Stop the Feeling! - Justin Timberlake</span>
                             </div>
+                            <span class="post-date">Hace 2 horas</span>
                         </div>
-                        <div class="post-item darker">
-                            <img src="img/avatar2.jpg" alt="Usuario" class="post-avatar">
-                            <div class="post-body">
-                                <h4 class="post-author">Mary Simpson</h4>
-                                <span class="post-date">- 20 Octubre, 2024</span>
-                                <p class="post-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus numquam assumenda hic aliquam vero sequi velit molestias doloremque molestiae dicta?</p>
+                    </div>
+
+                    <!-- Publicación 2 -->
+                    <div class="post">
+                        <span class="post-emoji">&#128533;</span> <!-- Emoji triste -->
+                        <div class="post-content">
+                            <h4 class="post-author">Juan Pérez</h4>
+                            <div class="post-songs">
+                                <span class="post-song">🎵 Someone Like You - Adele</span><br>
+                                <span class="post-song">🎵 Tears Dry on Their Own - Amy Winehouse</span><br>
+                                <span class="post-song">🎵 Fix You - Coldplay</span>
                             </div>
+                            <span class="post-date">Hace 1 hora</span>
+                        </div>
+                    </div>
+
+                    <!-- Publicación 3 -->
+                    <div class="post">
+                        <span class="post-emoji">&#128544;</span> <!-- Emoji enojado -->
+                        <div class="post-content">
+                            <h4 class="post-author">María González</h4>
+                            <div class="post-songs">
+                                <span class="post-song">🎵 Break Stuff - Limp Bizkit</span><br>
+                                <span class="post-song">🎵 Killing in the Name - Rage Against the Machine</span><br>
+                                <span class="post-song">🎵 Smells Like Teen Spirit - Nirvana</span>
+                            </div>
+                            <span class="post-date">Hace 3 horas</span>
+                        </div>
+                    </div>
+
+                    <!-- Publicación 4 -->
+                    <div class="post">
+                        <span class="post-emoji">&#128525;</span> <!-- Emoji enamorado -->
+                        <div class="post-content">
+                            <h4 class="post-author">Luis Torres</h4>
+                            <div class="post-songs">
+                                <span class="post-song">🎵 Perfect - Ed Sheeran</span><br>
+                                <span class="post-song">🎵 All of Me - John Legend</span><br>
+                                <span class="post-song">🎵 La Vie en Rose - Édith Piaf</span>
+                            </div>
+                            <span class="post-date">Hace 4 horas</span>
+                        </div>
+                    </div>
+                </section>
+
+            </section>
+
+            <!-- Modals -->
+            <!-- Modal de Emojis -->
+            <div class="modal fade" id="emojiModal" tabindex="-1" aria-labelledby="emojiModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="emojiModalLabel">Elige cómo te sientes</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Selecciona un emoji que represente tu estado de ánimo:</p>
+                            <span class="fs-1 m-2 emoji" role="button" aria-label="feliz">&#128512;</span>
+                            <span class="fs-1 m-2 emoji" role="button" aria-label="amor">&#128525;</span>
+                            <span class="fs-1 m-2 emoji" role="button" aria-label="enojado">&#128544;</span>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#songModal">Siguiente</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+
+            <!-- Modal de Canciones -->
+            <div class="modal fade" id="songModal" tabindex="-1" aria-labelledby="songModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="songModalLabel">Elige tus canciones</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Selecciona hasta tres canciones para compartir:</p>
+                            <input type="text" class="form-control mb-2" placeholder="Canción 1">
+                            <input type="text" class="form-control mb-2" placeholder="Canción 2">
+                            <input type="text" class="form-control mb-2" placeholder="Canción 3">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" id="shareMood">Compartir</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script defer src="js/scripts.js"></script>
+
+    <!-- JavaScript and Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="js/scripts.js" defer></script>
 </body>
 </html>
