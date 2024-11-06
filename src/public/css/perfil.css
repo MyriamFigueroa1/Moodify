@@ -1,42 +1,42 @@
 .perfil-container {
     max-width: 800px;
-    /* margin: 20px auto; /* Mantén el centrado del contenedor */
+   
     padding: 20px;
 }
 
 .profile-header {
     display: flex;
-    align-items: center; /* Alinea verticalmente */
-    gap: 10px; /* Espacio entre el botón y el título */
+    align-items: center; 
+    gap: 10px; 
     margin-bottom: 40px; 
-    justify-content: flex-start; /* Alinea hacia la izquierda */
+    justify-content: flex-start;
 }
 
 .back-button {
     background: none;
     border: none;
-    font-size: 1.5rem; /* Tamaño del icono */
-    color: var(--primary-color); /* Cambia el color según tu diseño */
+    font-size: 1.5rem; 
+    color: var(--primary-color); 
     cursor: pointer;
 }
 
 h2 {
-    font-size: 1.5rem; /* Tamaño del texto */
-    color: black; /* Asegúrate de que el color sea visible en tu fondo */
-    margin: 0; /* Elimina cualquier margen predeterminado */
+    font-size: 1.5rem;
+    color: black;
+    margin: 0;
 }
 
 
 
 .image-container {
-    width: 300px; /* Asegúrate de que aquí sea 100px y no 100x */
+    width: 300px; 
     height: 300px; 
     display: flex;
     text-align: left;
     justify-content: flex-start;
     border-radius: 10px;
-    align-self: flex-start; /* Agrega el punto y coma aquí */
-    margin-left: 220px; /* Agrega el punto y coma aquí también */
+    align-self: flex-start; 
+    margin-left: 220px; 
     margin-top: 30px;
 }
 
@@ -159,26 +159,26 @@ h2 {
 
 
 .buttonguardar {
-  background-color: #365437; /* Green background */
-  color: white; /* White text */
-  padding: 10px 20px; /* Padding around the text */
-  font-size: 16px; /* Font size */
-  border: none; /* Remove border */
-  border-radius: 5px; /* Rounded corners */
-  cursor: pointer; /* Pointer cursor on hover */
+  background-color: #365437; 
+  color: white; 
+  padding: 10px 20px;
+  font-size: 16px; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer;
   margin-right: -20px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Add shadow */
-  transition: background-color 0.3s ease, transform 0.1s ease; /* Smooth hover effects */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); 
+  transition: background-color 0.3s ease, transform 0.1s ease; 
 }
 
 .buttonguardar:hover {
-  background-color: #4b764d; /* Darker green on hover */
-  transform: scale(1.05); /* Slightly grow the button on hover */
+  background-color: #4b764d; 
+  transform: scale(1.05);
 }
 
 .buttonguardar:active {
-  background-color: #3e8e41; /* Even darker green when clicked */
-  transform: scale(0.95); /* Shrink slightly on click */
+  background-color: #3e8e41; /
+
 }
 .personal-info label, .emotion-section h2 {
   display: block;
