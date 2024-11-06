@@ -1,0 +1,191 @@
+.perfil-container {
+    max-width: 800px;
+    /* margin: 20px auto; /* Mantén el centrado del contenedor */
+    padding: 20px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center; /* Alinea verticalmente */
+    gap: 10px; /* Espacio entre el botón y el título */
+    margin-bottom: 40px; 
+    justify-content: flex-start; /* Alinea hacia la izquierda */
+}
+
+.back-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem; /* Tamaño del icono */
+    color: var(--primary-color); /* Cambia el color según tu diseño */
+    cursor: pointer;
+}
+
+h2 {
+    font-size: 1.5rem; /* Tamaño del texto */
+    color: black; /* Asegúrate de que el color sea visible en tu fondo */
+    margin: 0; /* Elimina cualquier margen predeterminado */
+}
+
+
+
+.image-container {
+    width: 300px; /* Asegúrate de que aquí sea 100px y no 100x */
+    height: 300px; 
+    display: flex;
+    text-align: left;
+    justify-content: flex-start;
+    border-radius: 10px;
+    align-self: flex-start; /* Agrega el punto y coma aquí */
+    margin-left: 220px; /* Agrega el punto y coma aquí también */
+    margin-top: 30px;
+}
+
+.preview {
+    max-width: 100%;
+    max-height: 100%; 
+    width: auto; 
+    height: auto;
+    border-radius: 10px; 
+}
+
+.button-container {
+    display: flex; 
+    width: 50%;
+    margin-top: 10px; 
+    align-self: flex-start
+}
+
+.custom-button {
+    background-color: rgb(64, 94, 78); 
+    color: white; 
+    margin-top: 10px;
+    padding: 2px 3px; 
+    border: none; 
+    cursor: pointer;
+    align-self: flex-start;
+    margin-left: 375px;
+    
+}
+ .profile-input-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+  }
+
+  /* Campo de entrada de nombre */
+  
+  .profile-name input {
+    border: none;
+    border-bottom: 2px solid #2f604f;
+    padding: 8px;
+    font-size: 18px;
+    width: 200px;
+    text-align: center;
+    color: #333;
+    background: transparent;
+    transition: border-color 0.3s ease;
+    margin-left: 205px;
+
+
+  }
+
+  .profile-name input:focus {
+    outline: none;
+    border-bottom-color: #376658;
+  }
+
+
+.submit-btn {
+    background-color: #385340;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-left: 10px;
+    margin-top: 20px;
+
+  }
+
+  .submit-btn:hover {
+    background-color: #728075;
+    margin-left: 375px;
+  }
+
+  /* Texto de nombre confirmado */
+  .name-display {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-left: 375px;
+  }
+
+  .info-box {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 20px;
+    max-width: 500px;
+    margin: 20px auto;
+    margin-right: 300px;
+    max-width: 600px;
+    margin-top: -430px;
+}
+
+/* Title styling */
+.section-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Form group styling */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Label styling */
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+
+.buttonguardar {
+  background-color: #365437; /* Green background */
+  color: white; /* White text */
+  padding: 10px 20px; /* Padding around the text */
+  font-size: 16px; /* Font size */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  margin-right: -20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Add shadow */
+  transition: background-color 0.3s ease, transform 0.1s ease; /* Smooth hover effects */
+}
+
+.buttonguardar:hover {
+  background-color: #4b764d; /* Darker green on hover */
+  transform: scale(1.05); /* Slightly grow the button on hover */
+}
+
+.buttonguardar:active {
+  background-color: #3e8e41; /* Even darker green when clicked */
+  transform: scale(0.95); /* Shrink slightly on click */
+}
+.personal-info label, .emotion-section h2 {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+
+}
+.title{
+  font-size: 17px;
+}
