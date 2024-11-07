@@ -20,13 +20,11 @@
     cursor: pointer;
 }
 
-h2 {
+.perfil-container.h2 {
     font-size: 1.5rem;
     color: black;
     margin: 0;
 }
-
-
 
 .image-container {
     width: 300px; 
@@ -66,95 +64,92 @@ h2 {
     margin-left: 375px;
     
 }
- .profile-input-group {
+
+.profile-input-group {
     display: flex;
     align-items: center;
     gap: 15px;
     margin-top: 20px;
-  }
+}
 
-  /* Campo de entrada de nombre */
-  
-  .profile-name input {
-    border: none;
-    border-bottom: 2px solid #2f604f;
-    padding: 8px;
-    font-size: 18px;
-    width: 200px;
-    text-align: center;
-    color: #333;
-    background: transparent;
-    transition: border-color 0.3s ease;
-    margin-left: 205px;
+/* Campo de entrada de nombre */  
+.profile-name input {
+  border: none;
+  border-bottom: 2px solid #2f604f;
+  padding: 8px;
+  font-size: 18px;
+  width: 200px;
+  text-align: center;
+  color: #333;
+  background: transparent;
+  transition: border-color 0.3s ease;
+  margin-left: 205px;
+}
 
-
-  }
-
-  .profile-name input:focus {
-    outline: none;
-    border-bottom-color: #376658;
-  }
+.profile-name input:focus {
+  outline: none;
+  border-bottom-color: #376658;
+}
 
 
 .submit-btn {
-    background-color: #385340;
-    color: white;
-    padding: 10px 25px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 16px;
-    border: none;
-    transition: background-color 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-left: 10px;
-    margin-top: 20px;
+  background-color: #385340;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  border: none;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-left: 10px;
+  margin-top: 20px;
+}
 
-  }
+.submit-btn:hover {
+  background-color: #728075;
+  margin-left: 375px;
+}
 
-  .submit-btn:hover {
-    background-color: #728075;
-    margin-left: 375px;
-  }
+/* Texto de nombre confirmado */
+.name-display {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-left: 375px;
+}
 
-  /* Texto de nombre confirmado */
-  .name-display {
-    font-size: 20px;
-    font-weight: bold;
-    color: #333;
-    margin-left: 375px;
-  }
-
-  .info-box {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background-color: #fff;
-    padding: 20px;
-    max-width: 500px;
-    margin: 20px auto;
-    margin-right: 300px;
-    max-width: 600px;
-    margin-top: -430px;
+.info-box {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 500px;
+  margin: 20px auto;
+  margin-right: 300px;
+  max-width: 600px;
+  margin-top: -430px;
 }
 
 /* Title styling */
 .section-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
 }
 
 /* Form group styling */
 .form-group {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 /* Label styling */
 .form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #333;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
 }
 
 
@@ -186,6 +181,7 @@ h2 {
   font-weight: bold;
 
 }
-.title{
+
+.emotion-section.title{
   font-size: 17px;
 }
