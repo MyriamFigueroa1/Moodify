@@ -11,21 +11,60 @@
     gap: 10px;
 }
 
-  /* Estilos del cuadro del emoji */
+.videoBox {
+    display:flow-root;
+    border-radius: 2%;
+    border: 200px solid rgb(139, 144, 142);
+    /*border-style: groove;*/
+    border-image-source: url(../img/frame.png);
+    border-image-slice: 400;
+    place-items: center;
+    margin: 0%;
+    padding: 0%;
+   
+}
+.music-list {
+    width: 700px;
+    height: 200px;
+    display: flex;
+    border: 2px solid #333;
+    border-radius: 2%;
+    margin: 0 auto;
+    overflow:scroll;
+}
+
+/* Estilos del cuadro del emoji */
 .emotion {
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 300px;
-    height: 300px;
+    width: 400px; /* Ajusta el tamaño del contenedor */
+    height: 480px;
+    overflow: hidden; /* Oculta cualquier parte de la imagen que sobresalga */
     border: 2px solid #333;
     border-radius: 8px;
-    font-size: 2rem;
+    margin: 0 auto;
+}
+
+.emotion img {
+    display: none;
+    width: 65%;
+    height: 60%;
+    object-fit: cover; /* Ajusta la imagen para que cubra todo el espacio */
+    border-radius: 8px;
 }
 
 .photoCaptured, .canvasFR {
     border: 2px solid #333;
     border-radius: 8px;
-    display: none;
+    display: flex;
 
+}
+
+.display-6 {
+    text-align: center;
+}
+
+#list-content {
+    display: none;
 }

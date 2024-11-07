@@ -3,6 +3,8 @@ const canvas = document.getElementById('canvas');
 const captureButton = document.getElementById('capture');
 const photo = document.getElementById('photo');
 const emotion =  document.getElementById('emotion')
+const feliz = document.getElementById('feliz')
+const musicList = document.getElementById('list-content')
 
 // Acceso a la cámara
 navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } })
@@ -15,7 +17,8 @@ navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } })
 
 // Captura la foto
 captureButton.addEventListener('click', () => {
-emotion.style.display = 'flex';
+feliz.style.display = 'block';
+musicList.style.display = 'block';
 
 const context = canvas.getContext('2d');
 canvas.width = video.videoWidth;
