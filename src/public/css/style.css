@@ -2,16 +2,15 @@
 
 :root {
     --primary-color: #1f232a;
-    --secondary-color: #2ECC71;
-    --accent-color: #FF6347;
-    --background-color: #f2f2f2;
-    --text-color: #121212;
+    --secondary-color: #1d2b23;
+    --accent-color: #FF6A3D;
+    --background-color: #f9f9f9;
+    --text-color: #e6e6e6;
 }
 
 body {
     background-color: var(--background-color);
     color: var(--text-color);
-    font-family: 'Rubik', sans-serif;
 }
 
 #wrapper {
@@ -77,23 +76,25 @@ body {
     color: var(--secondary-color);
 }
 
-.list-group-item.active {
-    background-color: var(--accent-color);
-    color: var(--background-color);
+#sidebar-wrapper .list-group-item.active {
+    background-color: var(--secondary-color);
+    color: #FFF;
+    border-left: 5px solid var(--accent-color);
 }
 
+/* Icono del menú lateral */
 #menu-toggle {
-    background-color: transparent;
-    border: 1px solid var(--secondary-color);
-    color: var(--secondary-color);
+    background-color: var(--primary-color);  /* Fondo oscuro para visibilidad */
+    border: 1px solid var(--accent-color);   /* Borde en color acento */
+    color: var(--accent-color);              /* Color de icono en acento */
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
-
 #menu-toggle:hover {
     background-color: var(--accent-color);
     color: var(--background-color);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
 
 #page-content-wrapper {
     width: 100%;
