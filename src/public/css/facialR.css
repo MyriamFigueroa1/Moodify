@@ -42,20 +42,20 @@
     align-items: center;
     justify-content: center;
     width: 410px; /* Ajusta el tamaño del contenedor */
-    height: 600px;
+    height: 570px;
     overflow: hidden; /* Oculta cualquier parte de la imagen que sobresalga */
     border-radius: 2%;
-    border: 80px solid rgb(139, 144, 142);
+    border: 70px solid rgb(139, 144, 142);
     border-image-source: url(../img/frameEmotion.png);
-    border-image-slice: 100;
+    border-image-slice: 140;
     place-items: center;
     margin: 0 auto;
 }
 
 .emotion img {
     display: none;
-    width: 85%;
-    height: 50%;
+    width: 75%;
+    height: 45%;
     object-fit: cover; /* Ajusta la imagen para que cubra todo el espacio */
     border-radius: 8px;
 }
