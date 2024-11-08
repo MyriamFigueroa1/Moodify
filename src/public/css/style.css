@@ -2,8 +2,8 @@
 
 :root {
     --primary-color: #1f232a;
-    --secondary-color: #45b69c;
-    --accent-color: #a084d1;
+    --secondary-color: #2ECC71;
+    --accent-color: #FF6347;
     --background-color: #f2f2f2;
     --text-color: #121212;
 }
@@ -132,13 +132,12 @@ button:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Ocultar menú lateral en pantallas pequeñas */
+/* Ocultar menú lateral en pantallas pequeñas usando una clase */
 @media (max-width: 768px) {
-    #wrapper.toggled #sidebar-wrapper {
-        display: block;
-        width: 100%; /* Sidebar fills the screen on small devices */
+    #sidebar-wrapper {
+        width: 0;
+        display: none;
     }
-    #page-content-wrapper {
-        padding-left: 0; /* Remove padding when sidebar is toggled */
-    }
+    /* Al abrir, cambiará a display: block en el script */
 }
+

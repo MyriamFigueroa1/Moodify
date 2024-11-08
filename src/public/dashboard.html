@@ -29,7 +29,7 @@
             <!-- Navbar -->
             <header>
                 <nav class="navbar navbar-expand-lg navbar-dark">
-                    <div class="container-fluid">
+                    <div class="container-fluid navbar-container">
                         <button id="menu-toggle" class="btn btn-outline-light me-3"><i class="bi bi-list"></i></button>
                         <a class="navbar-brand" href="#">
                             <img src="img/moodify_logo.png" alt="Moodify Logo" style="width: 50px; height: auto; margin-right: 10px;">
@@ -60,7 +60,7 @@
             </header>
 
             <!-- Main Content -->
-            <section class="container-fluid mt-4">
+            <div class="container-fluid mt-4 main-container">
                 <div class="container text-center main-content">
                     <!-- Mood + Music selector -->
                     <div class="row mood-header text-bg-dark p-3">
@@ -72,12 +72,12 @@
                     <div class="row mood-selector">
                         <div class="col emoji-section p-3">
                             <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#emojiModal" aria-label="Seleccionar emoji">
-                                <span class="fs-1">&#128533;</span>
+                                <span class="fs-1">1. &#128513;</span>
                             </button>
                         </div>
                         <div class="col song-section p-3">
                             <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#songModal" aria-label="Seleccionar canción">
-                                <span class="fs-1">&#127925;</span>
+                                <span class="fs-1">2. &#127925;</span>
                             </button>
                         </div>
                     </div>
@@ -85,61 +85,21 @@
 
                 <!-- Friends Feed -->
                 <section class="container-sm friends-feed mt-5">
-                    <h3 style="color:black">Publicaciones de Amigos</h3>
-                    
-                    <!-- Publicación 1 -->
-                    <div class="post">
-                        <span class="post-emoji">&#128512;</span> <!-- Emoji feliz -->
-                        <div class="post-content">
-                            <h4 class="post-author">Ana López</h4>
-                            <div class="post-songs">
-                                <span class="post-song">🎵 Happy - Pharrell Williams</span><br>
-                                <span class="post-song">🎵 Walking on Sunshine - Katrina and the Waves</span><br>
-                                <span class="post-song">🎵 Can’t Stop the Feeling! - Justin Timberlake</span>
-                            </div>
-                            <span class="post-date">Hace 2 horas</span>
-                        </div>
-                    </div>
+                    <h3 class="feed-title">Publicaciones de Amigos</h3>
 
-                    <!-- Publicación 2 -->
-                    <div class="post">
-                        <span class="post-emoji">&#128533;</span> <!-- Emoji triste -->
-                        <div class="post-content">
-                            <h4 class="post-author">Juan Pérez</h4>
-                            <div class="post-songs">
-                                <span class="post-song">🎵 Someone Like You - Adele</span><br>
-                                <span class="post-song">🎵 Tears Dry on Their Own - Amy Winehouse</span><br>
-                                <span class="post-song">🎵 Fix You - Coldplay</span>
+                    <!-- Individual Post (reuse for multiple posts) -->
+                    <div class="post card my-3 p-3">
+                        <div class="d-flex align-items-center">
+                            <span class="post-emoji me-3">&#128512;</span>
+                            <div class="post-content flex-grow-1">
+                                <h4 class="post-author">Ana López</h4>
+                                <div class="post-songs">
+                                    <span class="post-song">🎵 Happy - Pharrell Williams</span><br>
+                                    <span class="post-song">🎵 Walking on Sunshine - Katrina and the Waves</span><br>
+                                    <span class="post-song">🎵 Can’t Stop the Feeling! - Justin Timberlake</span>
+                                </div>
+                                <span class="post-date">Hace 2 horas</span>
                             </div>
-                            <span class="post-date">Hace 1 hora</span>
-                        </div>
-                    </div>
-
-                    <!-- Publicación 3 -->
-                    <div class="post">
-                        <span class="post-emoji">&#128544;</span> <!-- Emoji enojado -->
-                        <div class="post-content">
-                            <h4 class="post-author">María González</h4>
-                            <div class="post-songs">
-                                <span class="post-song">🎵 Break Stuff - Limp Bizkit</span><br>
-                                <span class="post-song">🎵 Killing in the Name - Rage Against the Machine</span><br>
-                                <span class="post-song">🎵 Smells Like Teen Spirit - Nirvana</span>
-                            </div>
-                            <span class="post-date">Hace 3 horas</span>
-                        </div>
-                    </div>
-
-                    <!-- Publicación 4 -->
-                    <div class="post">
-                        <span class="post-emoji">&#128525;</span> <!-- Emoji enamorado -->
-                        <div class="post-content">
-                            <h4 class="post-author">Luis Torres</h4>
-                            <div class="post-songs">
-                                <span class="post-song">🎵 Perfect - Ed Sheeran</span><br>
-                                <span class="post-song">🎵 All of Me - John Legend</span><br>
-                                <span class="post-song">🎵 La Vie en Rose - Édith Piaf</span>
-                            </div>
-                            <span class="post-date">Hace 4 horas</span>
                         </div>
                     </div>
                 </section>

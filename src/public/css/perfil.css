@@ -1,9 +1,18 @@
 /* Contenedor principal */
-.container-fluid {
+.main-container {
   display: flex;
   justify-content: space-between;
   gap: 20px;
   padding: 20px;
+  flex-wrap: wrap;
+}
+
+.profile-content {
+  background-color: #f9f9f9;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
@@ -12,7 +21,6 @@
   flex: 1;
   max-width: 45%;
   padding: 20px;
- 
   margin: 10px 0;
 }
 
@@ -20,7 +28,7 @@
 .perfil-container h2 {
   font-size: 2rem;
   color: #333;
-  border-bottom: 2px solid #385340; /* Línea decorativa debajo */
+  border-bottom: 2px solid #385340;
   padding-bottom: 5px;
   margin-bottom: 15px;
   text-align: left;

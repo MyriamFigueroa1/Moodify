@@ -1,43 +1,4 @@
 
-#menu-toggle {
-    background-color: transparent;
-    border: 1px solid var(--secondary-color);
-    color: var(--secondary-color);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-#menu-toggle:hover {
-    background-color: var(--accent-color);
-    color: var(--background-color);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-#page-content-wrapper {
-    width: 100%;
-    padding-left: 250px;
-    transition: all 0.3s ease;
-}
-
-.btn {
-    font-weight: 500;
-    box-shadow: none;
-    transition: all 0.3s ease;
-}
-
-.btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.btn-primary {
-    background-color: var(--accent-color);
-}
-
-.btn-primary:hover {
-    background-color: var(--highlight-color);
-}
-
-
 /*------ SECCION DASHBOARD --------------*/
 /* Contenido principal */
 .main-content {
@@ -77,11 +38,11 @@
     color: var(--background-color);
 }
 .emoji-section {
-    background-color: var(--secondary-color);
+    background-color: yellow;
     border-radius: 10px;
 }
 .song-section {
-    background-color: var(--accent-color);
+    background-color: var(--background-color);
     border-radius: 10px;
 }
 
@@ -109,42 +70,64 @@
 
 /* Publicaciones de amigos */
 .friends-feed {
-    margin-top: 20px;
-    padding-left: 80px;
-    padding-right: 90px;
+    padding: 0 20px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+.feed-title {
+    color: #444;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 .post {
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 15px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.post:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 .post-emoji {
-    font-size: 2rem;
+    font-size: 2.5rem;
+    color: #ffcc00;
+    margin-right: 15px;
 }
 .post-songs {
     font-size: 1rem;
     color: #333;
 }
 .post-author {
-    font-weight: bold;
-    font-size: 1.2rem;
-    color: var(--primary-color);
+    font-size: 1.4rem;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.post-songs {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+}
+.post-song {
+    display: block;
+    color: #007bff;
 }
 .post-content {
     font-size: 1rem;
 }
-.post-text {
-    color: #333333;
-    margin-top: 5px;
-}
 .post-date {
-    font-size: 0.9rem;
-    color: #666666;
-    display: block;
+    font-size: 0.85rem;
+    color: #999;
     margin-top: 8px;
+}
+/* Hover Effects */
+.post .post-author:hover, .post .post-song:hover {
+    color: #0056b3;
+    text-decoration: underline;
 }
 
 /*------- Modales ---------*/
@@ -196,5 +179,8 @@
     }
     #page-content-wrapper {
         padding-left: 0;
+    }
+    .friends-feed {
+        padding: 0 10px;
     }
 }
