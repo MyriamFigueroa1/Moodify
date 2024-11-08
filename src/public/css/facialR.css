@@ -1,6 +1,6 @@
 .containerFR {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 20px;
     padding: 20px;
 }
@@ -12,23 +12,26 @@
 }
 
 .videoBox {
-    display:flow-root;
+    display: initial;
     border-radius: 2%;
-    border: 200px solid rgb(139, 144, 142);
+    border: 40px solid rgb(139, 144, 142);
     /*border-style: groove;*/
     border-image-source: url(../img/frame.png);
-    border-image-slice: 400;
+    border-image-slice: 75;
     place-items: center;
     margin: 0%;
-    padding: 0%;
+    padding:inherit;
+    width: 700px;
+    height: 550px;
    
 }
 .music-list {
     width: 700px;
     height: 200px;
-    display: flex;
-    border: 2px solid #333;
+    display: block;
+    border: 7px solid #222121;
     border-radius: 2%;
+    border-style: inset;
     margin: 0 auto;
     overflow:scroll;
 }
@@ -38,18 +41,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 400px; /* Ajusta el tamaño del contenedor */
-    height: 480px;
+    width: 410px; /* Ajusta el tamaño del contenedor */
+    height: 600px;
     overflow: hidden; /* Oculta cualquier parte de la imagen que sobresalga */
-    border: 2px solid #333;
-    border-radius: 8px;
+    border-radius: 2%;
+    border: 80px solid rgb(139, 144, 142);
+    border-image-source: url(../img/frameEmotion.png);
+    border-image-slice: 100;
+    place-items: center;
     margin: 0 auto;
 }
 
 .emotion img {
     display: none;
-    width: 65%;
-    height: 60%;
+    width: 85%;
+    height: 50%;
     object-fit: cover; /* Ajusta la imagen para que cubra todo el espacio */
     border-radius: 8px;
 }
@@ -65,6 +71,71 @@
     text-align: center;
 }
 
+/*#list-content {
+    display: none;
+}*/
 #list-content {
     display: none;
+    list-style-type: none;
+    padding: 10px;
+    width: 880px;
+    height: 150px;
+    /*max-width: 600px;*/
+    margin: 0px auto;
+    background-color: #fff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    max-height: 400px; /* Ajusta la altura máxima */
+}
+
+/* Estilos de cada canción */
+.song {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    transition: background 0.3s;
+}
+
+.song:last-child {
+    border-bottom: none;
+}
+
+#playlist-container {
+    display: block;
+    border: 6px #222121;
+    border-style: inset;
+    width: 900px;
+    height: 170px;
+    margin: 0px auto;
+    border-radius: 8px;
+    background-color: #fff;
+
+}
+.song:hover {
+    background-color: #f9f9f9;
+}
+
+.album-cover {
+    width: 50px;
+    height: 50px;
+    border-radius: 6px;
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+.song-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.song-title {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+}
+
+.song-artist {
+    font-size: 0.9em;
+    color: #777;
 }

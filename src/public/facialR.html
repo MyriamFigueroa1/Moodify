@@ -46,7 +46,6 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link position-relative" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="bi bi-bell" style="font-size: 1.5rem;" aria-label="Notificaciones"></i>
-                                    <!--span class="badge bg-danger position-absolute top-0 start-100 translate-middle">3</span-->
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <li><h6 class="dropdown-header">Notificaciones</h6></li>
@@ -60,39 +59,14 @@
                 </div>
             </nav>
             <div class="container-fluid mt-4">
-                <!--AQUI DENTRO VA TODO EL CODIGO PERSONALIZADO DE CADA PAGINA-->
                 <div class="containerFR">
                     <div class="left-section">
-                        <video class ="videoBox" id="video" autoplay playsinline></video>
+                        <video class="videoBox" id="video" autoplay playsinline></video>
                         <button type="button" id="capture" class="btn btn-secondary">
                             <i class="bi bi-camera"></i>
                         </button>
-                        <!--button id="capture">Tomar foto</button-->
-                        <!--img class="photoCaptured" id="photo" alt="Foto capturada"-->
-                        <!--canvas class="canvasFR" id="canvas"></canvas--> 
-                        <div class="music-list">
-                            <ul id="list-content">
-                                <li>d</li>
-                                <li>d</li>
-                                <li>d</li>
-                                <li>d</li>
-                                <li>d</li>
-                                <li>d</li>
-                                <li>d</li>
-                                <li>d</li>
-                                <li>d</li>
-                                <li>d</li>
-                                <li>d</li>
-                                <li>d</li>
-                                <li>d</li>
-                                <li>d</li>
-                            </ul>
-                        </div>
                     </div>
-                
-                    <!-- Derecha: Imagen y cuadro del emoji -->
                     <div class="right-section">
-                        <h1 class="display-6"><span class="badge text-bg-secondary">EMOCIÓN</span></h1>
                         <div class="emotion" id="emotion">
                             <img id="feliz" src="img/feliz.png">
                         </div>
@@ -101,9 +75,52 @@
             </div>
         </div>
     </div>
-
-    <!-- JavaScript and Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" defer></script>
-    <script src="js/scripts.js" defer></script>
+    <div id="playlist-container">
+        <ul id="list-content" class="playlist">
+            <li class="song">
+                <div class="song-details">
+                    <div class="song-title">Happy</div>
+                    <div class="song-artist">Pharrell Williams</div>
+                </div>
+            </li>
+            <li class="song">
+                <div class="song-details">
+                    <div class="song-title">Lovely Day</div>
+                    <div class="song-artist">Bill Withers</div>
+                </div>
+            </li>
+            <li class="song">
+                <div class="song-details">
+                    <div class="song-title">I'm a Believer</div>
+                    <div class="song-artist">The Monkees</div>
+                </div>
+            </li>
+            <li class="song">
+                <div class="song-details">
+                    <div class="song-title">I Gotta Feeling</div>
+                    <div class="song-artist">The Black Eyed Peas</div>
+                </div>
+            </li>
+            <li class="song">
+                <div class="song-details">
+                    <div class="song-title">Can't Stop the Feeling!</div>
+                    <div class="song-artist">Justin Timberlake</div>
+                </div>
+            </li>
+            <li class="song">
+                <div class="song-details">
+                    <div class="song-title">Good as Hell</div>
+                    <div class="song-artist">Lizzo</div>
+                </div>
+            </li>
+            <li class="song">
+                <div class="song-details">
+                    <div class="song-title">On Top of the World</div>
+                    <div class="song-artist">Imagine Dragons</div>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
 </body>
 </html>
