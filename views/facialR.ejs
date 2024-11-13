@@ -1,0 +1,68 @@
+<%- include("header", {}) %>
+       
+    </div>
+</div>
+<!--div class="container-fluid mt-4 main-container"-->
+        
+    <div class="containerFR">
+        <div class="left-section">
+            <video class="videoBox" id="video" autoplay playsinline></video>
+            <button type="button" id="capture" class="btn btn-secondary">
+                <i class="bi bi-camera"></i>
+            </button>
+        </div>
+        <div class="right-section">
+            <div class="emotion" id="emotion">
+                <img id="feliz" src="/images/feliz.png">
+            </div>
+        </div>
+    </div>
+    <div id="playlist-container">
+        <ul id="list-content" class="playlist">
+            <li class="song">
+                <div class="song-details">
+                    <div class="song-title">Happy</div>
+                    <div class="song-artist">Pharrell Williams</div>
+                </div>
+            </li>
+            <li class="song">
+                <div class="song-details">
+                    <div class="song-title">Lovely Day</div>
+                    <div class="song-artist">Bill Withers</div>
+                </div>
+            </li>
+            <li class="song">
+                <div class="song-details">
+                    <div class="song-title">I'm a Believer</div>
+                    <div class="song-artist">The Monkees</div>
+                </div>
+            </li>
+            <li class="song">
+                <div class="song-details">
+                    <div class="song-title">I Gotta Feeling</div>
+                    <div class="song-artist">The Black Eyed Peas</div>
+                </div>
+            </li>
+            <li class="song">
+                <div class="song-details">
+                    <div class="song-title">Can't Stop the Feeling!</div>
+                    <div class="song-artist">Justin Timberlake</div>
+                </div>
+            </li>
+            <li class="song">
+                <div class="song-details">
+                    <div class="song-title">Good as Hell</div>
+                    <div class="song-artist">Lizzo</div>
+                </div>
+            </li>
+            <li class="song">
+                <div class="song-details">
+                    <div class="song-title">On Top of the World</div>
+                    <div class="song-artist">Imagine Dragons</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+<!--/div-->
+
+<%- include("footer", {}) %>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moodify - Inicio</title>
+    <link rel="icon" type="image/x-icon" href="images/moodify_logo_blue_backgr.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Rubik:wght@300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/dashboard.css">
+    <link rel="stylesheet" href="stylesheets/perfil.css">
+    <link rel="stylesheet" href="stylesheets/login_registration.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/facialR.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="javascripts/scripts.js" defer></script>
+    <script src="javascripts/facialR.js" defer></script>
+    <script src="javascripts/perfil.js" defer></script>
+</head>
+<body>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <aside class="bg-dark text-white" id="sidebar-wrapper" role="navigation" aria-label="Menú lateral">
+            <header class="sidebar-heading py-4 text-center fs-4">Moodify</header>
+            <nav class="list-group list-group-flush">
+                <a href="dashboard" class="list-group-item list-group-item-action bg-dark text-white active" aria-current="page"><i class="bi bi-house-door"></i> Inicio</a>
+                <a href="perfil" class="list-group-item list-group-item-action bg-dark text-white"><i class="bi bi-person"></i> Perfil</a>
+                <a href="facialR" class="list-group-item list-group-item-action bg-dark text-white"><i class="bi bi-camera"></i> Reconocimiento Facial</a>
+                <a href="landingpage.html" class="list-group-item list-group-item-action bg-dark text-white"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</a>
+            </nav>
+        </aside>
+
+        <!-- Page Content -->
+        <main id="page-content-wrapper">
+            <!-- Navbar -->
+            <header>
+                <nav class="navbar navbar-expand-lg navbar-dark">
+                    <div class="container-fluid navbar-container">
+                        <button id="menu-toggle" class="btn btn-outline-light me-3"><i class="bi bi-list"></i></button>
+                        <a class="navbar-brand" href="#">
+                            <img src="images/moodify_logo.png" alt="Moodify Logo" style="width: 50px; height: auto; margin-right: 10px;">
+                            Moodify
+                        </a>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav ms-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="perfil.html" aria-label="Perfil">
+                                        <i class="bi bi-person-circle" style="font-size: 1.5rem;"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link position-relative" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-bell" style="font-size: 1.5rem;" aria-label="Notificaciones"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                        <li><h6 class="dropdown-header">Notificaciones</h6></li>
+                                        <li><a class="dropdown-item" href="#">No tienes notificaciones nuevas</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="#">Ver todas las notificaciones</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </header>

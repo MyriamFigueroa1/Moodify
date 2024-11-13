@@ -45,6 +45,15 @@
 
 }
 
+.container-profile{
+  display: flex;
+  justify-content: center;  /* Centra el div horizontalmente */
+  align-items: center;
+  position: relative;
+  left: 0px;
+  gap: 20px;
+  padding: 20px;
+}
 .preview {
   width: 300px;
   height: auto;
