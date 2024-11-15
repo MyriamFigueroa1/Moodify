@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const conn = require('./db/conn');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -12,6 +13,7 @@ const perfilRouter = require('./routes/perfil');
 const loginRegistrationRouter = require('./routes/login_registration');
 const landingpageRouter = require('./routes/landingpage');
 
+conn.connectToDatabase();
 const app = express();
 
 // view engine setup
