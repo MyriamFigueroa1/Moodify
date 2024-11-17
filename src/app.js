@@ -11,7 +11,6 @@ const facialRRouter = require('./routes/facialR');
 const dashboardRouter = require('./routes/dashboard');
 const perfilRouter = require('./routes/perfil');
 const loginRegistrationRouter = require('./routes/login_registration');
-const landingpageRouter = require('./routes/landingpage');
 
 conn.connectToDatabase();
 const app = express();
@@ -32,7 +31,6 @@ app.use('/facialR', facialRRouter);
 app.use('/dashboard', dashboardRouter);
 app.use('/perfil', perfilRouter);
 app.use('/login_registration', loginRegistrationRouter);
-app.use('/landingpage', landingpageRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
