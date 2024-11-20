@@ -1,10 +1,8 @@
 const video = document.getElementById('video');
-const canvas = document.getElementById('canvas');
+const canvas = document.getElementById('pic');
 const captureButton = document.getElementById('capture');
-const photo = document.getElementById('photo');
-const emotion =  document.getElementById('emotion')
-const feliz = document.getElementById('feliz')
-const musicList = document.getElementById('list-content')
+const feliz = document.getElementById('feliz');
+const musicList = document.getElementById('list-content');
 
 // Acceso a la cámara
 navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } })
@@ -17,16 +15,37 @@ navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } })
 
 // Captura la foto
 captureButton.addEventListener('click', () => {
-feliz.style.display = 'block';
-musicList.style.display = 'block';
+  console.log('hello');
+  feliz.style.display = 'block';
+  musicList.style.display = 'block';
 
-const context = canvas.getContext('2d');
-canvas.width = video.videoWidth;
-canvas.height = video.videoHeight;
-context.drawImage(video, 0, 0, canvas.width, canvas.height);
+  const canvas = document.createElement('canvas');
+  const context = canvas.getContext('2d');
+  const video = document.getElementById('video');
 
-// Muestra la foto capturada
-photo.src = canvas.toDataURL('image/png');
-//photo.style.display = 'block';
+  // Ajusta el tamaño del canvas
+  canvas.width = video.videoWidth;
+  canvas.height = video.videoHeight;
+
+  // Dibuja el contenido del video en el canvas
+  context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+  // Convierte el canvas a un Blob en formato JPEG
+  canvas.toBlob((blob) => {
+    const formData = new FormData();
+    formData.append('image', blob, 'captura.jpg');  // Nombre del archivo
+
+    // Envía la imagen al servidor sin guardarla en disco
+    fetch('/facialR/procesar-imagen', {
+      method: 'POST',
+      body: formData,
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Imagen procesada en el servidor:', data);
+      })
+      .catch(error => {
+        console.error('Error al enviar la imagen:', error);
+      });
+  }, 'image/jpeg', 0.8);
 });
-

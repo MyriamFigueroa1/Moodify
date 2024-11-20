@@ -6,7 +6,11 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+<<<<<<< HEAD
     "bcrypt": "^5.1.1",
+=======
+    "@aws-sdk/client-rekognition": "^3.693.0",
+>>>>>>> fd39f0602385901f0b9769f2930e95aadb1ef77e
     "body-parser": "^1.20.3",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
@@ -14,8 +18,15 @@
     "ejs": "^3.1.10",
     "express": "^4.21.1",
     "http-errors": "~1.6.3",
+    "image-size": "^1.1.1",
+    "image-type": "^5.2.0",
     "mongodb": "^6.10.0",
+<<<<<<< HEAD
     "mongoose": "^8.8.2",
     "morgan": "~1.9.1"
+=======
+    "morgan": "~1.9.1",
+    "multer": "^1.4.5-lts.1"
+>>>>>>> fd39f0602385901f0b9769f2930e95aadb1ef77e
   }
 }
