@@ -14,7 +14,17 @@
         </div>
         <div class="right-section">
             <div class="emotion" id="emotion">
-                <img id="feliz" src="/images/feliz.png">
+                <div class="spinner-grow text-secondary" role="status" id="spinner1">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <div class="spinner-grow text-secondary" role="status" id="spinner2">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <div class="spinner-grow text-secondary" role="status" id="spinner3">
+                    <span class="visually-hidden">Loading...</span>
+                </div>                    
+                <p id="feliz"><%= emotion %></p>
+                <!--img id="feliz" src="/images/feliz.png"-->
             </div>
         </div>
     </div>
@@ -22,7 +32,7 @@
         <ul id="list-content" class="playlist">
             <li class="song">
                 <div class="song-details">
-                    <div class="song-title">Happy</div>
+                    <div class="song-title">Song: Happy</div>
                     <div class="song-artist">Pharrell Williams</div>
                 </div>
             </li>

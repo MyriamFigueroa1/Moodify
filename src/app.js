@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const conn = require('./db/conn');
+const session = require('express-session')
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -21,10 +22,22 @@ app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(session({
+  secret: 'mi_secreto',         // Secreto para firmar la cookie
+  resave: false,                // No volver a guardar la sesión si no se modificó
+  saveUninitialized: true,      // Guardar sesiones no inicializadas
+  cookie: { secure: false }     // Cambiar a `true` en producción si usas HTTPS
+}));
+app.use((req,res,next) => {
+  const emotion = req.session.emotion;
+  delete req.session.emotion;
+  res.locals.emotion = "";
+  if(emotion){res.locals.emotion = emotion};
+  next();
+});
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/facialR', facialRRouter);

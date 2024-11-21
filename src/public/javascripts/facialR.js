@@ -3,6 +3,10 @@ const canvas = document.getElementById('pic');
 const captureButton = document.getElementById('capture');
 const feliz = document.getElementById('feliz');
 const musicList = document.getElementById('list-content');
+const spinner1 = document.getElementById('spinner1');
+const spinner2 = document.getElementById('spinner2');
+const spinner3 = document.getElementById('spinner3');
+
 
 // Acceso a la cámara
 navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } })
@@ -18,6 +22,9 @@ captureButton.addEventListener('click', () => {
   console.log('hello');
   feliz.style.display = 'block';
   musicList.style.display = 'block';
+  spinner1.style.display = 'block';
+  spinner2.style.display = 'block';
+  spinner3.style.display = 'block';
 
   const canvas = document.createElement('canvas');
   const context = canvas.getContext('2d');
@@ -48,4 +55,9 @@ captureButton.addEventListener('click', () => {
         console.error('Error al enviar la imagen:', error);
       });
   }, 'image/jpeg', 0.8);
+  
+  setTimeout(function() {
+    location.reload(true);
+  }, 4000);
+  feliz.style.display = 'none';
 });

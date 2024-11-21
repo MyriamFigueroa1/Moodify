@@ -30,7 +30,7 @@ module.exports = {
       Image: {
         Bytes: imageBuffer, // Pasa la imagen como bytes
       },
-      Attributes: ['ALL'], // Incluye todas las características faciales
+      Attributes: ['EMOTIONS'], // Incluye todas las características faciales
     };
 
     try {
@@ -40,12 +40,7 @@ module.exports = {
 
       // Muestra las emociones detectadas para la primera cara
       const faces = response.FaceDetails;
-      faces.forEach((face, index) => {
-        console.log(`Cara ${index + 1}:`);
-        face.Emotions.forEach((emotion) => {
-          console.log(`- ${emotion.Type}: ${emotion.Confidence.toFixed(2)}%`);
-        });
-      });
+      return faces;
     } catch (error) {
       console.error('Error detectando emociones:', error);
     }

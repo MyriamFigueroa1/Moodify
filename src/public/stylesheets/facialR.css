@@ -54,7 +54,11 @@
     place-items: center;
     margin: 0 auto;
 }
-
+.emotion{
+    font-size: 2rem;
+    font-family:'pacifico', cursive;
+    color: rgb(34, 155, 148);
+}
 .emotion img {
     display: none;
     width: 75%;
@@ -72,7 +76,7 @@
 }
 
 #list-content {
-    display: none;
+    display: block;
     list-style-type: none;
     padding: 10px;
     width: 880px;
@@ -135,4 +139,15 @@
 .song-artist {
     font-size: 0.9em;
     color: #777;
+}
+#spinner1 {
+    display: none;
+}
+
+#spinner2 {
+    display: none;
+}
+
+#spinner3 {
+    display: none;
 }

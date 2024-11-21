@@ -10,10 +10,10 @@ const faceRecognizer = require('../faceRecognizer/faceRecognition'); // Reconoci
 
 // Ruta GET para renderizar la vista o realizar alguna consulta
 router.get('/', async (req, res) => {
-  const dbConnect = dbo.getDb();  // Conexión a la base de datos
+  //const dbConnect = dbo.getDb();  // Conexión a la base de datos
   try {
-    let results = await dbConnect.collection('usuarios').findOne();  // Buscar un documento
-    console.log(results);  // Mostrar resultados en la consola
+    //let results = await dbConnect.collection('usuarios').findOne();  // Buscar un documento
+    //console.log(results);  // Mostrar resultados en la consola
     res.render('facialR');  // Renderizar la vista 'facialR'
   } catch (err) {
     res.status(400).json({ error: 'Error al buscar álbumes' });
@@ -39,10 +39,29 @@ router.post('/procesar-imagen', upload.single('image'), async (req, res) => {
     // Eliminar el archivo temporal
     fs.unlinkSync(tempPath);
 
-    res.status(200).json({
-      message: 'Imagen procesada correctamente.',
-      result: emotionsResult,
-    });
+    const emotionsToExclude = ['CALM']; // Lista de emociones a excluir
+    let emotion = 'No detectada'; // Valor predeterminado si no hay emociones válidas
+
+    // Procesar resultados de emociones
+    for (const face of emotionsResult) {
+      // Filtra las emociones que no deseas considerar
+      const filteredEmotions = face.Emotions.filter(
+        (emotion) => !emotionsToExclude.includes(emotion.Type)
+      );
+
+      // Encuentra la emoción con mayor confianza
+      if (filteredEmotions.length > 0) {
+        const maxEmotion = filteredEmotions.reduce((max, emotion) =>
+          emotion.Confidence > max.Confidence ? emotion : max
+        );
+        req.session.emotion = maxEmotion.Type;
+        console.log(req.session.emotion);
+        break; // Solo necesitamos la emoción más relevante de la primera cara
+      }
+    }
+
+    // Renderizar la vista con la emoción detectada
+    res.render('facialR', { emotion: req.session.emotion });
   } catch (error) {
     console.error('Error al procesar la imagen:', error);
     res.status(500).json({ message: 'Error al procesar la imagen.' });
