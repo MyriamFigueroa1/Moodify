@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', async (req, res) => {
-  const { email, password } = req.body;
+  const { nombre, apellidos, usuario, email, password } = req.body;
 
   if (!email || !password) {
       return res.status(400).json({ error: 'Email y contraseña son requeridos' });
@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
 
   try {
       const db = getDb();
-      const existingUser = await db.collection('users').findOne({ email });
+      const existingUser = await db.collection('usuarios').findOne({ email });
 
       if (existingUser) {
           // Usuario ya registrado
@@ -25,11 +25,14 @@ router.post('/', async (req, res) => {
 
       // Crear nuevo usuario
       const newUser = {
+          nombre,
+          apellidos,
+          usuario,
           email,
           password: await bcrypt.hash(password, 10),
           createdAt: new Date(),
       };
-      await db.collection('users').insertOne(newUser);
+      await db.collection('usuarios').insertOne(newUser);
 
       // Respuesta exitosa
       res.status(201).json({ message: 'Usuario registrado exitosamente' });

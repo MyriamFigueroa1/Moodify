@@ -1,5 +1,5 @@
 const video = document.getElementById('video');
-const canvas = document.getElementById('pic');
+const canvas = document.getElementById('canvas');
 const captureButton = document.getElementById('capture');
 const feliz = document.getElementById('feliz');
 const musicList = document.getElementById('list-content');
@@ -26,11 +26,7 @@ captureButton.addEventListener('click', () => {
   spinner2.style.display = 'block';
   spinner3.style.display = 'block';
 
-  const canvas = document.createElement('canvas');
   const context = canvas.getContext('2d');
-  const video = document.getElementById('video');
-
-  // Ajusta el tamaño del canvas
   canvas.width = video.videoWidth;
   canvas.height = video.videoHeight;
 

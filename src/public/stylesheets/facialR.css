@@ -67,14 +67,20 @@
     border-radius: 8px;
 }
 
-.pic {
-    display: none;
+.photoCaptured, .canvasFR {
+    border: 2px solid #333;
+    border-radius: 8px;
+    display: flex;
+
 }
 
 .display-6 {
     text-align: center;
 }
 
+/*#list-content {
+    display: none;
+}*/
 #list-content {
     display: block;
     list-style-type: none;
@@ -151,3 +157,6 @@
 #spinner3 {
     display: none;
 }
+#canvas {
+    display: none;
+};

@@ -1,14 +1,13 @@
 const express = require('express');
+const router = express.Router();
+const dbo = require('../db/conn');
+const ObjectId = require('mongodb').ObjectId;
 const multer = require('multer');
 const path = require('path');
-const os = require('os')
+const os = require('os');
 const fs = require('fs');
-const router = express.Router();
-const dbo = require('../db/conn'); // Conexión a la base de datos
-const ObjectId = require('mongodb').ObjectId;
-const faceRecognizer = require('../faceRecognizer/faceRecognition'); // Reconocimiento facial
+const faceRecognizer = require('../faceRecognizer/faceRecognition');
 
-// Ruta GET para renderizar la vista o realizar alguna consulta
 router.get('/', async (req, res) => {
   //const dbConnect = dbo.getDb();  // Conexión a la base de datos
   try {
