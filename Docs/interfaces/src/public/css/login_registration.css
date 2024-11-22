@@ -1,0 +1,77 @@
+:root {
+    --primary-color: #1f232a;
+    --secondary-color: #93c9be;
+    --accent-color: #6a7a9550;
+    --background-color: #fbfffe;
+    --text-color: #121212;
+    --highlight-color: #45b69c;
+}
+
+.container {
+    max-width: 600px;
+}
+
+/* Tab seleccionado (login / registro) */
+.nav-tabs .nav-link {
+    color: var(--primary-color);
+}
+.nav-tabs .nav-link.active {
+    background-color: var(--accent-color);
+    color: var(--text-color); 
+    border-color: var(--background-color);
+}
+
+/* Contenido (formatos) */
+.tab-content {
+    background-color: var(--accent-color);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+.form-title {
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.form-control {
+    margin-bottom: 20px;
+    padding: 15px;
+}
+
+
+/* Botones */
+.btn-custom {
+    width: 100%;
+    background-color: var(--highlight-color); 
+    color: white;
+    border: none;
+    padding: 12px;
+    margin-top: 20px;
+}
+.btn-custom:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Términos y condiciones */
+.terms {
+    margin-top: 40px;
+    font-size: 12px;
+    text-align: center;
+}
+.text-center a {
+    font-size: 14px;
+    color: darkblue;
+    text-decoration: none;
+}
+.text-center a:hover {
+    color: blue;
+}
+
+/* Icono Mic */
+.mic-icon {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: var(--primary-color);
+}
