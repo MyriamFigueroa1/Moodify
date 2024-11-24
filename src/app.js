@@ -49,6 +49,11 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
+app.use('/login_registration', (req, res, next) => {
+  console.log('Ruta /login_registration alcanzada');
+  next();
+}, loginRegistrationRouter);
+
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development

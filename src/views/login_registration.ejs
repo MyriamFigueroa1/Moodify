@@ -44,6 +44,11 @@
                 <div class="position-relative">
                     <i class="bi bi-mic mic-icon"></i>
                 </div>
+                <% if (message) { %>
+                    <div class="alert alert-<%= messageType %>">
+                      <%= message %>
+                    </div>
+                  <% } %>
                 <div class="form-title">Registro</div>
                 <form id="registerForm" method="POST" action="/login_registration">
                     <div id="registerMessage" class="alert d-none" role="alert" style = "display:none,"></div>
