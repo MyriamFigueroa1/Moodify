@@ -59,7 +59,6 @@ router.post('/procesar-imagen', upload.single('image'), async (req, res) => {
         break; // Solo necesitamos la emoción más relevante de la primera cara
       }
     }
-
     const prompt = `Genera una lista de 5 canciones ramdon que se adapten mejor a esta emocion ${req.session.emotion}, solo la lista no mas mensajes y que sea en formato json con un array strings llamado canciones y dentro las canciones. Solo la estructura json, que no incluya la palabra json`;
     const canciones = await chatGPT.chatGPT(prompt);
     musicList = [];

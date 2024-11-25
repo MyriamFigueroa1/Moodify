@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Rubik:wght@300..900&display=swap');
+
+:root {
+    --primary-color: #1f232a;
+    --secondary-color: #1d2b23;
+    --accent-color: #FF6A3D;
+    --background-color: #f9f9f9;
+    --text-color: #e6e6e6;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+#wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    display: block;
+    width: 250px; /* Sidebar width */
+}
+
+
+#sidebar-wrapper {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    background-color: var(--primary-color);
+}
+
+#sidebar-wrapper .list-group-item {
+    color: var(--background-color);
+    transition: background-color 0.3s ease, color 0.3s ease, font-weight 0.3s ease;
+}
+
+#sidebar-wrapper .list-group-item:hover {
+    background-color: var(--secondary-color);
+    color: var(--background-color);
+    font-weight: bold;
+    box-shadow: inset 5px 0 0 var(--accent-color);
+}
+
+.navbar {
+    background-color: var(--primary-color);
+}
+
+.nav-item .badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--accent-color);
+    color: var(--background-color);
+}
+
+.navbar-brand, .navbar-nav .nav-link {
+    color: var(--background-color) !important;
+}
+
+.navbar-brand, .sidebar-heading {
+    font-family: 'Pacifico', cursive;
+}
+
+.navbar-brand {
+    font-size: 2rem;
+    font-family: 'Pacifico', cursive;
+    color: var(--background-color) !important;
+}
+
+.navbar-toggler-icon {
+    color: var(--secondary-color);
+}
+
+#sidebar-wrapper .list-group-item.active {
+    background-color: var(--secondary-color);
+    color: #FFF;
+    border-left: 5px solid var(--accent-color);
+}
+
+/* Icono del menú lateral */
+#menu-toggle {
+    background-color: var(--primary-color);  /* Fondo oscuro para visibilidad */
+    border: 1px solid var(--accent-color);   /* Borde en color acento */
+    color: var(--accent-color);              /* Color de icono en acento */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+#menu-toggle:hover {
+    background-color: var(--accent-color);
+    color: var(--background-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+#page-content-wrapper {
+    width: 100%;
+    padding-left: 250px;
+    transition: all 0.3s ease;
+}
+
+.btn {
+    font-weight: 500;
+    box-shadow: none;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    font-weight: 500;
+}
+
+button {
+    background-color: var(--secondary-color);
+    color: #fff;
+    border-radius: 5px;
+    padding: 8px 16px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: var(--accent-color);
+}
+
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Ocultar menú lateral en pantallas pequeñas usando una clase */
+@media (max-width: 768px) {
+    #sidebar-wrapper {
+        width: 0;
+        display: none;
+    }
+    /* Al abrir, cambiará a display: block en el script */
+}
+

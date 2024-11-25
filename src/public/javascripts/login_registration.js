@@ -14,7 +14,7 @@ document.getElementById('registerForm').addEventListener('submit', async functio
       const response = await fetch(e.target.action, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data),
+          body: render.stringify(data),
       });
 
       const result = await response.json(); // Convierte la respuesta en JSON
