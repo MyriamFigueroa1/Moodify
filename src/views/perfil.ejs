@@ -1,0 +1,52 @@
+<%- include("header", {}) %>
+    <!-- Profile Content -->
+     <!--AQUI DENTRO VA TODO EL CODIGO PERSONALIZADO DE CADA PAGINA-->
+    <div class="perfil-container">
+        <button id="backButton" class="back-button" onclick="goBack()">&#8592;</button>
+        <h2>Perfil</h2>
+    </div>
+    <div class="container-profile">
+        <div class="left-section">
+            <div class="image-container">
+                <img id="preview" src="images/perfil.jpg" alt="Imagen de perfil" class="preview" />
+            </div>
+            <input type="file" id="fileInput" accept="image/*" style="display: none;" />
+            <div class="button-container">
+                <button id="uploadButton" class="custom-button" aria-label="Seleccionar Imagen">Seleccionar Imagen</button>
+            </div>
+            <div class="profile-name-container">
+                <input type="text" id="user-name" placeholder="Introduce tu nombre">
+                <button class="submit-btn" onclick="submitName()">Submit</button>
+            </div>
+            <div id="name-display" class="name-display" style="display: none;"></div>
+        </div>
+
+        <div class="right-section">
+            <div class="info-box">
+                <h2 class="section-title">Información Personal</h2>
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" placeholder="Escribe tu nombre">
+                </div>
+                <div class="form-group">
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" id="apellido" placeholder="Escribe tu apellido">
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo Electrónico:</label>
+                    <input type="email" id="email" placeholder="Escribe tu correo electrónico">
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono:</label>
+                    <input type="tel" id="telefono" placeholder="Escribe tu teléfono">
+                </div>
+                <div class="emotion-section">
+                    <h2 class="title">Escribe tus Emociones</h2>
+                    <textarea id="emotion" placeholder="Escribe aquí tus emociones..."></textarea>
+                </div>
+                <button id="buttonguardar" type="button">Guardar</button>
+                <div id="resultado" style="margin-top: 20px;"></div>
+            </div>
+        </div>
+    </div>
+<%- include("footer", {}) %>

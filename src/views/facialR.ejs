@@ -1,0 +1,46 @@
+<%- include("header", {}) %>
+       
+    </div>
+</div>
+<!--div class="container-fluid mt-4 main-container"-->
+        
+    <div class="containerFR">
+        <div class="left-section">
+            <video class="videoBox" id="video" autoplay playsinline></video>
+            <canvas id="canvas"></canvas>
+            <button type="button" id="capture" class="btn btn-secondary">
+                <i class="bi bi-camera"></i>
+            </button>
+        </div>
+        <div class="right-section">
+            <div id="emoFrame">
+                <div class="emotion" id="emotion">
+                    <div class="spinner-grow text-secondary" role="status" id="spinner1">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <div class="spinner-grow text-secondary" role="status" id="spinner2">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <div class="spinner-grow text-secondary" role="status" id="spinner3">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>                    
+                    <p id="feliz"><%= emotion %></p>
+                    <!--img id="feliz" src="/images/feliz.png"-->
+                </div>
+            </div>
+            <div id="playlist-container">
+                <ul id="list-content" class="playlist">
+                    <% for(let i = 0; i < 5; i++) {%>
+                        <li class="song">
+                            <div class="song-details">
+                                <div class="song-artist"><%= canciones[i] %></div>
+                            </div>
+                        </li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    </div>
+<!--/div-->
+
+<%- include("footer", {}) %>

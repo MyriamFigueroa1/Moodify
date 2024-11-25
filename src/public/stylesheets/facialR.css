@@ -1,0 +1,178 @@
+.containerFR {
+    display: flex;
+    justify-content: center;  /* Centra el div horizontalmente */
+    align-items: center;
+    position: relative;
+    left: 170px;
+    gap: 20px;
+    padding: 20px;
+}
+.left-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.right-section{
+    align-self: flex-start; /* Alinea la sección derecha en la parte superior */
+    margin: 0%; /* Asegúrate de que no haya margen adicional */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.videoBox {
+    display: initial;
+    border-radius: 2%;
+    border: 40px solid rgb(139, 144, 142);
+    /*border-style: groove;*/
+    border-image-source: url(../images/frame.png);
+    border-image-slice: 75;
+    place-items: center;
+    margin: 0%;
+    padding:inherit;
+    width: 700px;
+    height: 550px;
+   
+}
+.music-list {
+    width: 100px;
+    height: 50px;
+    display: block;
+    border: 7px solid #222121;
+    border-radius: 2%;
+    border-style: inset;
+    margin: 0 auto;
+    overflow:scroll;
+}
+
+/* Estilos del cuadro del emoji */
+.emotion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px; /* Ajusta el tamaño del contenedor */
+    height: 50px;
+    overflow: hidden; /* Oculta cualquier parte de la imagen que sobresalga */
+    margin: 0 auto;
+}
+#emoFrame{
+    position: relative;
+    top: 20px;
+    border-radius: 2%;
+    border: 130px solid rgb(139, 144, 142);
+    border-image-source: url(../images/frameEmotion.png);
+    border-image-slice: 155;
+    place-items: center;
+    margin: 0 auto;
+    margin-top: 0px;
+}
+.emotion {
+    font-size: 2rem;
+    font-family:Oswald, cursive;
+    color: rgb(14, 19, 19);
+}
+.emotion img {
+    display: none;
+    width: 20%;
+    height: 45%;
+    object-fit: cover; /* Ajusta la imagen para que cubra todo el espacio */
+    border-radius: 8px;
+}
+
+.photoCaptured, .canvasFR {
+    border: 2px solid #333;
+    border-radius: 8px;
+    display: flex;
+
+}
+
+.display-6 {
+    text-align: center;
+}
+
+/*#list-content {
+    display: none;
+}*/
+#list-content {
+    display: block;
+    list-style-type: none;
+    padding: 10px;
+    width: 410px;
+    height: 205px;
+    /*max-width: 600px;*/
+    margin: 0px auto;
+    background-color: #fff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    max-height: 400px; /* Ajusta la altura máxima */
+}
+
+/* Estilos de cada canción */
+.song {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    color: #0a0909;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.song:last-child {
+    border-bottom: none;
+}
+
+#playlist-container {
+    display: block;
+    border: 6px #222121;
+    border-style: inset;
+    width: 435px;
+    height: 220px;
+    margin: 0px auto;
+    border-radius: 8px;
+    background-color: #fff;
+    margin-top: 20px;
+}
+.song:hover {
+    background-color: #f9f9f9;
+}
+
+.album-cover {
+    width: 50px;
+    height: 50px;
+    border-radius: 6px;
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+.song-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.song-title {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+}
+
+.song-artist {
+    font-size: 0.9em;
+    color: #777;
+}
+#spinner1 {
+    display: none;
+}
+
+#spinner2 {
+    display: none;
+}
+
+#spinner3 {
+    display: none;
+}
+#canvas {
+    display: none;
+}

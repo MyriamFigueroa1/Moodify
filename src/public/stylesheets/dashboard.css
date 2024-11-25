@@ -1,0 +1,187 @@
+
+/*------ SECCION DASHBOARD --------------*/
+/* Main content area */
+.main-container {
+    max-width: 600px;
+    margin: auto;
+}
+
+/* Sección de Registro de Estado de Ánimo */
+
+/* Header del estado de ánimo */
+.mood-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--bg-color);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mood-header {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border-radius: 10px;
+    padding: 10px 20px; /* Reducir padding */
+    margin-bottom: 15px;
+    font-size: 1.5rem; /* Reducir tamaño del encabezado */
+}
+
+/* Sección de selección de emoji y canción */
+.mood-selector {
+    display: flex;
+    gap: 15px; /* Menor espacio entre las columnas */
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.emoji-section, .song-section {
+    background-color: #f9f9f9; /* Fondo claro para un aspecto amigable */
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Botones de emoji y canción */
+.emoji-section .btn, .song-section .btn {
+    font-size: 2rem; /* Reducir tamaño de los íconos */
+    padding: 8px 10px;
+    background-color: transparent;
+    color: var(--primary-color); /* Color de acento sutil */
+    border-radius: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.emoji-section .btn:hover, .song-section .btn:hover {
+    background-color: #ffcc00; /* Fondo color acento en hover */
+    color: var(--background-color);
+}
+.emoji-section .btn span, .song-section .btn span {
+    font-size: 1.8rem; /* Íconos más compactos */
+}
+/* Add a visual cue for the selected emoji */
+.emoji.selected {
+    background-color: var(--accent-color);  /* Highlight color */
+    color: var(--background-color);  /* Contrast text color */
+    border-radius: 50%;  /* Rounded border for the emoji */
+    padding: 5px;  /* Padding to make the background appear around the emoji */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    transform: scale(1.2);  /* Slightly enlarge the selected emoji */
+}
+
+
+
+/* Publicaciones de amigos */
+/* Post card styles */
+.post-card {
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.post-card .card-header {
+    background-color: #f8f9fa;
+}
+
+.profile-img {
+    width: 45px;
+    height: 45px;
+}
+
+.post-emoji {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.post-songs {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.card-footer {
+    background-color: #f8f9fa;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+h5{
+    color: #495057;
+}
+
+/* Button styling */
+.btn-light {
+    color: #6c757d;
+}
+
+.btn-light:hover {
+    background-color: #e2e6ea;
+    color: #495057;
+}
+
+.feed-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-top: 30px;
+    color: #24272a;
+}
+
+
+/*------- Modales ---------*/
+/* Estilos para los modales */
+.modal-content {
+    background-color: var(--primary-color);
+    color: #ccc;
+    border-radius: 15px;
+}
+.modal-header {
+    border-bottom: none;
+}
+.modal-title {
+    color: var(--accent-color);
+}
+.modal-body {
+    padding: 20px;
+}
+.modal-footer {
+    border-top: none;
+}
+.modal-body input {
+    border: 1px solid var(--accent-color);
+    padding: 10px;
+    transition: border-color 0.3s ease;
+}
+.modal-body input:focus {
+    border-color: var(--secondary-color);
+    outline: none;
+}
+/* Botones del modal */
+.modal-body input:focus {
+    border-color: #FF4500;
+}
+
+
+/* Ocultar menú lateral en pantallas pequeñas */
+@media (max-width: 768px) {
+    #sidebar-wrapper {
+        width: 0;
+        display: none;
+    }
+    #wrapper.toggled #sidebar-wrapper {
+        display: block;
+    }
+    #page-content-wrapper {
+        padding-left: 0;
+    }
+    .friends-feed {
+        padding: 0 10px;
+    }
+    .mood-container, .friends-feed {
+        padding: 15px;
+    }
+    .mood-header {
+        font-size: 1.2rem; /* Tamaño de texto más pequeño */
+    }
+    .emoji-section, .song-section {
+        padding: 10px; /* Reducir padding en móviles */
+    }
+}
