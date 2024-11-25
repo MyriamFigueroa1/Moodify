@@ -3,6 +3,7 @@ var router = express.Router();
 const bcrypt = require('bcrypt');
 
 const { getDb } = require('../db/conn');
+
 router.get('/', (req, res) => {
     res.render('login_registration', { 
       message: null, 
@@ -14,6 +15,7 @@ router.post('/', async (req, res) => {
   const { nombre, apellidos, usuario, email, password } = req.body;
 
   if (!email || !password) {
+
     return res.render('login_registration', { 
       message: 'Email y contraseña son requeridos', 
       messageType: 'danger' 

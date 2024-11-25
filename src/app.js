@@ -33,9 +33,13 @@ app.use(session({
 }));
 app.use((req,res,next) => {
   const emotion = req.session.emotion;
+  const canciones = req.session.canciones;
   delete req.session.emotion;
+  delete req.session.canciones;
   res.locals.emotion = "";
+  res.locals.canciones = ""; 
   if(emotion){res.locals.emotion = emotion};
+  if(canciones){res.locals.canciones = canciones};
   next();
 });
 app.use('/', indexRouter);

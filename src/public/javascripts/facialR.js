@@ -7,7 +7,6 @@ const spinner1 = document.getElementById('spinner1');
 const spinner2 = document.getElementById('spinner2');
 const spinner3 = document.getElementById('spinner3');
 
-
 // Acceso a la cámara
 navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } })
 .then((stream) => {

@@ -7,7 +7,15 @@
     gap: 20px;
     padding: 20px;
 }
-.left-section, .right-section {
+.left-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.right-section{
+    align-self: flex-start; /* Alinea la sección derecha en la parte superior */
+    margin: 0%; /* Asegúrate de que no haya margen adicional */
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -29,8 +37,8 @@
    
 }
 .music-list {
-    width: 700px;
-    height: 200px;
+    width: 100px;
+    height: 50px;
     display: block;
     border: 7px solid #222121;
     border-radius: 2%;
@@ -44,6 +52,30 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 200px; /* Ajusta el tamaño del contenedor */
+    height: 50px;
+    overflow: hidden; /* Oculta cualquier parte de la imagen que sobresalga */
+    margin: 0 auto;
+}
+#emoFrame{
+    position: relative;
+    top: 20px;
+    border-radius: 2%;
+    border: 130px solid rgb(139, 144, 142);
+    border-image-source: url(../images/frameEmotion.png);
+    border-image-slice: 155;
+    place-items: center;
+    margin: 0 auto;
+    margin-top: 0px;
+}
+.emotion {
+    font-size: 2rem;
+    font-family:Oswald, cursive;
+    color: rgb(14, 19, 19);
+}
+.emotion img {
+    display: none;
+    width: 20%;
     width: 410px; /* Ajusta el tamaño del contenedor */
     height: 570px;
     overflow: hidden; /* Oculta cualquier parte de la imagen que sobresalga */
@@ -53,25 +85,6 @@
     border-image-slice: 140;
     place-items: center;
     margin: 0 auto;
-}
-.emotion{
-    font-size: 2rem;
-    font-family:'pacifico', cursive;
-    color: rgb(34, 155, 148);
-}
-.emotion img {
-    display: none;
-    width: 75%;
-    height: 45%;
-    object-fit: cover; /* Ajusta la imagen para que cubra todo el espacio */
-    border-radius: 8px;
-}
-
-.photoCaptured, .canvasFR {
-    border: 2px solid #333;
-    border-radius: 8px;
-    display: flex;
-
 }
 
 .display-6 {
@@ -85,8 +98,8 @@
     display: block;
     list-style-type: none;
     padding: 10px;
-    width: 880px;
-    height: 150px;
+    width: 410px;
+    height: 205px;
     /*max-width: 600px;*/
     margin: 0px auto;
     background-color: #fff;
@@ -101,6 +114,8 @@
     align-items: center;
     padding: 15px;
     border-bottom: 1px solid #eee;
+    color: #0a0909;
+    font-weight: bold;
     transition: background 0.3s;
 }
 
@@ -112,12 +127,12 @@
     display: block;
     border: 6px #222121;
     border-style: inset;
-    width: 900px;
-    height: 170px;
+    width: 435px;
+    height: 220px;
     margin: 0px auto;
     border-radius: 8px;
     background-color: #fff;
-
+    margin-top: 20px;
 }
 .song:hover {
     background-color: #f9f9f9;
@@ -159,4 +174,5 @@
 }
 #canvas {
     display: none;
-};
+}
+
