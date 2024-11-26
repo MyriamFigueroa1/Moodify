@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 
 router.post('/', async (req, res) => {
   const { nombre, apellidos, usuario, email, password } = req.body;
-
+  const tipo = 'user';
   if (!email || !password) {
 
     return res.render('login_registration', { 
@@ -39,7 +39,8 @@ router.post('/', async (req, res) => {
       apellidos,
       usuario,
       email,
-      password: await bcrypt.hash(password, 10), // Encripta la contraseña
+      password: await bcrypt.hash(password, 10),
+      tipo,
       createdAt: new Date(),
     };
     await db.collection('usuarios').insertOne(newUser);
