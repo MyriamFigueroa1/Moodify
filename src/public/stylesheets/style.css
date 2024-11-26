@@ -150,3 +150,42 @@ button:hover {
     /* Al abrir, cambiará a display: block en el script */
 }
 
+.logo{
+    width: 50px; 
+    height: auto; 
+    margin-right: 10px;
+}
+
+.custom-icon{
+    font-size: 1.5rem;
+}
+
+.title{
+    color: black;
+    margin-top: 50px;
+}
+
+.subtitle{
+    color: var(--primary-color);
+}
+
+.carousel-control-prev, .carousel-control-next{
+    background-color: transparent;
+}
+
+.carousel-control-prev:hover, .carousel-control-next:hover{
+    background-color: transparent;
+}
+
+.carousel-item{
+    margin-top: 40px;
+    margin-left: 50px;
+}
+
+.carousel-control-prev-icon{
+    margin-left: 50px;
+}
+
+.carousel-control-next-icon{
+    margin-left: 50px;
+}
