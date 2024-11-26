@@ -95,12 +95,20 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+#wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+}
 
 #page-content-wrapper {
-    width: 100%;
-    padding-left: 250px;
-    transition: all 0.3s ease;
+    flex: 1; /* Permite que el contenido ocupe el espacio restante */
 }
+
+#page-content-wrapper {
+    padding-left: 20px; /* Reducir el padding si es necesario */
+    padding-right: 20px; /* Reducir el padding derecho */
+}
+
 
 .btn {
     font-weight: 500;
