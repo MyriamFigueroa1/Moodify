@@ -109,7 +109,6 @@ body {
     padding-right: 20px; /* Reducir el padding derecho */
 }
 
-
 .btn {
     font-weight: 500;
     box-shadow: none;
@@ -151,7 +150,7 @@ button:hover {
 }
 
 .logo{
-    width: 50px; 
+    width: 60px; 
     height: auto; 
     margin-right: 10px;
 }
