@@ -41,41 +41,46 @@
         <div class="tab-content mt-3" id="myTabContent">
             <!-- Registration Form -->
             <div class="tab-pane show active" id="register" role="tabpanel" aria-labelledby="register-tab">
-                <div class="position-relative">
-                    <i class="bi bi-mic mic-icon"></i>
+              <div class="position-relative">
+                <i class="bi bi-mic mic-icon"></i>
+              </div>
+              <% if (message) { %>
+                <div class="alert alert-<%= messageType %>">
+                  <%= message %>
                 </div>
-                <% if (message) { %>
-                    <div class="alert alert-<%= messageType %>">
-                      <%= message %>
-                    </div>
-                  <% } %>
-                <div class="form-title">Registro</div>
-                <form id="registerForm" method="POST" action="/login_registration">
-                    <div id="registerMessage" class="alert d-none" role="alert" style = "display:none,"></div>
-                    <input type="text" class="form-control" name="nombre"placeholder="Nombre" required>
-                    <input type="text" class="form-control" name ="apellidos"placeholder="Apellidos" required>
-                    <input type="text" class="form-control" name ="usuario"placeholder="Usuario" required>
-                    <input type="email" class="form-control"name ="email" placeholder="Email" required>
-                    <input type="password" class="form-control"name ="password" placeholder="Contraseña" required>
-                    <button type="submit" class="btn btn-custom">Registrarse</button>
-                </form>
-                <p class="text-center mt-3">Al registrarse, acepta nuestros <a href="#">Términos de servicio</a> y <a href="#">Política de privacidad</a>.</p>
+              <% } %>
+              <div class="form-title">Registro</div>
+              <form id="registerForm" method="POST" action="/login_registration">
+                <div id="registerMessage" class="alert d-none" role="alert" style="display:none;"></div>
+                <input type="text" class="form-control" name="nombre" placeholder="Nombre" required>
+                <input type="text" class="form-control" name="apellidos" placeholder="Apellidos" required>
+                <input type="text" class="form-control" name="usuario" placeholder="Usuario" required>
+                <input type="email" class="form-control" name="email" placeholder="Email" required>
+                <input type="password" class="form-control" name="password" placeholder="Contraseña" required>
+                <button type="submit" class="btn btn-custom">Registrarse</button>
+              </form>
+              <p class="text-center mt-3">Al registrarse, acepta nuestros <a href="#">Términos de servicio</a> y <a href="#">Política de privacidad</a>.</p>
             </div>
-    
+          
             <!-- Login Form -->
             <div class="tab-pane" id="login" role="tabpanel" aria-labelledby="login-tab">
-                <div class="position-relative">
-                    <i class="bi bi-mic mic-icon"></i>
+              <div class="position-relative">
+                <i class="bi bi-mic mic-icon"></i>
+              </div>
+              <% if (message) { %>
+                <div class="alert alert-<%= messageType %>">
+                  <%= message %>
                 </div>
-                <div class="form-title">Iniciar Sesión</div>
-                <form>
-                    <input type="email" class="form-control" placeholder="Email" required>
-                    <input type="password" class="form-control" name="password"placeholder="Contraseña" required>
-                    <button type="button" class="btn btn-custom" onclick="window.location.href='dashboard'">Iniciar Sesión</button>
-                </form>
-                <p class="text-center mt-3"><a href="#">¿Olvidaste tu contraseña?</a></p>
+              <% } %>
+              <div class="form-title">Iniciar Sesión</div>
+              <form method="POST" action="/login_registration">
+                <input type="email" class="form-control" name="email" placeholder="Email" required>
+                <input type="password" class="form-control" name="password" placeholder="Contraseña" required>
+                <button type="submit" class="btn btn-custom">Iniciar Sesión</button>
+              </form>
+              <p class="text-center mt-3"><a href="#">¿Olvidaste tu contraseña?</a></p>
             </div>
-        </div>
+          </div>          
     </div>
 </body>
 </html>
