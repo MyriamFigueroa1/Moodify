@@ -3,8 +3,12 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
+require('dotenv').config();
+
 const conn = require('./db/conn');
-const session = require('express-session')
+conn.connectToDatabase();
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -13,58 +17,104 @@ const dashboardRouter = require('./routes/dashboard');
 const perfilRouter = require('./routes/perfil');
 const loginRegistrationRouter = require('./routes/login_registration');
 
-conn.connectToDatabase();
 const app = express();
 
-// view engine setup
+const mongoUri = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@moodify.g75fs.mongodb.net/?retryWrites=true&w=majority`;
+
+// Configuración del motor de vistas
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+// Middlewares generales
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Configuración de la sesión
 app.use(session({
-  secret: 'mi_secreto',         // Secreto para firmar la cookie
-  resave: false,                // No volver a guardar la sesión si no se modificó
-  saveUninitialized: true,      // Guardar sesiones no inicializadas
-  cookie: { secure: false }     // Cambiar a `true` en producción si usas HTTPS
+  secret: 'mi_secreto', 
+  resave: false,
+  saveUninitialized: false,
+  store: MongoStore.create({
+    mongoUrl: mongoUri,
+    dbName: 'moodify',
+    collectionName: 'sessions',
+    ttl: 24 * 60 * 60,
+    autoRemove: 'native'
+  }),
+  cookie: {
+    secure: false,
+    httpOnly: true,
+    maxAge: 1000 * 60 * 60 * 24 // 1 día
+  }
 }));
-app.use((req,res,next) => {
+
+// Registrar el estado de la sesión
+app.use((req, res, next) => {
+  console.log('Estado de la sesión actual en cada solicitud:', req.session);
+  next();
+});
+
+app.use((req, res, next) => {
   const emotion = req.session.emotion;
   const canciones = req.session.canciones;
   delete req.session.emotion;
   delete req.session.canciones;
-  res.locals.emotion = "";
-  res.locals.canciones = ""; 
-  if(emotion){res.locals.emotion = emotion};
-  if(canciones){res.locals.canciones = canciones};
+  res.locals.emotion = emotion || '';
+  res.locals.canciones = canciones || '';
   next();
 });
+
+// Verificar autenticación
+function ensureAuthenticated(req, res, next) {
+  if (req.session && req.session.user) {
+    console.log('Usuario autenticado:', req.session.user);
+    return next();
+  }
+  console.log('Usuario no autenticado. Redirigiendo...');
+  res.redirect('/');
+}
+
+// Ruta para cerrar sesión (un poco a la fuerza)
+app.get('/logout', async (req, res) => {
+  const db = require('./db/conn').getDb();
+
+  try {
+    const sessionID = req.sessionID;;
+
+    req.session.destroy(async (err) => {
+      if (err) {
+        return res.redirect('/dashboard');
+      }
+
+      await db.collection('sessions').deleteOne({ _id: sessionID });
+      res.clearCookie('connect.sid', { path: '/' });
+      res.redirect('/');
+    });
+  } catch (error) {
+    console.error('Error al limpiar la sesión:', error);
+    res.redirect('/');
+  }
+});
+
+// Rutas
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/facialR', facialRRouter);
-app.use('/dashboard', dashboardRouter);
-app.use('/perfil', perfilRouter);
+app.use('/perfil', ensureAuthenticated, perfilRouter);
+app.use('/dashboard', ensureAuthenticated, dashboardRouter);
 app.use('/login_registration', loginRegistrationRouter);
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
+
+// Manejo de errores
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
-app.use('/login_registration', (req, res, next) => {
-  console.log('Ruta /login_registration alcanzada');
-  next();
-}, loginRegistrationRouter);
-
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
+app.use(function (err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
   res.status(err.status || 500);
   res.render('error');
 });
