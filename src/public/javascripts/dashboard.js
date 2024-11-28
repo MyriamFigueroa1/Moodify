@@ -1,3 +1,5 @@
+const { response } = require("../../app");
+
 let selectedEmoji = null;
 const selectedSongs = [];
 
@@ -80,4 +82,36 @@ document.getElementById("postMood").addEventListener("click", function() {
     selectedSongs.length = 0;
     document.querySelectorAll(".song-input").forEach(input => input.value = "");
     document.getElementById("nextToSongs").disabled = true;
+});
+
+document.getElementById("submitPost").addEventListener("click", function(){
+    console.log('Botón de publicar clickeado');
+    const emoji = document.getElementById('emoji').value;
+    const song1 = document.getElementById('song1').value;
+    const song2 = document.getElementById('song2').value;
+    const song3 = document.getElementById('song3').value;
+
+    const postData = {
+        emoji: emoji,
+        songs: [song1, song2, song3]
+    };
+
+    fetch('/createpost', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(postData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if(data.success){
+            alert('Publicación creada con éxito');
+        } else {
+            alert('Hubo un error al publicar');
+        }
+    })
+    .catch(error => {
+        console.error('Error al enviar la publicación:', error);
+    });
 });

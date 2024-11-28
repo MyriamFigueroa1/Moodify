@@ -26,57 +26,33 @@
         <h3 class="feed-title text-center mb-4">Publicaciones de Amigos</h3>
         
         <!-- Example Post Card -->
-        <div class="card mb-3 post-card">
-            <div class="card-header d-flex align-items-center">
-                <img src="images/avatar2.jpg" alt="Profile Picture" class="profile-img rounded-circle me-2">
-                <div>
-                    <h5 class="mb-0">Ana López</h5>
-                    <small class="text-muted">Hace 2 horas</small>
+        <% posts.forEach(function(post) { %>
+            <div class="card mb-3 post-card">
+                <div class="card-header d-flex align-items-center">
+                    <img src="images/avatar2.jpg" alt="Profile Picture" class="profile-img rounded-circle me-2">
+                    <div>
+                        <h5 class="mb-0"><%= post.userName %></h5>
+                        <small class="text-muted">Hace 2 horas</small>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p class="post-emoji fs-3"><%= post.emoji %></p>
+                    <!--p class="mb-1">Feeling great today! Here's my vibe:</p-->
+                    <div class="post-songs">
+                        <% post.content.forEach(function(song){ %>
+                            <span class="d-block"><i class="bi bi-music-note"></i> <%= song %></span>
+                        <% }); %>
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                    <div>
+                        <button class="btn btn-light btn-sm"><i class="bi bi-hand-thumbs-up"></i> Like</button>
+                        <button class="btn btn-light btn-sm"><i class="bi bi-chat"></i> Comment</button>
+                    </div>
+                    <small class="text-muted">2 Likes</small>
                 </div>
             </div>
-            <div class="card-body">
-                <p class="post-emoji fs-3">&#128512;</p>
-                <!--p class="mb-1">Feeling great today! Here's my vibe:</p-->
-                <div class="post-songs">
-                    <span class="d-block"><i class="bi bi-music-note"></i> Happy - Pharrell Williams</span>
-                    <span class="d-block"><i class="bi bi-music-note"></i> Walking on Sunshine - Katrina and the Waves</span>
-                    <span class="d-block"><i class="bi bi-music-note"></i> Can’t Stop the Feeling! - Justin Timberlake</span>
-                </div>
-            </div>
-            <div class="card-footer d-flex justify-content-between align-items-center">
-                <div>
-                    <button class="btn btn-light btn-sm"><i class="bi bi-hand-thumbs-up"></i> Like</button>
-                    <button class="btn btn-light btn-sm"><i class="bi bi-chat"></i> Comment</button>
-                </div>
-                <small class="text-muted">2 Likes</small>
-            </div>
-        </div>
-
-        <!-- Additional Posts (same structure) -->
-        <div class="card mb-3 post-card">
-            <div class="card-header d-flex align-items-center">
-                <img src="images/avatar1.jpg" alt="Profile Picture" class="profile-img rounded-circle me-2">
-                <div>
-                    <h5 class="mb-0">Carlos García</h5>
-                    <small class="text-muted">Hace 5 horas</small>
-                </div>
-            </div>
-            <div class="card-body">
-                <p class="post-emoji fs-3">&#128578;</p>
-                <!--p class="mb-1">Relaxing with my favorite tunes.</p-->
-                <div class="post-songs">
-                    <span class="d-block"><i class="bi bi-music-note"></i> Imagine - John Lennon</span>
-                    <span class="d-block"><i class="bi bi-music-note"></i> Yesterday - The Beatles</span>
-                </div>
-            </div>
-            <div class="card-footer d-flex justify-content-between align-items-center">
-                <div>
-                    <button class="btn btn-light btn-sm"><i class="bi bi-hand-thumbs-up"></i> Like</button>
-                    <button class="btn btn-light btn-sm"><i class="bi bi-chat"></i> Comment</button>
-                </div>
-                <small class="text-muted">5 Likes</small>
-            </div>
-        </div>
+        <% }); %>
     </section>
 
     <!-- Modales -->
@@ -173,7 +149,47 @@
             </div>
         </div>
     </div>
+
+    <button class="btn btn-primary" id="postButton" data-bs-toggle="modal" data-bs-target="#postModal">
+        <i class="bi bi-plus-circle"></i> Crear publicación
+    </button>
+
+    <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModallabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="postModalTitle"> Crear nueva publicación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="postForm">
+                        <div class="mb-3">
+                            <label for="emoji" class="form-label">Emoji de estado</label>
+                            <input type="text" class="form-control" id="emoji" placeholder="Ingresa un emoji de estado" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="song1" class="form-label">Canción 1</label>
+                            <input type="text" class="form-control" id="song1" placeholder="Ingresa el nombre de una canción" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="song2" class="form-label">Canción 2</label>
+                            <input type="text" class="form-control" id="song2" placeholder="Ingresa el nombre de una canción" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="song3" class="form-label">Canción 3</label>
+                            <input type="text" class="form-control" id="song3" placeholder="Ingresa el nombre de una canción" required>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" id="submitPost">Publicar</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </main>
 </div>
+<script src="/src/public/javascripts/dashboard.js"></script>
 <%- include("footer", {}) %>
