@@ -1,7 +1,9 @@
+const wrapper = document.getElementById("wrapper");
+
 document.getElementById("menu-toggle").addEventListener("click", function() {
     let sidebar = document.getElementById("sidebar-wrapper");
     let content = document.getElementById("page-content-wrapper");
-
+    wrapper.style.display = 'block';
     if (sidebar.style.display === "block") {
         sidebar.style.display = "none";
         sidebar.style.width = "0";

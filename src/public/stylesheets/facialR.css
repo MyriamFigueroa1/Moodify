@@ -52,39 +52,25 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 200px; /* Ajusta el tamaño del contenedor */
+    width: 150px; /* Ajusta el tamaño del contenedor */
     height: 50px;
+    font-size:x-large;
+    font-family:Oswald, cursive;
+    color: rgb(14, 19, 19);
     overflow: hidden; /* Oculta cualquier parte de la imagen que sobresalga */
     margin: 0 auto;
 }
 #emoFrame{
     position: relative;
-    top: 20px;
+    top: 0px;
+    width: 370px; /* Ajusta el tamaño del contenedor */
     border-radius: 2%;
-    border: 130px solid rgb(139, 144, 142);
+    border: 120px solid rgb(139, 144, 142);
     border-image-source: url(../images/frameEmotion.png);
     border-image-slice: 155;
     place-items: center;
     margin: 0 auto;
     margin-top: 0px;
-}
-.emotion {
-    font-size: 2rem;
-    font-family:Oswald, cursive;
-    color: rgb(14, 19, 19);
-}
-.emotion img {
-    display: none;
-    width: 20%;
-    width: 410px; /* Ajusta el tamaño del contenedor */
-    height: 570px;
-    overflow: hidden; /* Oculta cualquier parte de la imagen que sobresalga */
-    border-radius: 2%;
-    border: 70px solid rgb(139, 144, 142);
-    border-image-source: url(../images/frameEmotion.png);
-    border-image-slice: 140;
-    place-items: center;
-    margin: 0 auto;
 }
 
 .display-6 {
@@ -98,8 +84,8 @@
     display: block;
     list-style-type: none;
     padding: 10px;
-    width: 410px;
-    height: 205px;
+    width: 330px;
+    height: 225px;
     /*max-width: 600px;*/
     margin: 0px auto;
     background-color: #fff;
@@ -126,9 +112,9 @@
 #playlist-container {
     display: block;
     border: 6px #222121;
-    border-style: inset;
-    width: 435px;
-    height: 220px;
+    border-style: solid;
+    width: 350px;
+    height: 240px;
     margin: 0px auto;
     border-radius: 8px;
     background-color: #fff;
@@ -175,4 +161,6 @@
 #canvas {
     display: none;
 }
-
+#container-fluid-fr {
+    margin-top: 70px;
+}

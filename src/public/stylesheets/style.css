@@ -19,12 +19,13 @@ body {
 }
 
 #wrapper.toggled #sidebar-wrapper {
-    display: block;
+    display: none;
     width: 250px; /* Sidebar width */
 }
 
 
 #sidebar-wrapper {
+    display: none;
     width: 250px;
     height: 100vh;
     position: fixed;
@@ -96,7 +97,7 @@ body {
 }
 
 #wrapper {
-    display: flex;
+    display: none;
     flex-wrap: nowrap;
 }
 
@@ -105,8 +106,8 @@ body {
 }
 
 #page-content-wrapper {
-    padding-left: 20px; /* Reducir el padding si es necesario */
-    padding-right: 20px; /* Reducir el padding derecho */
+    padding-left: 0px; /* Reducir el padding si es necesario */
+    padding-right: 0px; /* Reducir el padding derecho */
 }
 
 .btn {
