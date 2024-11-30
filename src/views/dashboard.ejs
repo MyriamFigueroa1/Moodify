@@ -1,193 +1,42 @@
 <%- include("header", {}) %>
 <div class="container-fluid mt-4 main-container">
-    <!-- Mood Selector Container -->
-    <section class="container text-center mood-container mt-4">
-        <div class="row mood-header text-bg-dark p-3">
-            <div class="col">
-                <h2>¿Cómo te sientes hoy?</h2>
-            </div>
-        </div>
-        <div class="row mood-selector">
-            <div class="col emoji-section p-3">
-                <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#emojiModal" aria-label="Seleccionar emoji">
-                    <span class="fs-1">1. &#128513;</span>
-                </button>
-            </div>
-            <div class="col song-section p-3">
-                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#songModal" aria-label="Seleccionar canción">
-                    <span class="fs-1">2. &#127925;</span>
-                </button>
-            </div>
-        </div>
-    </section>
 
-    <!-- Friends Feed Container -->
+    <!-- Formulario para crear una nueva publicación -->
+    <div class="post-status-container">
+        <div class="post-header">
+            <h2>¿Qué quieres compartir hoy?</h2>
+        </div>
+        <form action="/dashboard/add" method="POST" class="post-input-section">
+            <textarea name="content" class="post-input" placeholder="Escribe algo aquí..." required></textarea>
+            <button type="submit" class="btn btn-primary post-button">Publicar</button>
+        </form>
+    </div>
+
+    <!-- Contenedor de publicaciones -->
     <section class="friends-feed">
         <h3 class="feed-title text-center mb-4">Publicaciones de Amigos</h3>
-        
-        <!-- Example Post Card -->
-        <% posts.forEach(function(post) { %>
-            <div class="card mb-3 post-card">
-                <div class="card-header d-flex align-items-center">
-                    <img src="images/avatar2.jpg" alt="Profile Picture" class="profile-img rounded-circle me-2">
-                    <div>
-                        <h5 class="mb-0"><%= post.userName %></h5>
-                        <small class="text-muted">Hace 2 horas</small>
+        <div class="feed-posts">
+            <% if (posts.length > 0) { %>
+                <% posts.forEach(post => { %>
+                    <div class="post-card">
+                        <div class="post-header d-flex align-items-center">
+                            <img src="/path/to/profile/<%= post.userID %>.jpg" alt="Perfil" class="profile-img">
+                            <div class="post-details">
+                                <h4><%= post.userName || 'Usuario Desconocido' %></h4>
+                                <small><%= new Date(post.timestamp).toLocaleString() %></small>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <p><%= post.content %></p>
+                        </div>
                     </div>
-                </div>
-                <div class="card-body">
-                    <p class="post-emoji fs-3"><%= post.emoji %></p>
-                    <!--p class="mb-1">Feeling great today! Here's my vibe:</p-->
-                    <div class="post-songs">
-                        <% post.content.forEach(function(song){ %>
-                            <span class="d-block"><i class="bi bi-music-note"></i> <%= song %></span>
-                        <% }); %>
-                    </div>
-                </div>
-                <div class="card-footer d-flex justify-content-between align-items-center">
-                    <div>
-                        <button class="btn btn-light btn-sm"><i class="bi bi-hand-thumbs-up"></i> Like</button>
-                        <button class="btn btn-light btn-sm"><i class="bi bi-chat"></i> Comment</button>
-                    </div>
-                    <small class="text-muted">2 Likes</small>
-                </div>
-            </div>
-        <% }); %>
+                    
+                <% }) %>
+            <% } else { %>
+                <p class="text-center text-muted">No hay publicaciones por ahora. ¡Sé el primero en publicar algo!</p>
+            <% } %>
+        </div>
     </section>
-
-    <!-- Modales -->
-    <!-- Modal de Emojis -->
-    <div class="modal fade" id="emojiModal" tabindex="-1" aria-labelledby="emojiModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="emojiModalLabel">Elige cómo te sientes</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Selecciona un emoji que represente tu estado de ánimo:</p>
-                    <div class="emoji-container d-flex flex-wrap justify-content-center gap-3">
-                        <!-- Lista de emojis -->
-                        <div class="emoji-container d-flex flex-wrap justify-content-center gap-3">
-                            <!-- Example emojis with the 'data-emoji' attribute -->
-                            <span class="fs-2 emoji" role="button" data-emoji="&#128513;">&#128513;</span>
-                            <span class="fs-2 emoji" role="button" data-emoji="&#128522;">&#128522;</span>
-                            <span class="fs-2 emoji" role="button" data-emoji="&#129321;" aria-label="eufórico">&#129321;</span>
-                            <span class="fs-2 emoji" role="button" data-emoji="&#129392;" aria-label="cariñoso">&#129392;</span>
-                            <span class="fs-2 emoji" role="button" data-emoji="&#128525;" aria-label="enamorado">&#128525;</span>
-                            <span class="fs-2 emoji" role="button" data-emoji="&#128540;" aria-label="divertido">&#128540;</span>
-                            <span class="fs-2 emoji" role="button" data-emoji="&#128131;" aria-label="bailando">&#128131;</span>
-                            <span class="fs-2 emoji" role="button" data-emoji="&#129336;" aria-label="bailando hombre">&#129336;</span>
-                            <span class="fs-2 emoji" role="button" data-emoji="&#129312;" aria-label="cowboy">&#129312;</span>
-                            <span class="fs-2 emoji" role="button" data-emoji="&#128125;" aria-label="alien">&#128125;</span>
-                            <span class="fs-2 emoji" role="button" data-emoji="&#129302;" aria-label="robot">&#129302;</span>
-                            <span class="fs-2 emoji" role="button" data-emoji="&#128128;" aria-label="calavera">&#128128;</span>
-                            <span class="fs-2 emoji" role="button" data-emoji="&#128520;" aria-label="diablillo feliz">&#128520;</span>
-                            <span class="fs-2 emoji" role="button" data-emoji="&#128127;" aria-label="diablillo enojado">&#128127;</span>
-                            <span class="fs-2 emoji" role="button" data-emoji="&#129313;" aria-label="payaso">&#129313;</span>
-                            <span class="fs-2 emoji" role="button" data-emoji="&#129327;" aria-label="aturdido">&#129327;</span>
-                            <span class="fs-2 emoji" role="button" data-emoji="&#129325;" aria-label="expresivo">&#129325;</span>
-                            <span class="fs-2 emoji" role="button" data-emoji="&#129322;" aria-label="loco de risa">&#129322;</span>
-                            <span class="fs-2 emoji" role="button" data-emoji="&#128561;" aria-label="aterrorizado">&#128561;</span>
-                            <span class="fs-2 emoji" role="button" data-emoji="&#128524;" aria-label="aliviado">&#128524;</span>
-                            <span class="fs-2 emoji" role="button" data-emoji="&#129323;" aria-label="misterioso">&#129323;</span>
-                            <span class="fs-2 emoji" role="button" data-emoji="&#128546;" aria-label="triste">&#128546;</span>
-                            <span class="fs-2 emoji" role="button" data-emoji="&#128557;" aria-label="lloroso">&#128557;</span>
-                            <span class="fs-2 emoji" role="button" data-emoji="&#128545;" aria-label="furioso">&#128545;</span>
-                            <span class="fs-2 emoji" role="button" data-emoji="&#128553;" aria-label="desesperado">&#128553;</span>
-                            <span class="fs-2 emoji" role="button" data-emoji="&#128542;" aria-label="decepcionado">&#128542;</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-light" id="nextToSongs" disabled>Siguiente</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal de Canciones -->
-    <div class="modal fade" id="songModal" tabindex="-1" aria-labelledby="songModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="songModalLabel">Elige tus canciones</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Selecciona hasta tres canciones para compartir:</p>
-                    <input type="text" class="form-control mb-2 song-input" placeholder="Canción 1">
-                    <input type="text" class="form-control mb-2 song-input" placeholder="Canción 2">
-                    <input type="text" class="form-control mb-2 song-input" placeholder="Canción 3">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-info" id="reviewMood">Revisar</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Revisar selección Modal -->
-    <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="reviewModalLabel">Revisar tu selección</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Emoji seleccionado: <span id="selectedEmoji"></span></p>
-                    <p>Canciones seleccionadas:</p>
-                    <ul id="selectedSongs"></ul>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" id="postMood">Publicar</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <button class="btn btn-primary" id="postButton" data-bs-toggle="modal" data-bs-target="#postModal">
-        <i class="bi bi-plus-circle"></i> Crear publicación
-    </button>
-
-    <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModallabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="postModalTitle"> Crear nueva publicación</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="postForm">
-                        <div class="mb-3">
-                            <label for="emoji" class="form-label">Emoji de estado</label>
-                            <input type="text" class="form-control" id="emoji" placeholder="Ingresa un emoji de estado" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="song1" class="form-label">Canción 1</label>
-                            <input type="text" class="form-control" id="song1" placeholder="Ingresa el nombre de una canción" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="song2" class="form-label">Canción 2</label>
-                            <input type="text" class="form-control" id="song2" placeholder="Ingresa el nombre de una canción" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="song3" class="form-label">Canción 3</label>
-                            <input type="text" class="form-control" id="song3" placeholder="Ingresa el nombre de una canción" required>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-success" id="submitPost">Publicar</button>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 </main>
 </div>
