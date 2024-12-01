@@ -14,6 +14,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const facialRRouter = require('./routes/facialR');
 const dashboardRouter = require('./routes/dashboard');
+const dashboardAdminRouter = require('./routes/dashboardAdmin');
 const perfilRouter = require('./routes/perfil');
 const loginRegistrationRouter = require('./routes/login_registration');
 
@@ -106,6 +107,7 @@ app.use('/users', usersRouter);
 app.use('/facialR', facialRRouter);
 app.use('/perfil', ensureAuthenticated, perfilRouter);
 app.use('/dashboard', ensureAuthenticated, dashboardRouter);
+app.use('/dashboardAdmin', dashboardAdminRouter);
 app.use('/login_registration', loginRegistrationRouter);
 
 // Manejo de errores
