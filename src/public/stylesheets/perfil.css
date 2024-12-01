@@ -1,19 +1,40 @@
+body {
+  background: linear-gradient(135deg, #f3f4f7, #e9eaf1); /* Degradado suave */
+  font-family: 'Rubik', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.perfil-container {
+  text-align: center; /* Centrar el título */
+  margin: 20px 0;
+}
+
+.perfil-title {
+  font-size: 36px;
+  color: var(--primary-color);
+  font-weight: 700;
+  margin: 0;
+}
+
 /* Contenedor principal */
 .container-profile {
   display: flex;
+  flex-direction: row; /* Asegura que los elementos estén en fila */
   justify-content: space-between;
   align-items: flex-start;
-  gap: 20px;
+  gap: 40px; /* Espacio entre las secciones */
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 20px;
-  width: 100%; 
   box-sizing: border-box;
-  flex-grow: 1;
 }
 
-/* Secciones del perfil */
-.left-section, .right-section {
+/* Sección izquierda: Imagen de perfil */
+.left-section {
+  order: 1; /* Mantiene la imagen de perfil a la izquierda */
   flex: 1;
-  min-width: 40%; 
+  max-width: 500px; /* Asegura un tamaño cómodo */
   background-color: #fff;
   padding: 20px;
   border-radius: 12px;
@@ -23,77 +44,70 @@
   align-items: center;
 }
 
-/* Imagen de perfil */
-.image-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
+/* Imagen de Perfil */
 .preview {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border: 3px solid #ddd;
-  object-fit: cover;
+  width: 180px;
+  height: 180px;
+  border: 2px solid var(--accent-color); /* Borde más moderno */
+  transition: transform 0.3s ease;
+}
+.preview:hover {
+  transform: scale(1.05); /* Efecto de agrandamiento */
 }
 
-/* Botón para cambiar imagen */
-.button-container {
-  margin-top: 10px;
+/* Sección derecha: Información personal */
+.right-section {
+  order: 2; /* Mantiene la información personal a la derecha */
+  flex: 2; /* Toma un poco más de espacio para el texto */
+  max-width: 600px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .custom-button {
-  background-color: #385340;
+  background: var(--accent-color);
   color: white;
-  padding: 10px 20px;
+  font-size: 16px;
+  padding: 12px 24px;
+  border-radius: 30px;
   border: none;
-  cursor: pointer;
-  border-radius: 25px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
-
 .custom-button:hover {
-  background-color: #4b6a57;
-  transform: scale(1.05);
+  background: #ff5733; /* Cambio de color en hover */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* Información Personal */
 .info-box {
-  width: 100%;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  background-color: #fff;
-  padding: 20px;
-  margin-top: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  color: var(--primary-color);
+}
+.info-box p {
+  font-size: 18px;
+  color: #333; /* Más contraste */
+  margin-bottom: 10px;
 }
 
 .section-title {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: bold;
-  color: #385340;
-  margin-bottom: 15px;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 5px;
+  text-align: center;
 }
 
-/* Botón Editar */
-.custom-button.mt-3 {
-  margin-top: 20px;
-}
-
-/* Estilos responsivos */
-@media (max-width: 992px) {
+/* Responsividad */
+@media (max-width: 768px) {
   .container-profile {
-    flex-direction: column;
-    align-items: center;
+      flex-direction: column; /* Cambia a diseño vertical */
+      gap: 20px;
   }
+
   .left-section, .right-section {
-    max-width: 100%;
-    flex: none;
-    margin-bottom: 20px;
+      max-width: 100%; /* Ocupan todo el ancho */
+      margin: 0 auto;
   }
 }
+
