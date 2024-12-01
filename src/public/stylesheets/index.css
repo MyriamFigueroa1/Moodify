@@ -2,7 +2,7 @@
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 0px 20px;
     padding-bottom: 100px; /* Añadido para asegurar que haya suficiente espacio con el footer*/
 }
 
@@ -16,6 +16,13 @@
 
 .subtitle {
     font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.subtitle2 {
+    font-size: 0.9rem;
     color: #555;
     line-height: 1.6;
     margin-bottom: 20px;
@@ -47,6 +54,49 @@
 .navbar-nav .nav-item {
     margin-left: 20px;
 }
+
+/* Mensaje con botones en la página principal */
+.auth-message {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.auth-message p {
+    margin: 10px 0;
+}
+
+.auth-message a {
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 25px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.auth-message a.btn-primary {
+    background-color: var(--accent-color);
+    color: #fff;
+}
+
+.auth-message a.btn-secondary {
+    background-color: #6200ff;
+    color: #fff;
+}
+
+.auth-message a:hover {
+    transform: scale(1.05);
+}
+
+.auth-message a.btn-primary:hover {
+    background-color: #e85d5d;
+}
+
+.auth-message a.btn-secondary:hover {
+    background-color: #0056b3;
+}
+
 
 /* Footer */
 footer {
