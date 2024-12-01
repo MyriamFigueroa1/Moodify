@@ -1,12 +1,12 @@
 body {
-  background: linear-gradient(135deg, #f3f4f7, #e9eaf1); /* Degradado suave */
+  background: linear-gradient(135deg, #f3f4f7, #e9eaf1);
   font-family: 'Rubik', sans-serif;
   margin: 0;
   padding: 0;
 }
 
 .perfil-container {
-  text-align: center; /* Centrar el título */
+  text-align: center;
   margin: 20px 0;
 }
 
@@ -20,10 +20,10 @@ body {
 /* Contenedor principal */
 .container-profile {
   display: flex;
-  flex-direction: row; /* Asegura que los elementos estén en fila */
+  flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 40px; /* Espacio entre las secciones */
+  gap: 40px;
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
@@ -32,9 +32,9 @@ body {
 
 /* Sección izquierda: Imagen de perfil */
 .left-section {
-  order: 1; /* Mantiene la imagen de perfil a la izquierda */
+  order: 1;
   flex: 1;
-  max-width: 500px; /* Asegura un tamaño cómodo */
+  max-width: 500px;
   background-color: #fff;
   padding: 20px;
   border-radius: 12px;
@@ -48,17 +48,17 @@ body {
 .preview {
   width: 180px;
   height: 180px;
-  border: 2px solid var(--accent-color); /* Borde más moderno */
+  border: 2px solid var(--accent-color);
   transition: transform 0.3s ease;
 }
 .preview:hover {
-  transform: scale(1.05); /* Efecto de agrandamiento */
+  transform: scale(1.05);
 }
 
 /* Sección derecha: Información personal */
 .right-section {
-  order: 2; /* Mantiene la información personal a la derecha */
-  flex: 2; /* Toma un poco más de espacio para el texto */
+  order: 2;
+  flex: 2;
   max-width: 600px;
   background-color: #fff;
   padding: 20px;
@@ -77,7 +77,7 @@ body {
   transition: all 0.3s ease;
 }
 .custom-button:hover {
-  background: #ff5733; /* Cambio de color en hover */
+  background: #ff5733;
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
@@ -88,7 +88,7 @@ body {
 }
 .info-box p {
   font-size: 18px;
-  color: #333; /* Más contraste */
+  color: #333;
   margin-bottom: 10px;
 }
 
@@ -101,12 +101,12 @@ body {
 /* Responsividad */
 @media (max-width: 768px) {
   .container-profile {
-      flex-direction: column; /* Cambia a diseño vertical */
+      flex-direction: column;
       gap: 20px;
   }
 
   .left-section, .right-section {
-      max-width: 100%; /* Ocupan todo el ancho */
+      max-width: 100%;
       margin: 0 auto;
   }
 }

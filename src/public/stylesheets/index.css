@@ -1,0 +1,67 @@
+/* Contenedor de la página principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    padding-bottom: 100px; /* Añadido para asegurar que haya suficiente espacio con el footer*/
+}
+
+/* Título principal */
+.title {
+    font-size: 3rem;
+    color: #333;
+    font-family: 'Pacifico', cursive;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Sección del Carrusel */
+.carousel-inner img {
+    border-radius: 10px;
+    object-fit: cover;
+    height: 400px;
+}
+
+/* Botón "Iniciar sesión" */
+.btn-outline-warning {
+    background-color: #FF6A3D;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 15px;
+}
+
+.btn-outline-warning:hover {
+    background-color: #e65c2d;
+    transform: scale(1.05);
+}
+
+.navbar-nav .nav-item {
+    margin-left: 20px;
+}
+
+/* Footer */
+footer {
+    background-color: #222;
+    color: white;
+    padding: 20px;
+    font-size: 0.9rem;
+    margin-top: 40px; /* Añadido para separar mejor del contenido */
+}
+
+footer a {
+    color: #f1f1f1;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #FF6A3D;
+}
