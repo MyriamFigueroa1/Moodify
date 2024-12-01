@@ -24,19 +24,27 @@ router.post('/add', async (req, res) => {
   try {
     const db = getDb();
 
+    if (!req.session.user || !req.session.user.nombre || !req.session.user.apellidos) {
+      return res.status(400).send('Usuario no autenticado o datos incompletos.');
+    }
+
     const newPost = {
       userID: req.session.user._id,
-      userName: req.session.user.name,
+      userName: req.session.user.nombre,
+      userSurname: req.session.user.apellidos,
       content: req.body.content,
-      timestamp: new Date()
+      profilePicture: req.session.user.profilePicture || '/images/default-profile.jpg',
+      timestamp: new Date(),
     };
 
-    await db.collection('posts').insertOne(newPost); // Insertar el post en la base de datos
+    await db.collection('posts').insertOne(newPost);
     res.redirect('/dashboard');
   } catch (error) {
     console.error('Error al agregar un nuevo post:', error);
     res.status(500).send('Error al agregar un nuevo post');
   }
 });
+
+
 
 module.exports = router;

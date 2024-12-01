@@ -20,9 +20,12 @@
                 <% posts.forEach(post => { %>
                     <div class="post-card">
                         <div class="post-header d-flex align-items-center">
-                            <img src="/path/to/profile/<%= post.userID %>.jpg" alt="Perfil" class="profile-img">
+                            <img 
+                                src="<%= post.profilePicture ? post.profilePicture : '/images/default-profile.jpg' %>" 
+                                alt="Foto de perfil" 
+                                class="profile-img">
                             <div class="post-details">
-                                <h4><%= post.userName || 'Usuario Desconocido' %></h4>
+                                <h4><%= post.userName %> <%= post.userSurname %></h4>
                                 <small><%= new Date(post.timestamp).toLocaleString() %></small>
                             </div>
                         </div>
