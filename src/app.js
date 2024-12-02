@@ -107,8 +107,17 @@ app.use('/users', usersRouter);
 app.use('/facialR', facialRRouter);
 app.use('/perfil', ensureAuthenticated, perfilRouter);
 app.use('/dashboard', ensureAuthenticated, dashboardRouter);
-app.use('/dashboardAdmin', dashboardAdminRouter);
+app.use('/dashboardAdmin', checkLogin, dashboardAdminRouter);
 app.use('/login_registration', loginRegistrationRouter);
+
+//Comprobar si el usuario ha iniciado sesión
+function checkLogin(req, res, next){
+  if(req.session.user){
+    next();
+  } else {
+    res.redirect('login_registration');
+  }
+}
 
 // Manejo de errores
 app.use(function (req, res, next) {

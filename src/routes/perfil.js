@@ -1,6 +1,21 @@
 const express = require('express');
 const router = express.Router();
 const { getDb } = require('../db/conn');
+const multer = require('multer');
+const path = require('path');
+
+// Configurar almacenamiento para multer
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'public/uploads'); // Directorio donde se guardarán las imágenes
+    },
+    filename: function (req, file, cb) {
+        const ext = path.extname(file.originalname); // Obtener la extensión del archivo
+        cb(null, Date.now() + ext); // Usar la fecha como nombre de archivo para evitar colisiones
+    }
+});
+
+const upload = multer({ storage: storage });
 
 // Verificar autenticación
 const ensureAuthenticated = (req, res, next) => {
@@ -56,5 +71,32 @@ router.post('/update', ensureAuthenticated, async (req, res) => {
     res.status(500).json({ message: 'Error al actualizar los datos.' });
   }
 });
+
+// Ruta para subir la imagen de perfil
+router.post('/upload', ensureAuthenticated, upload.single('profileImage'), async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ message: 'No se ha subido ninguna imagen.' });
+    }
+
+    const filename = req.file ? req.file.filename : null;
+    if (!filename) {
+      return res.status(400).json({ message: 'El archivo no es válido.' });
+    }
+
+    const db = getDb();
+    await db.collection('usuarios').updateOne(
+      { email: req.session.user.email },
+      { $set: { perfilImagen: filename } }
+    );
+
+    // Puedes redirigir o enviar una respuesta exitosa
+    res.redirect('/perfil');  // Redirige de vuelta al perfil con la imagen cargada
+  } catch (err) {
+    console.error('Error al subir la imagen:', err);
+    res.status(500).json({ message: 'Error al subir la imagen.' });
+  }
+});
+
 
 module.exports = router;

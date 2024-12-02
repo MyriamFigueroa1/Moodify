@@ -4,17 +4,16 @@
     <h2 class="perfil-title">Perfil</h2>
 </div>
 
-
 <div class="container-profile">
-
     <!-- Sección de la imagen de perfil -->
     <div class="left-section">
+        <form action="/perfil/upload" method="POST" enctype="multipart/form-data">
+            <input type="file" name="profileImage" />
+            <button type="submit">Subir Imagen</button>
+        </form>
+        
         <div class="image-container">
-            <img id="preview" src="/images/perfil.jpg" alt="Imagen de perfil" class="preview" />
-        </div>
-        <input type="file" id="fileInput" accept="image/*" style="display: none;" />
-        <div class="button-container">
-            <button id="uploadButton" class="custom-button">Seleccionar Imagen</button>
+            <img id="preview" src="<%= perfilImagen ? '/uploads/' + perfilImagen : '/images/perfil.jpg' %>" alt="Imagen de perfil" class="preview" />
         </div>
     </div>
 
@@ -22,8 +21,6 @@
     <div class="right-section">
         <div class="info-box">
             <h2 class="section-title">Información Personal</h2>
-
-            <!-- Información del usuario -->
             <div id="userInfo"
                 data-nombre="<%= nombre %>" 
                 data-apellido="<%= apellido %>" 
@@ -54,5 +51,6 @@
         </div>
     </div>
 </div>
+
 <%- include("footer", {}) %>
 <script src="/javascripts/perfil.js"></script>
