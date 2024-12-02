@@ -20,7 +20,7 @@ body {
 
 #wrapper.toggled #sidebar-wrapper {
     display: none;
-    width: 250px; /* Sidebar width */
+    width: 250px;
 }
 
 
@@ -85,9 +85,9 @@ body {
 
 /* Icono del menú lateral */
 #menu-toggle {
-    background-color: var(--primary-color);  /* Fondo oscuro para visibilidad */
-    border: 1px solid var(--accent-color);   /* Borde en color acento */
-    color: var(--accent-color);              /* Color de icono en acento */
+    background-color: var(--primary-color);
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 #menu-toggle:hover {
@@ -102,12 +102,12 @@ body {
 }
 
 #page-content-wrapper {
-    flex: 1; /* Permite que el contenido ocupe el espacio restante */
+    flex: 1;
 }
 
 #page-content-wrapper {
-    padding-left: 0px; /* Reducir el padding si es necesario */
-    padding-right: 0px; /* Reducir el padding derecho */
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 .btn {
@@ -147,7 +147,6 @@ button:hover {
         width: 0;
         display: none;
     }
-    /* Al abrir, cambiará a display: block en el script */
 }
 
 .logo{
