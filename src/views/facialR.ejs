@@ -1,5 +1,10 @@
 <%- include("header", {}) %>
 <div class="container-fluid text-center" id="container-fluid-fr">
+    <% if (mensaje) { %>
+        <div id="message" class="alert alert-success">
+          <%= mensaje %>
+        </div>
+    <% } %>
     <div class="row g-5">
         <div class="col-8">
             <!-- Contenido de la columna izquierda -->
@@ -41,7 +46,11 @@
                 <i class="bi bi-camera"></i>
             </button>
         </div>
+        <div class="col-4">
+            <button type="button" class="btn btn-success" id="botonPublicarCanciones">publicar</button>
+        </div>
     </div>
+   
 </div>
 
 

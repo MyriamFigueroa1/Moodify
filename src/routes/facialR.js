@@ -74,4 +74,23 @@ router.post('/procesar-imagen', upload.single('image'), async (req, res) => {
   }
 });
 
+router.post('/publicar_canciones', async (req, res) => {
+  try{
+    const user = req.session.user;
+    console.log(`Es aqui ${res.locals.canciones}`);
+    const newPost = {
+      userID: user._id,
+      userName: `${user.nombre} - Feeling ${res.locals.emotion}`,
+      content: `🎵 Playlist Mood: ${res.locals.canciones}`,
+      timestamp: new Date()
+    };
+    const dbConnect = dbo.getDb();
+    await dbConnect.collection('posts').insertOne(newPost);
+    req.session.mensaje = 'Tu playlist se ha publicado!';
+    return res.render('facialR', { mensaje: req.session.mensaje});
+  }catch{
+    console.log('Error al publicar canciones');
+  }
+});
+
 module.exports = router;

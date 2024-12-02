@@ -164,3 +164,6 @@
 #container-fluid-fr {
     margin-top: 70px;
 }
+#message {
+    display: none;
+}
