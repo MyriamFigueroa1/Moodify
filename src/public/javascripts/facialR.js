@@ -6,6 +6,8 @@ const musicList = document.getElementById('list-content');
 const spinner1 = document.getElementById('spinner1');
 const spinner2 = document.getElementById('spinner2');
 const spinner3 = document.getElementById('spinner3');
+const botonPublicar = document.getElementById('botonPublicarCanciones');
+const messageContainer = document.getElementById('message');
 
 // Acceso a la cámara
 navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } })
@@ -55,4 +57,14 @@ captureButton.addEventListener('click', () => {
     location.reload(true);
   }, 4000);
   feliz.style.display = 'none';
+});
+
+botonPublicar.addEventListener('click', () => {
+  fetch('/facialR/publicar_canciones', {
+    method: 'POST'
+  });
+  messageContainer.style.display = 'block'; 
+  setTimeout(() => {
+      messageContainer.style.display = 'none'; 
+  }, 3000);
 });
