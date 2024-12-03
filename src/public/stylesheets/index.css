@@ -23,7 +23,7 @@
 
 .subtitle2 {
     font-size: 0.9rem;
-    color: #555;
+    color: black;
     line-height: 1.6;
     margin-bottom: 20px;
 }
@@ -36,9 +36,9 @@
 }
 
 /* Botón "Iniciar sesión" */
-.btn-outline-warning {
-    background-color: #FF6A3D;
-    color: white;
+.btn-outline-login {
+    background-color: white;
+    color: black;
     border: none;
     border-radius: 25px;
     font-weight: bold;
@@ -47,7 +47,6 @@
 }
 
 .btn-outline-warning:hover {
-    background-color: #e65c2d;
     transform: scale(1.05);
 }
 
@@ -80,8 +79,8 @@
     color: #fff;
 }
 
-.auth-message a.btn-secondary {
-    background-color: #6200ff;
+.auth-message a.btn-register {
+    background-color: black;
     color: #fff;
 }
 
@@ -89,29 +88,16 @@
     transform: scale(1.05);
 }
 
-.auth-message a.btn-primary:hover {
-    background-color: #e85d5d;
-}
-
-.auth-message a.btn-secondary:hover {
-    background-color: #0056b3;
-}
-
-
 /* Footer */
 footer {
     background-color: #222;
     color: white;
     padding: 20px;
     font-size: 0.9rem;
-    margin-top: 40px; /* Añadido para separar mejor del contenido */
+    margin-top: 40px;
 }
 
 footer a {
     color: #f1f1f1;
     transition: color 0.3s ease;
-}
-
-footer a:hover {
-    color: #FF6A3D;
 }

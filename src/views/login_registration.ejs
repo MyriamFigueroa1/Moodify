@@ -13,19 +13,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" defer></script>
     <script src="javascripts/scripts.js" defer></script>
     <script src="/javascripts/login_registration.js" defer></script>
-
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="images/moodify_logo.png" alt="Moodify Logo" style="width: 50px; height: auto; margin-right: 10px;">
-                Moodify
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+          <img src="images/moodify_logo.png" alt="Moodify Logo" style="width: 50px; height: auto; margin-right: 10px;">
+          Moodify
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
     </nav>
 
     <div class="container mt-5">
@@ -56,7 +55,10 @@
                 <input type="text" class="form-control" name="apellidos" placeholder="Apellidos" required>
                 <input type="text" class="form-control" name="usuario" placeholder="Usuario" required>
                 <input type="email" class="form-control" name="email" placeholder="Email" required>
-                <input type="password" class="form-control" name="password" placeholder="Contraseña" required>
+                <div class="password-wrapper">
+                  <input type="password" class="form-control" id="register-password" name="password" placeholder="Contraseña" required>
+                  <i class="bi bi-eye-slash toggle-password" data-target="register-password"></i>
+                </div>              
                 <button type="submit" class="btn btn-custom">Registrarse</button>
               </form>
               <p class="text-center mt-3">Al registrarse, acepta nuestros <a href="#">Términos de servicio</a> y <a href="#">Política de privacidad</a>.</p>
@@ -75,7 +77,10 @@
               <div class="form-title">Iniciar Sesión</div>
               <form method="POST" action="/login_registration">
                 <input type="email" class="form-control" name="email" placeholder="Email" required>
-                <input type="password" class="form-control" name="password" placeholder="Contraseña" required>
+                <div class="password-wrapper">
+                  <input type="password" class="form-control" id="login-password" name="password" placeholder="Contraseña" required>
+                  <i class="bi bi-eye-slash toggle-password" data-target="login-password"></i>
+                </div>
                 <button type="submit" class="btn btn-custom">Iniciar Sesión</button>
               </form>
               <p class="text-center mt-3"><a href="#">¿Olvidaste tu contraseña?</a></p>

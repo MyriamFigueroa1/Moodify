@@ -40,3 +40,23 @@ function showMessage(message, type) {
       messageContainer.style.display = 'none'; // Oculta el mensaje después de 3 segundos
   }, 3000); // Ocultar después de 3 segundos
 }
+
+// Ocultar y mostrar contraseña
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.toggle-password').forEach((toggle) => {
+        toggle.addEventListener('click', () => {
+            const targetId = toggle.getAttribute('data-target');
+            const passwordField = document.getElementById(targetId);
+
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                toggle.classList.remove('bi-eye-slash');
+                toggle.classList.add('bi-eye');
+            } else {
+                passwordField.type = 'password';
+                toggle.classList.remove('bi-eye');
+                toggle.classList.add('bi-eye-slash');
+            }
+        });
+    });
+});
