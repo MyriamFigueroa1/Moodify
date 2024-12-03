@@ -75,3 +75,16 @@
     top: 10px;
     color: var(--primary-color);
 }
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-wrapper .toggle-password {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+}
+
