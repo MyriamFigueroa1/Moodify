@@ -69,7 +69,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// Verificar autenticación
+// Verificar autenticación --- fallaba, borrar???
 function ensureAuthenticated(req, res, next) {
   if (req.session && req.session.user) {
     console.log('Usuario autenticado:', req.session.user);
@@ -106,12 +106,21 @@ app.get('/logout', async (req, res) => {
 
 // Rutas
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/facialR', facialRRouter);
-app.use('/perfil', ensureAuthenticated, perfilRouter);
-app.use('/dashboard', ensureAuthenticated, dashboardRouter);
-app.use('/dashboardAdmin', dashboardAdminRouter);
+app.use('/users', checkLogin, usersRouter);
+app.use('/facialR', checkLogin, facialRRouter);
+app.use('/perfil', checkLogin, perfilRouter);
+app.use('/dashboard', checkLogin, dashboardRouter);
+app.use('/dashboardAdmin', checkLogin, dashboardAdminRouter);
 app.use('/login_registration', loginRegistrationRouter);
+
+//Comprobar si el usuario ha iniciado sesión
+function checkLogin(req, res, next){
+  if(req.session.user){
+    next();
+  } else {
+    res.redirect('login_registration');
+  }
+}
 
 // Manejo de errores
 app.use(function (req, res, next) {
