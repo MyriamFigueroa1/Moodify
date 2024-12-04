@@ -28,7 +28,7 @@ router.post('/procesar-imagen', upload.single('image'), async (req, res) => {
     if (!req.file) {
       return res.status(400).json({ message: 'No se ha recibido ninguna imagen.' });
     }
-
+    
     // Guardar la imagen temporalmente
     const tempPath = path.join(os.tmpdir(), `temp-image-${Date.now()}.jpg`);
     fs.writeFileSync(tempPath, req.file.buffer);
@@ -68,6 +68,8 @@ router.post('/procesar-imagen', upload.single('image'), async (req, res) => {
     };
     req.session.canciones = musicList;
     res.render('facialR', { emotion: req.session.emotion, canciones: req.session.canciones });
+    delete req.session.emotion;
+    delete req.session.canciones; 
   } catch (error) {
     console.error('Error al procesar la imagen:', error);
     res.status(500).json({ message: 'Error al procesar la imagen.' });
@@ -75,22 +77,32 @@ router.post('/procesar-imagen', upload.single('image'), async (req, res) => {
 });
 
 router.post('/publicar_canciones', async (req, res) => {
-  try{
-    const user = req.session.user;
-    console.log(`Es aqui ${res.locals.canciones}`);
-    const newPost = {
-      userID: user._id,
-      userName: `${user.nombre} - Feeling ${res.locals.emotion}`,
-      content: `🎵 Playlist Mood: ${res.locals.canciones}`,
-      timestamp: new Date()
-    };
-    const dbConnect = dbo.getDb();
-    await dbConnect.collection('posts').insertOne(newPost);
-    req.session.mensaje = 'Tu playlist se ha publicado!';
-    return res.render('facialR', { mensaje: req.session.mensaje});
-  }catch{
-    console.log('Error al publicar canciones');
+  console.log('bug 2');
+  try {
+      const user = req.session.user;
+      const newPost = {
+          userID: user.email,
+          userName: `${user.nombre} - Feeling ${req.session.emotion}`,
+          content: `🎵 Playlist Mood: ${req.session.canciones}`,
+          timestamp: new Date(),
+      };
+      console.log('bug 3');
+      const dbConnect = dbo.getDb();
+      console.log('Post a insertar:', newPost);
+      await dbConnect.collection('posts').insertOne(newPost);
+      console.log('bug 4');
+      req.session.messageType = 'success';
+      req.session.mensaje = '¡Tu playlist se ha publicado!';
+      res.json({ message: 'Tu playlist ha sido publicada!', messageType: 'success' });
+      console.log('bug 5');
+      // Limpia el mensaje después de enviarlo
+      delete req.session.mensaje;
+      console.log('bug 6');
+  } catch (error) {
+      console.error('Error al publicar canciones:', error);
+      res.status(500).send('Error al publicar canciones');
   }
 });
+
 
 module.exports = router;

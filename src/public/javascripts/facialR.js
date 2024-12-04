@@ -7,7 +7,7 @@ const spinner1 = document.getElementById('spinner1');
 const spinner2 = document.getElementById('spinner2');
 const spinner3 = document.getElementById('spinner3');
 const botonPublicar = document.getElementById('botonPublicarCanciones');
-const messageContainer = document.getElementById('message');
+const messageContainer = document.getElementById('mensaje');
 
 // Acceso a la cámara
 navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } })
@@ -52,19 +52,29 @@ captureButton.addEventListener('click', () => {
         console.error('Error al enviar la imagen:', error);
       });
   }, 'image/jpeg', 0.8);
-  
   setTimeout(function() {
     location.reload(true);
   }, 4000);
   feliz.style.display = 'none';
 });
 
-botonPublicar.addEventListener('click', () => {
-  fetch('/facialR/publicar_canciones', {
-    method: 'POST'
-  });
-  messageContainer.style.display = 'block'; 
-  setTimeout(() => {
-      messageContainer.style.display = 'none'; 
-  }, 3000);
+botonPublicar.addEventListener('click', async () => {
+  try {
+      const response = await fetch('/facialR/publicar_canciones', { method: 'POST' });
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      const result = await response.json();
+      showMessage(result.message || 'Tu playlist ha sido publicada!', 'success');
+  } catch (error) {
+      console.error('Error en la solicitud de publicación:', error.message);
+      showMessage(error.message || 'Error inesperado.', 'danger');
+  }
 });
+
+function showMessage(message, type) {
+  messageContainer.textContent = message; // Coloca el mensaje en el contenedor
+  messageContainer.className = `alert alert-${type}`; // Cambia el tipo (success o danger)
+  messageContainer.style.display = 'block'; // Asegúrate de que sea visible
+  setTimeout(() => {
+      messageContainer.style.display = 'none'; // Oculta el mensaje después de 3 segundos
+  }, 3000); // Ocultar después de 3 segundos
+}
