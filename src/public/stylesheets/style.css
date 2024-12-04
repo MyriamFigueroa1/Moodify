@@ -188,3 +188,11 @@ button:hover {
 .carousel-control-next-icon{
     margin-left: 50px;
 }
+
+.user-icon img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff; /* Opcional: borde blanco alrededor */
+}
