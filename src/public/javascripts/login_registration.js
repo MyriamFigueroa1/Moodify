@@ -1,3 +1,4 @@
+// /public/javascripts/login_registration.s
 const express = require('express');
 const app = express();
 const { connectToDatabase } = require('./db/conn');
@@ -42,21 +43,23 @@ function showMessage(message, type) {
 }
 
 // Ocultar y mostrar contraseña
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.toggle-password').forEach((toggle) => {
-        toggle.addEventListener('click', () => {
-            const targetId = toggle.getAttribute('data-target');
-            const passwordField = document.getElementById(targetId);
+toggle.addEventListener('click', () => {
+    console.log('Icon clicked:', toggle);
+    const targetId = toggle.getAttribute('data-target');
+    const passwordField = document.getElementById(targetId);
 
-            if (passwordField.type === 'password') {
-                passwordField.type = 'text';
-                toggle.classList.remove('bi-eye-slash');
-                toggle.classList.add('bi-eye');
-            } else {
-                passwordField.type = 'password';
-                toggle.classList.remove('bi-eye');
-                toggle.classList.add('bi-eye-slash');
-            }
-        });
-    });
+    if (passwordField) {
+        console.log('Target field found:', passwordField);
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            toggle.classList.remove('bi-eye-slash');
+            toggle.classList.add('bi-eye');
+        } else {
+            passwordField.type = 'password';
+            toggle.classList.remove('bi-eye');
+            toggle.classList.add('bi-eye-slash');
+        }
+    } else {
+        console.error('Target field not found for:', targetId);
+    }
 });
