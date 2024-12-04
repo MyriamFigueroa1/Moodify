@@ -8,26 +8,36 @@
     <!-- Sección de la imagen de perfil -->
     <div class="left-section">
         <form action="/perfil/upload" method="POST" enctype="multipart/form-data">
-            <input type="file" name="profileImage" />
-            <button type="submit">Subir Imagen</button>
+            <div class="image-container">
+                <!-- Mostrar la imagen del usuario si existe, de lo contrario, no mostrar nada -->
+                <% if (perfilImagen) { %>
+                    <img id="preview" src="<%= perfilImagen %>" alt="Imagen de perfil" class="preview" />
+                <% } else { %>
+                    <p>No has subido una imagen de perfil aún.</p>
+                <% } %>
+            </div>
+    
+            <!-- Contenedor para el botón de subir imagen y el input -->
+            <div class="file-upload-container">
+                <!-- Este label simula un botón para seleccionar el archivo -->
+                <label for="profileImage" class="custom-file-label">Seleccionar Imagen</label>
+                <input type="file" id="profileImage" name="profileImage" required onchange="previewImage(event)" />
+            </div>
+            
+            <!-- Botón para enviar el formulario -->
+            <button type="submit" class="btn btn-custom">Subir Imagen</button>
         </form>
-        
-        <div class="image-container">
-            <img id="preview" src="/images/default-profile.jpg" alt="Imagen de perfil" class="preview" />
-        </div>
     </div>
+    
 
     <!-- Sección de la información personal -->
     <div class="right-section">
         <div class="info-box">
             <h2 class="section-title">Información Personal</h2>
-            <div id="userInfo"
-                data-nombre="<%= nombre %>" 
-                data-apellido="<%= apellido %>" 
-                data-email="<%= email %>">
-                <p><strong>Nombre:</strong> <span id="nombre"><%= nombre %></span></p>
-                <p><strong>Apellido:</strong> <span id="apellido"><%= apellido %></span></p>
-                <p><strong>Email:</strong> <span id="email"><%= email %></span></p>
+            <div id="userInfo">
+                <p><strong>Nombre:</strong> <%= nombre %></p>
+                <p><strong>Apellido:</strong> <%= apellido %></p>
+                <p><strong>Email:</strong> <%= email %></p>
                 <button id="editButton" class="custom-button mt-3">Editar Información</button>
             </div>
 
@@ -53,4 +63,31 @@
 </div>
 
 <%- include("footer", {}) %>
-<script src="/javascripts/perfil.js"></script>
+
+<script>
+    // Mostrar el formulario de edición
+    document.getElementById('editButton').addEventListener('click', () => {
+        document.getElementById('editForm').style.display = 'block';
+        document.getElementById('userInfo').style.display = 'none';
+    });
+
+    // Cancelar la edición
+    document.getElementById('cancelButton').addEventListener('click', () => {
+        document.getElementById('editForm').style.display = 'none';
+        document.getElementById('userInfo').style.display = 'block';
+    });
+    function previewImage(event) {
+        const preview = document.getElementById('preview'); // El contenedor de la imagen
+        const file = event.target.files[0]; // El archivo seleccionado
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                // Mostrar la imagen seleccionada en la vista previa
+                preview.src = reader.result;
+                preview.style.display = 'block'; // Asegúrate de que la imagen se muestre
+            };
+            reader.readAsDataURL(file); // Leer el archivo como URL
+        }
+    }
+</script>

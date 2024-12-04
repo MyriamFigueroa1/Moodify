@@ -111,3 +111,19 @@ body {
   }
 }
 
+/* Personalizar el botón "Seleccionar Imagen" */
+.custom-file-label {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Ocultar el input file */
+#profileImage {
+  display: none;
+}
+
