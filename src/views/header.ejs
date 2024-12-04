@@ -19,7 +19,7 @@
     <script src="javascripts/facialR.js" defer></script>
     <script src="javascripts/perfil.js" defer></script>
     <script src="javascripts/dashboard.js" defer></script>
-
+    <script src="javascripts/login_registration.js" defer></script>
 </head>
 <body>
     <div class="d-flex" id="wrapper">
@@ -49,7 +49,9 @@
                             <ul class="navbar-nav ms-auto">
                                 <li class="nav-item">
                                     <a class="nav-link" href="perfil" aria-label="Perfil">
-                                        <i class="bi bi-person-circle" style="font-size: 1.5rem;"></i>
+                                        <div class="user-icon">
+                                            <img src="<%= perfilImagen || '/images/default-profile.jpg' %>" alt="Imagen de perfil" class="profile-icon">
+                                        </div>
                                     </a>
                                 </li>
                                 <li class="nav-item dropdown">

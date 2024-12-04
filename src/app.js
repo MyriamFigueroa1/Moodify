@@ -6,6 +6,7 @@ const logger = require('morgan');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 require('dotenv').config();
+const { connectToDatabase, getDb } = require('./db/conn'); // Importar conexión y función para obtener la base de datos
 
 const conn = require('./db/conn');
 conn.connectToDatabase();
@@ -17,6 +18,10 @@ const dashboardRouter = require('./routes/dashboard');
 const dashboardAdminRouter = require('./routes/dashboardAdmin');
 const perfilRouter = require('./routes/perfil');
 const loginRegistrationRouter = require('./routes/login_registration');
+connectToDatabase()
+  .then(() => console.log('Conectado a la base de datos'))
+  .catch(err => console.error('Error al conectar a la base de datos:', err));
+
 
 const app = express();
 
@@ -78,6 +83,22 @@ function ensureAuthenticated(req, res, next) {
   console.log('Usuario no autenticado. Redirigiendo...');
   res.redirect('/');
 }
+app.use(async (req, res, next) => {
+  if (req.session && req.session.user) {
+      const db = getDb();
+      const user = await db.collection('usuarios').findOne({ email: req.session.user.email });
+
+      if (user) {
+          res.locals.perfilImagen = user.perfilImagen || '/images/default-profile.jpg';
+      } else {
+          res.locals.perfilImagen = '/images/default-profile.jpg';
+      }
+  } else {
+      res.locals.perfilImagen = '/images/default-profile.jpg';
+  }
+  next();
+});
+
 
 // Ruta para cerrar sesión (un poco a la fuerza)
 app.get('/logout', async (req, res) => {
