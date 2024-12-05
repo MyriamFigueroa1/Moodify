@@ -65,12 +65,12 @@ app.use((req, res, next) => {
 });
 
 app.use((req, res, next) => {
-  const mensaje = req.session.mensaje;
-  const emotion = req.session.emotion;
-  const canciones = req.session.canciones;
-  res.locals.emotion = emotion || '';
-  res.locals.canciones = canciones || '';
-  res.locals.mensaje = mensaje || '';
+  res.locals.messageType = req.session.messageType || null;
+  res.locals.mensaje = req.session.mensaje || null;
+  res.locals.emotion = req.session.emotion || '';
+  res.locals.canciones = req.session.canciones || [];
+  delete req.session.mensaje;
+  delete req.session.messageType;
   next();
 });
 
@@ -83,6 +83,7 @@ function ensureAuthenticated(req, res, next) {
   console.log('Usuario no autenticado. Redirigiendo...');
   res.redirect('/');
 }
+
 app.use(async (req, res, next) => {
   if (req.session && req.session.user) {
       const db = getDb();
@@ -103,10 +104,6 @@ app.use(async (req, res, next) => {
 // Ruta para cerrar sesión (un poco a la fuerza)
 app.get('/logout', async (req, res) => {
   const db = require('./db/conn').getDb();
-  delete req.session.emotion;
-  delete req.session.canciones;
-  delete res.locals.canciones;
-  delete res.locals.emotion
   try {
     const sessionID = req.sessionID;;
 

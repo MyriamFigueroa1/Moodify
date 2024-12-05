@@ -1,10 +1,12 @@
 <%- include("header", {}) %>
 <div class="container-fluid text-center" id="container-fluid-fr">
-    <% if (mensaje) { %>
-        <div id="message" class="alert alert-success">
-          <%= mensaje %>
-        </div>
-    <% } %>
+    <div id="mensaje">
+        <% if (mensaje) { %>
+            <div class="alert alert-success">
+              <%= mensaje %>
+            </div>
+        <% } %>
+    </div>
     <div class="row g-5">
         <div class="col-8">
             <!-- Contenido de la columna izquierda -->
