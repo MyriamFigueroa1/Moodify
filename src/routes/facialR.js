@@ -93,10 +93,8 @@ router.post('/publicar_canciones', async (req, res) => {
       console.log('bug 4');
       req.session.messageType = 'success';
       req.session.mensaje = '¡Tu playlist se ha publicado!';
-      res.json({ message: 'Tu playlist ha sido publicada!', messageType: 'success' });
+      res.json({ mensaje: 'Tu playlist ha sido publicada!', messageType: 'success' });
       console.log('bug 5');
-      // Limpia el mensaje después de enviarlo
-      delete req.session.mensaje;
       console.log('bug 6');
   } catch (error) {
       console.error('Error al publicar canciones:', error);

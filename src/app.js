@@ -83,6 +83,7 @@ function ensureAuthenticated(req, res, next) {
   console.log('Usuario no autenticado. Redirigiendo...');
   res.redirect('/');
 }
+
 app.use(async (req, res, next) => {
   if (req.session && req.session.user) {
       const db = getDb();
