@@ -80,6 +80,8 @@ router.post('/upload', ensureAuthenticated, upload.single('profileImage'), async
         console.error('Error al subir la imagen:', err);
         res.status(500).json({ message: 'Error al subir la imagen.' });
     }
-});
+}
+);
+
 
 module.exports = router;

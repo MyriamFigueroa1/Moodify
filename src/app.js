@@ -40,6 +40,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'src', 'public')));
 
+
 // Configuración de la sesión
 app.use(session({
   secret: 'mi_secreto', 
@@ -58,6 +59,10 @@ app.use(session({
     maxAge: 1000 * 60 * 60 * 24 // 1 día
   }
 }));
+app.use((req, res, next) => {
+  res.locals.user = req.session.user || null; // Hace que `user` esté disponible en todas las vistas
+  next();
+});
 
 // Registrar el estado de la sesión
 app.use((req, res, next) => {
@@ -141,11 +146,18 @@ function checkLogin(req, res, next){
     res.redirect('login_registration');
   }
 }
+app.use((req, res, next) => {
+  console.log('Contenido de req.session.user:', req.session.user); // Verificar qué se está pasando
+  res.locals.user = req.session.user || null;
+  next();
+});
+
 
 // Manejo de errores
 app.use(function (req, res, next) {
   next(createError(404));
 });
+
 
 app.use(cors())
 

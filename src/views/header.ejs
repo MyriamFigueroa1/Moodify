@@ -53,6 +53,8 @@
                                         <div class="user-icon">
                                             <img src="<%= perfilImagen || '/images/default-profile.jpg' %>" alt="Imagen de perfil" class="profile-icon">
                                         </div>
+                                        <span class="user-name ms-2"><%= user ? user.nombre : 'Usuario' %></span>
+                                    </a>
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
                                         <li><a class="dropdown-item" href="perfil"> Ir a perfil </a></li>

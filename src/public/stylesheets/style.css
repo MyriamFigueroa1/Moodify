@@ -140,6 +140,24 @@ button:hover {
     border-color: var(--secondary-color);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-name {
+    font-size: 1rem;
+    color: white;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.user-email {
+    font-size: 0.85rem;
+    color: #cccccc; /* Color para diferenciar el correo del nombre */
+}
+
 
 /* Ocultar menú lateral en pantallas pequeñas usando una clase */
 @media (max-width: 768px) {
