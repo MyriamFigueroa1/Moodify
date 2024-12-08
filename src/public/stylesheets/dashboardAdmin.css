@@ -1,0 +1,60 @@
+.feed-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1e1d1d;
+}
+
+/* Estilo para el botón de borrar */
+.btn-delete {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-delete:hover {
+    background-color: #c0392b;
+    transform: scale(1.05);
+}
+
+.btn-delete i {
+    margin-right: 5px;
+}
+
+/* Estilo cuando no hay publicaciones */
+.text-muted {
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #999;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .post-card {
+        padding: 15px;
+    }
+
+    .post-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .profile-img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .feed-title {
+        font-size: 1.5rem;
+    }
+}
