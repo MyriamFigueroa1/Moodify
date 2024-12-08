@@ -35,7 +35,8 @@ router.post('/', async (req, res) => {
         usuario,
         email,
         password: hashedPassword,
-        createdAt: new Date()
+        createdAt: new Date(),
+        tipo:"user"
       };
 
       await db.collection('usuarios').insertOne(newUser);
@@ -85,7 +86,8 @@ router.post('/', async (req, res) => {
       req.session.user = {
         email: user.email,
         nombre: user.nombre,
-        apellidos: user.apellidos
+        apellidos: user.apellidos,
+        tipo:user.tipo
       };
 
       req.session.save((err) => {

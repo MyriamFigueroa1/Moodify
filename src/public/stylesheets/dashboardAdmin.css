@@ -1,0 +1,13 @@
+.btn-delete{
+    width: 100px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    background-color: var(--primary-color);
+    margin-top: 5px;
+}
