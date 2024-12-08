@@ -83,12 +83,30 @@ app.use((req, res, next) => {
 // Verificar autenticación --- fallaba, borrar???
 function ensureAuthenticated(req, res, next) {
   if (req.session && req.session.user) {
-    console.log('Usuario autenticado:', req.session.user);
-    return next();
+      return next();
   }
-  console.log('Usuario no autenticado. Redirigiendo...');
+  req.session.messageType = 'error';
+  req.session.mensaje = 'Por favor, inicia sesión para continuar.';
   res.redirect('/');
 }
+
+//Comprobar si el usuario ha iniciado sesión
+function checkLogin(req, res, next){
+  if(req.session.user){
+    next();
+  } else {
+    res.redirect('login_registration');
+  }
+}
+
+// Comprobar si el usuario es admin
+const ensureAdmin = (req, res, next) => {
+  if (req.session.user && req.session.user.tipo === "admin") {
+    return next();
+  }
+  res.render('error'); // O redirigir a una página de acceso no autorizado
+};
+
 
 app.use(async (req, res, next) => {
   if (req.session && req.session.user) {
@@ -108,26 +126,17 @@ app.use(async (req, res, next) => {
 
 
 // Ruta para cerrar sesión (un poco a la fuerza)
-app.get('/logout', async (req, res) => {
-  const db = require('./db/conn').getDb();
-  try {
-    const sessionID = req.sessionID;
-    console.log(sessionID)
-
-    req.session.destroy(async (err) => {
+app.get('/logout', (req, res) => {
+  req.session.destroy((err) => {
       if (err) {
-        return res.redirect('/dashboard');
+          console.error('Error al cerrar sesión:', err);
+          return res.redirect('/dashboard'); // O página de error
       }
-
-      await db.collection('sessions').deleteOne({ _id: sessionID });
-      res.clearCookie('connect.sid', { path: '/' });
+      res.clearCookie('connect.sid');
       res.redirect('/');
-    });
-  } catch (error) {
-    console.error('Error al limpiar la sesión:', error);
-    res.redirect('/');
-  }
+  });
 });
+
 
 // Rutas
 app.use('/', indexRouter);
@@ -135,17 +144,9 @@ app.use('/users', checkLogin, usersRouter);
 app.use('/facialR', checkLogin, facialRRouter);
 app.use('/perfil', checkLogin, perfilRouter);
 app.use('/dashboard', checkLogin, dashboardRouter);
-app.use('/dashboardAdmin', checkLogin, dashboardAdminRouter);
+app.use('/dashboardAdmin', dashboardAdminRouter);
 app.use('/login_registration', loginRegistrationRouter);
 
-//Comprobar si el usuario ha iniciado sesión
-function checkLogin(req, res, next){
-  if(req.session.user){
-    next();
-  } else {
-    res.redirect('login_registration');
-  }
-}
 app.use((req, res, next) => {
   console.log('Contenido de req.session.user:', req.session.user); // Verificar qué se está pasando
   res.locals.user = req.session.user || null;

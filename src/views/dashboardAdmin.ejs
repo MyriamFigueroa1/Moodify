@@ -4,16 +4,21 @@
 
     <!-- Contenedor de publicaciones -->
     <section class="friends-feed">
-        <h3 class="feed-title text-center mb-4">Publicaciones de Amigos</h3>
+        <h3 class="feed-title text-center mb-4">Panel de Administración de Publicaciones</h3>
         <div class="feed-posts">
             <% if (posts.length > 0) { %>
                 <% posts.forEach(post => { %>
                     <div class="post-card">
-                        <button class="btn-delete" onclick="fetch('/dashboardAdmin/delete',{method: 'DELETE', headers:{'Content-Type':'application/json'}, body:JSON.stringify({'id':'<%= post._id %>'})}).then(()=> location.reload())">Borrar</button>
+                        <button 
+                            class="btn-delete"
+                            aria-label="Borrar publicación"
+                            onclick="fetch('/dashboardAdmin/delete',{method: 'DELETE', headers:{'Content-Type':'application/json'}, body:JSON.stringify({'id':'<%= post._id %>'})}).then(()=> location.reload())">
+                            <i class="fas fa-trash-alt"></i> Borrar
+                        </button>
                         <div class="post-header d-flex align-items-center">
                             <img 
                                 src="<%= post.profilePicture ? post.profilePicture : '/images/default-profile.jpg' %>" 
-                                alt="Foto de perfil" 
+                                alt="<%= post.userName %>'s profile picture" 
                                 class="profile-img">
                             <div class="post-details">
                                 <h4><%= post.userName %> <%= post.userSurname %></h4>
@@ -31,5 +36,5 @@
         </div>
     </section>
 </div>
-<%- include("footer", {}) %>
 
+<%- include("footer", {}) %>

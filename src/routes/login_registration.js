@@ -1,4 +1,3 @@
-// routes/login_registration.js
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
@@ -16,6 +15,13 @@ router.get('/', (req, res) => {
 router.post('/', async (req, res) => {
   const { email, password, nombre, apellidos, usuario } = req.body;
 
+  if (!email || !password) {
+    return res.render('login_registration', {
+      message: 'Por favor, completa todos los campos.',
+      messageType: 'danger'
+    });
+  }
+
   // Si el formulario incluye "nombre", asumimos que es registro
   if (nombre && apellidos && usuario) {
     try {
@@ -23,8 +29,8 @@ router.post('/', async (req, res) => {
       const existingUser = await db.collection('usuarios').findOne({ email });
       if (existingUser) {
         return res.render('login_registration', { 
-          message: 'El usuario ya está registrado.', 
-          messageType: 'danger' 
+          message: 'El usuario ya está registrado.',
+          messageType: 'danger'
         });
       }
 
@@ -36,19 +42,19 @@ router.post('/', async (req, res) => {
         email,
         password: hashedPassword,
         createdAt: new Date(),
-        tipo:"user"
+        tipo: email === "admin@gmail.com" ? "admin" : "user" // Diferenciar el tipo de usuario
       };
 
       await db.collection('usuarios').insertOne(newUser);
       return res.render('login_registration', { 
-        message: 'Usuario registrado exitosamente.', 
-        messageType: 'success' 
+        message: 'Usuario registrado exitosamente.',
+        messageType: 'success'
       });
     } catch (err) {
       console.error('Error al registrar el usuario:', err);
       return res.render('login_registration', { 
-        message: 'Error al registrar el usuario.', 
-        messageType: 'danger' 
+        message: 'Error al registrar el usuario.',
+        messageType: 'danger'
       });
     }
   }
@@ -60,8 +66,8 @@ router.post('/', async (req, res) => {
 
     if (!user) {
       return res.render('login_registration', { 
-        message: 'Usuario o contraseña incorrectos.', 
-        messageType: 'danger' 
+        message: 'Usuario o contraseña incorrectos.',
+        messageType: 'danger'
       });
     }
 
@@ -69,8 +75,8 @@ router.post('/', async (req, res) => {
 
     if (!isPasswordCorrect) {
       return res.render('login_registration', { 
-        message: 'Usuario o contraseña incorrectos.', 
-        messageType: 'danger' 
+        message: 'Usuario o contraseña incorrectos.',
+        messageType: 'danger'
       });
     }
 
@@ -87,7 +93,7 @@ router.post('/', async (req, res) => {
         email: user.email,
         nombre: user.nombre,
         apellidos: user.apellidos,
-        tipo:user.tipo
+        tipo: user.tipo // Guardar el tipo en la sesión
       };
 
       req.session.save((err) => {
@@ -98,16 +104,21 @@ router.post('/', async (req, res) => {
           });
         }
 
-        return res.redirect('/dashboard'); // Redirigir al dashboard
+        if (user.tipo === "admin") {
+          return res.redirect('/dashboardAdmin'); // Redirigir al dashboard del admin
+        } else {
+          return res.redirect('/dashboard'); // Redirigir al dashboard del usuario
+        }
       });
     });
   } catch (err) {
     console.error('Error durante el inicio de sesión:', err);
     return res.render('login_registration', { 
-      message: 'Error inesperado.', 
-      messageType: 'danger' 
+      message: 'Error inesperado.',
+      messageType: 'danger'
     });
   }
 });
+
 
 module.exports = router;
