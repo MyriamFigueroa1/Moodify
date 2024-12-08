@@ -1,14 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const socket = io();
   const video = document.getElementById('video');
   const canvas = document.getElementById('canvas');
   const captureButton = document.getElementById('capture');
-  const feliz = document.getElementById('feliz');
+  //const feliz = document.getElementById('feliz');
   const musicList = document.getElementById('list-content');
   const spinner1 = document.getElementById('spinner1');
   const spinner2 = document.getElementById('spinner2');
   const spinner3 = document.getElementById('spinner3');
   const botonPublicar = document.getElementById('botonPublicarCanciones');
   const messageContainer = document.getElementById('mensaje');
+  const sock = document.getElementById('emotion');
+  let serverData = ''; 
 
   // Acceso a la cámara
   navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } })
@@ -26,15 +29,46 @@ document.addEventListener('DOMContentLoaded', () => {
         messageContainer.style.display = 'none'; // Oculta el mensaje después de 3 segundos
     }, 3000);
   };
+
+  socket.on('respuestaServidor', (data) => {
+    console.log('Respuesta del servidor:', data);
+  });
+  socket.on('facialR', (msg) => {
+    
+    console.log("Mensaje recibido");
+    const prueba = document.createElement('p');
+    prueba.textContent = msg;
+    sock.appendChild(prueba);
+  });
+  
+  socket.on('notification', (data) => {
+    sock.innerHTML = '';
+    
+    console.log('Desde la ruta:', data)
+
+    const emotion = document.createElement('p');
+    emotion.textContent = data.emotion;
+    sock.appendChild(emotion);
+  });
   // Captura la foto
+  function showSpinnerTemporarily(spinner, duration = 4000) {
+    // Muestra el spinner
+    spinner.style.display = 'block';
+    
+    // Después de "duration" milisegundos, oculta el spinner
+    setTimeout(() => {
+        spinner.style.display = 'none';
+    }, duration);
+  };
+
   captureButton.addEventListener('click', () => {
     console.log('hello');
-    feliz.style.display = 'block';
+    //feliz.style.display = 'block';
     musicList.style.display = 'block';
-    spinner1.style.display = 'block';
-    spinner2.style.display = 'block';
-    spinner3.style.display = 'block';
-
+    showSpinnerTemporarily(spinner1);
+    showSpinnerTemporarily(spinner2);
+    showSpinnerTemporarily(spinner3);
+    
     const context = canvas.getContext('2d');
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
@@ -60,10 +94,13 @@ document.addEventListener('DOMContentLoaded', () => {
           console.error('Error al enviar la imagen:', error);
         });
     }, 'image/jpeg', 0.8);
-    setTimeout(function() {
-      location.reload(true);
-    }, 4000);
-    feliz.style.display = 'none';
+    /*setTimeout(function() {
+      spinner1.style.display = 'none';
+      spinner2.style.display = 'none';
+      spinner3.style.display = 'none';
+    }, 4000);*/
+
+    socket.emit('mensajeCliente', { text: 'Hola servidor, soy el cliente' });
   });
 
   botonPublicar.addEventListener('click', async () => {
@@ -80,4 +117,6 @@ document.addEventListener('DOMContentLoaded', () => {
         showMessage(error.message || 'Error inesperado.', 'danger');
     }
   });
+
 });
+

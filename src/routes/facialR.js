@@ -67,6 +67,10 @@ router.post('/procesar-imagen', upload.single('image'), async (req, res) => {
       console.log(canciones.canciones[i]);
     };
     req.session.canciones = musicList;
+
+    const io = req.app.get('io');
+    io.emit('notification', { message: 'Hola desde la route', emotion: req.session.emotion, canciones: req.session.canciones }); 
+
     res.render('facialR', { emotion: req.session.emotion, canciones: req.session.canciones });
     delete req.session.emotion;
     delete req.session.canciones; 

@@ -2,7 +2,7 @@
 <div class="container-fluid text-center" id="container-fluid-fr">
     <div id="mensaje">
         <% if (mensaje) { %>
-            <div class="alert alert-success">
+            <div class="alert alert-<%= messageType %>">
               <%= mensaje %>
             </div>
         <% } %>
@@ -26,7 +26,7 @@
                     <div class="spinner-grow text-secondary" role="status" id="spinner3">
                         <span class="visually-hidden">Loading...</span>
                     </div>                    
-                    <p id="feliz"><%= emotion %></p>
+                    <!--p id="feliz"><%= emotion %></p-->
                 </div>
             </div>
             <div id="playlist-container">

@@ -23,6 +23,7 @@
     "morgan": "~1.9.1",
     "multer": "^1.4.5-lts.1",
     "openai": "^4.73.0",
-    "punycode": "^2.3.1"
+    "punycode": "^2.3.1",
+    "socket.io": "^4.8.1"
   }
 }
