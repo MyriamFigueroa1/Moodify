@@ -81,6 +81,7 @@ router.post('/', async (req, res) => {
     }
 
     // Crear la sesión del usuario
+    // Crear la sesión del usuario
     req.session.regenerate((err) => {
       if (err) {
         return res.render('login_registration', {
@@ -90,10 +91,11 @@ router.post('/', async (req, res) => {
       }
 
       req.session.user = {
+        _id: user._id.toString(), // Aquí agregamos el _id del usuario a la sesión
         email: user.email,
         nombre: user.nombre,
         apellidos: user.apellidos,
-        tipo: user.tipo // Guardar el tipo en la sesión
+        tipo: user.tipo // Guardamos el tipo en la sesión también
       };
 
       req.session.save((err) => {
@@ -111,6 +113,7 @@ router.post('/', async (req, res) => {
         }
       });
     });
+
   } catch (err) {
     console.error('Error durante el inicio de sesión:', err);
     return res.render('login_registration', { 
