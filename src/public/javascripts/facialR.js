@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } })
   .then((stream) => {
     video.srcObject = stream;
+    video.style.transform = "scaleX(-1)";
   })
   .catch((error) => {
     console.error("Error al acceder a la cámara:", error);
