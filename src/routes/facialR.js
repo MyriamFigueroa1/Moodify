@@ -40,8 +40,8 @@ router.get('/', ensureAuthenticated, async (req, res) => {
             perfilImagen
         });
     } catch (err) {
-        console.error('Error al cargar el perfil:', err);
-        res.status(500).send('Error al cargar el perfil.');
+        console.error('Error al cargar facialR:', err);
+        res.status(500).send('Error al cargar facialR.');
     }
 });
 

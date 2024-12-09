@@ -1,48 +1,27 @@
 const express = require('express');
 const router = express.Router();
-const { getDb, ObjectId } = require('../db/conn');
+const { getDb } = require('../db/conn');
+
 
 // Ruta para renderizar el dashboard
 router.get('/', async (req, res) => {
   try {
     const db = getDb();
-
+    const user = await db.collection('usuarios').findOne({ email: req.session.user.email });
+    console.log(user);
+    const perfilImagen = user.perfilImagen
+            ? `data:image/jpeg;base64,${user.perfilImagen.toString('base64')}`
+            : '/images/default-profile.jpg'; // Imagen predeterminada
     // Obtener las publicaciones
     const posts = await db.collection('posts').find().sort({ timestamp: -1 }).toArray();
-
-    // Enriquecer las publicaciones con la información del usuario
-    const enrichedPosts = await Promise.all(
-      posts.map(async (post) => {
-        try {
-          if (!post.userID || typeof post.userID !== 'string' || post.userID.length !== 24 || !/^[a-fA-F0-9]{24}$/.test(post.userID)) {
-            console.warn(`Post con ID ${post._id} tiene un userID inválido o nulo.`);
-            return { ...post }; // Devuelve el post sin modificar si el userID no es válido
-          }
-    
-          const user = await db.collection('usuarios').findOne({ _id: new ObjectId(post.userID) });
-    
-          // Verifica si el usuario tiene una foto de perfil, si no la tiene, usa la predeterminada
-          const profilePicture = user?.profilePicture
-            ? `data:image/jpeg;base64,${user.profilePicture.toString('base64')}`
-            : post.profilePicture;
-    
-          return {
-            ...post,
-            profilePicture, // Agrega la imagen del usuario o la predeterminada
-          };
-        } catch (err) {
-          console.error(`Error al enriquecer el post con ID ${post._id}:`, err.message);
-          return { ...post }; // Devuelve el post sin modificar si hay un error
-        }
-      })
-    );
 
     // Si hay un mensaje de éxito, pasarlo al renderizar el dashboard
     const successMessage = req.query.successMessage || null;
 
     res.render('dashboard', {
       user: req.session.user,
-      posts: enrichedPosts,
+      posts,
+      perfilImagen,
       successMessage, // Pasar el mensaje de éxito para mostrarlo en la vista
     });
   } catch (error) {
@@ -63,11 +42,10 @@ router.post('/add', async (req, res) => {
     }
 
     const newPost = {
-      userID: user._id, // Asociar el post al _id del usuario
+      userID: user.email, // Asociar el post al _id del usuario
       userName: user.nombre || 'Usuario', // Asegurar que el nombre del usuario esté presente
       userSurname: user.apellidos || '',
       content: req.body.content,
-      profilePicture: '/images/default-profile.jpg', // Imagen predeterminada si no hay imagen
       timestamp: new Date(), // Timestamp actual
     };
 
