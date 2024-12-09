@@ -53,4 +53,25 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 3000);
         }
     }
+
+    // Obtener todos los iconos de "ojo"
+    const togglePasswordIcons = document.querySelectorAll('.toggle-password');
+
+    // Añadir el evento de clic a cada uno
+    togglePasswordIcons.forEach(icon => {
+        icon.addEventListener('click', () => {
+            const passwordField = document.getElementById(icon.getAttribute('data-target'));
+
+            // Cambiar el tipo del campo de contraseña entre 'password' y 'text'
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                icon.classList.remove('bi-eye-slash');  // Ocultar
+                icon.classList.add('bi-eye');  // Mostrar
+            } else {
+                passwordField.type = 'password';
+                icon.classList.remove('bi-eye');  // Mostrar
+                icon.classList.add('bi-eye-slash');  // Ocultar
+            }
+        });
+    });
 });

@@ -18,8 +18,8 @@ router.get('/', async (req, res) => {
 
           return {
             ...post,
-            profilePicture: user?.perfilImagen
-              ? `data:image/jpeg;base64,${user.perfilImagen.toString('base64')}`
+            profilePicture: user?.profilePicture
+              ? `data:image/jpeg;base64,${user.profilePicture.toString('base64')}`
               : '/images/default-profile.jpg', // Imagen predeterminada
           };
         } catch (err) {

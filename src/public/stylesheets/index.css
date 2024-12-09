@@ -2,23 +2,30 @@
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0px 10px;
-    padding-bottom: 2px; /* Añadido para asegurar que haya suficiente espacio con el footer*/
+    padding: 0 20px; /* Padding adicional para los lados */
 }
 
 /* Título principal */
 .title {
-    font-size: 3rem;
-    color: #333;
     font-family: 'Pacifico', cursive;
+    font-size: 3.5rem; /* Tamaño grande pero no exagerado */
+    color: var(--primary-color);
+    text-align: center; /* Centrado del texto */
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+    margin-top: 40px; /* Mejorar el espaciado */
     margin-bottom: 20px;
 }
 
 .subtitle {
-    font-size: 1.2rem;
-    color: #555;
-    line-height: 1.6;
-    margin-bottom: 20px;
+    font-size: 1.25rem; /* Tamaño adecuado para lectura */
+    color: var(--primary-color);
+    text-align: center;
+    line-height: 1.8; /* Mejorar la legibilidad */
+    margin-bottom: 30px;
+    font-weight: 300;
+    max-width: 700px; /* Limitar el ancho para una mejor alineación */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .subtitle2 {
@@ -28,16 +35,19 @@
     margin-bottom: 20px;
 }
 
-.carousel-inner{
+.carousel-inner {
     margin-top: 30px;
     margin-left: 20px;
 }
 
-/* Sección del Carrusel */
 .carousel-inner img {
     border-radius: 10px;
     object-fit: cover;
     height: 400px;
+}
+
+.col-md-6 {
+    padding: 0 20px; /* Margen interno para el espacio alrededor */
 }
 
 /* Botón "Iniciar sesión" */
@@ -63,8 +73,9 @@
 .auth-message {
     margin-top: 30px;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--primary-color);
+    padding: 12px 24px;
 }
 
 .auth-message p {
@@ -112,3 +123,40 @@ footer a {
 .footerTitle{
     margin-top: 8px;
 }
+
+footer p {
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    #sidebar-wrapper {
+        width: 0;
+        display: none;
+        transition: width 0.3s ease;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        display: block;
+        width: 250px;
+    }
+    .title {
+        font-size: 2.5rem; /* Reducir tamaño en pantallas pequeñas */
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .subtitle {
+        font-size: 1.1rem; /* Reducir tamaño en pantallas pequeñas */
+        max-width: 90%; /* Hacer que ocupe más espacio en móviles */
+    }
+    .carousel-item {
+        margin-left: 0; /* Eliminado margen para pantallas pequeñas */
+    }
+    footer p {
+        font-size: 0.9rem; /* Reducir el tamaño de texto para pantallas pequeñas */
+    }
+    .auth-message a {
+        font-size: 1rem; /* Reducir tamaño para móviles */
+        padding: 10px 20px;
+    }
+}
+

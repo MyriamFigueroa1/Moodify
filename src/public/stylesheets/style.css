@@ -60,7 +60,7 @@ body {
 }
 
 .navbar-brand, .navbar-nav .nav-link {
-    color: var(--background-color) !important;
+    color: var(--background-color) !important; /* Ensure enough contrast for accessibility */
 }
 
 .navbar-brand, .sidebar-heading {
@@ -158,15 +158,6 @@ button:hover {
     color: #cccccc; /* Color para diferenciar el correo del nombre */
 }
 
-
-/* Ocultar menú lateral en pantallas pequeñas usando una clase */
-@media (max-width: 768px) {
-    #sidebar-wrapper {
-        width: 0;
-        display: none;
-    }
-}
-
 .logo{
     width: 60px; 
     height: auto; 
@@ -213,4 +204,14 @@ button:hover {
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid #fff; /* Opcional: borde blanco alrededor */
+}
+
+
+/* Ocultar menú lateral en pantallas pequeñas usando una clase */
+@media (max-width: 768px) {
+    #sidebar-wrapper {
+        width: 0;
+        display: none;
+        transition: width 0.3s ease;
+    }
 }
