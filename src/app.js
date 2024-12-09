@@ -93,6 +93,13 @@ app.use(async (req, res, next) => {
       try {
           const db = getDb();
           const user = await db.collection('usuarios').findOne({ email: req.session.user.email });
+          const posts = await db.collection('posts').find().sort({ timestamp: -1 }).toArray();
+          res.locals.postsWithImages = posts.map(post => ({
+            ...post,
+            postImage: post.postImage
+              ? `data:image/jpeg;base64,${post.postImage.toString('base64')}`
+              : '/images/default-profile.jpg',
+          }));
 
           // Convertir imagen binaria a base64 si existe
           res.locals.perfilImagen = user?.perfilImagen

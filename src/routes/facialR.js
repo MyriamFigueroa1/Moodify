@@ -103,14 +103,17 @@ router.post('/publicar_canciones', async (req, res) => {
   console.log('bug 2');
   try {
       const user = req.session.user;
+      const db = getDb();
+      const userDb = await db.collection('usuarios').findOne({ email: req.session.user.email });
       const newPost = {
           userID: user.email,
           userName: `${user.nombre} - Feeling ${emotion}`,
           content: `🎵 Playlist Mood: ${musicList}`,
+          postImage: userDb.perfilImagen,
           timestamp: new Date(),
       };
       console.log('bug 3');
-      const dbConnect = dbo.getDb();
+      const dbConnect = getDb();
       console.log('Post a insertar:', newPost);
       await dbConnect.collection('posts').insertOne(newPost);
       console.log('bug 4');

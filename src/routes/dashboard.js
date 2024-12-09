@@ -8,19 +8,24 @@ router.get('/', async (req, res) => {
   try {
     const db = getDb();
     const user = await db.collection('usuarios').findOne({ email: req.session.user.email });
-    console.log(user);
+    const posts = await db.collection('posts').find().sort({ timestamp: -1 }).toArray();
+
     const perfilImagen = user.perfilImagen
             ? `data:image/jpeg;base64,${user.perfilImagen.toString('base64')}`
             : '/images/default-profile.jpg'; // Imagen predeterminada
+      const postsWithImages = posts.map(post => ({
+        ...post,
+        postImage: post.postImage
+          ? `data:image/jpeg;base64,${post.postImage.toString('base64')}`
+          : '/images/default-profile.jpg',
+      }));
     // Obtener las publicaciones
-    const posts = await db.collection('posts').find().sort({ timestamp: -1 }).toArray();
-
     // Si hay un mensaje de éxito, pasarlo al renderizar el dashboard
     const successMessage = req.query.successMessage || null;
 
     res.render('dashboard', {
       user: req.session.user,
-      posts,
+      posts: postsWithImages,
       perfilImagen,
       successMessage, // Pasar el mensaje de éxito para mostrarlo en la vista
     });
@@ -35,6 +40,7 @@ router.post('/add', async (req, res) => {
   try {
     const db = getDb();
     const { user } = req.session; // Obtener el usuario de la sesión
+    const userDb = await db.collection('usuarios').findOne({ email: req.session.user.email });
 
     // Verificar si el usuario está autenticado y tiene un _id
     if (!user || !user._id) {
@@ -46,6 +52,7 @@ router.post('/add', async (req, res) => {
       userName: user.nombre || 'Usuario', // Asegurar que el nombre del usuario esté presente
       userSurname: user.apellidos || '',
       content: req.body.content,
+      postImage: userDb.perfilImagen,
       timestamp: new Date(), // Timestamp actual
     };
 
