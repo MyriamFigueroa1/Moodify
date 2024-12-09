@@ -32,7 +32,6 @@ router.get('/', ensureAuthenticated, async (req, res) => {
             ? `data:image/jpeg;base64,${user.perfilImagen.toString('base64')}`
             : '/images/default-profile.jpg'; // Imagen predeterminada
         // Convertir la imagen binaria a base64 si existe
-        console.log('prueba: ');
         res.render('facialR', {
             nombre: user.nombre,
             apellido: user.apellidos,
@@ -114,7 +113,6 @@ router.post('/publicar_canciones', async (req, res) => {
       };
       console.log('bug 3');
       const dbConnect = getDb();
-      console.log('Post a insertar:', newPost);
       await dbConnect.collection('posts').insertOne(newPost);
       console.log('bug 4');
       req.session.messageType = 'success';
