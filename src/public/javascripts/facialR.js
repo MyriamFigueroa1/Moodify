@@ -5,12 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const captureButton = document.getElementById('capture');
   //const feliz = document.getElementById('feliz');
   const musicList = document.getElementById('list-content');
-  const spinner1 = document.getElementById('spinner1');
-  const spinner2 = document.getElementById('spinner2');
-  const spinner3 = document.getElementById('spinner3');
+  const spinner = document.getElementById('spinner');
   const botonPublicar = document.getElementById('botonPublicarCanciones');
   const messageContainer = document.getElementById('mensaje');
-  const sock = document.getElementById('emotion');
+  const sock = document.getElementById('sock');
   let serverData = ''; 
 
   // Acceso a la cámara
@@ -36,26 +34,29 @@ document.addEventListener('DOMContentLoaded', () => {
   socket.on('facialR', (msg) => {
     
     console.log("Mensaje recibido");
-    const prueba = document.createElement('p');
-    prueba.textContent = msg;
-    sock.appendChild(prueba);
+    const emotion = document.createElement('p');
+    emotion.textContent = msg;
+    sock.appendChild(emotion);
   });
   
   socket.on('notification', (data) => {
     sock.innerHTML = '';
-    
     console.log('Desde la ruta:', data)
 
     const emotion = document.createElement('p');
     emotion.textContent = data.emotion;
     sock.appendChild(emotion);
+    musicList.innerHTML = '';
+    for (let i = 0; i < data.canciones.length; i++) {
+      const song = document.createElement('li');
+      song.textContent = data.canciones[i];
+      musicList.appendChild(song);
+    };
   });
   // Captura la foto
-  function showSpinnerTemporarily(spinner, duration = 4000) {
-    // Muestra el spinner
+  function showSpinnerTemporarily(spinner, duration = 2000) {
     spinner.style.display = 'block';
     
-    // Después de "duration" milisegundos, oculta el spinner
     setTimeout(() => {
         spinner.style.display = 'none';
     }, duration);
@@ -65,10 +66,9 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('hello');
     //feliz.style.display = 'block';
     musicList.style.display = 'block';
-    showSpinnerTemporarily(spinner1);
-    showSpinnerTemporarily(spinner2);
-    showSpinnerTemporarily(spinner3);
-    
+
+    showSpinnerTemporarily(spinner);
+  
     const context = canvas.getContext('2d');
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
@@ -94,11 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
           console.error('Error al enviar la imagen:', error);
         });
     }, 'image/jpeg', 0.8);
-    /*setTimeout(function() {
-      spinner1.style.display = 'none';
-      spinner2.style.display = 'none';
-      spinner3.style.display = 'none';
-    }, 4000);*/
 
     socket.emit('mensajeCliente', { text: 'Hola servidor, soy el cliente' });
   });

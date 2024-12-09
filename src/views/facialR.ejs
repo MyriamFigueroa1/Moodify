@@ -17,27 +17,15 @@
             <!-- Contenido de la columna derecha -->
             <div id="emoFrame">
                 <div class="emotion" id="emotion">
-                    <div class="spinner-grow text-secondary" role="status" id="spinner1">
+                    <div class="spinner-border spinner-border-sm" role="status" id="spinner">
                         <span class="visually-hidden">Loading...</span>
-                    </div>
-                    <div class="spinner-grow text-secondary" role="status" id="spinner2">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                    <div class="spinner-grow text-secondary" role="status" id="spinner3">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>                    
-                    <!--p id="feliz"><%= emotion %></p-->
+                    </div><br>
+                    <div id="sock">
+                    </div>                   
                 </div>
             </div>
             <div id="playlist-container">
                 <ul id="list-content" class="playlist">
-                    <% for(let i = 0; i < 5; i++) {%>
-                        <li class="song">
-                            <div class="song-details">
-                                <div class="song-artist"><%= canciones[i] %></div>
-                            </div>
-                        </li>
-                    <% } %>
                 </ul>
             </div>
         </div>
