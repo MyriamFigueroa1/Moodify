@@ -165,3 +165,78 @@
 #mensaje {
     display: none;
 }
+
+/* Pantallas pequeñas (teléfonos, menos de 576px) */
+@media (max-width: 576px) {
+    #container-fluid-fr {
+        margin-top: 20px;
+        padding: 10px;
+    }
+
+    .videoBox {
+        width: 100%; /* El video ocupa todo el ancho disponible */
+        height: auto; /* Mantiene la relación de aspecto */
+        border: none; /* Simplifica el diseño en pantallas pequeñas */
+    }
+
+    #emoFrame {
+        width: 100%;
+        border: none;
+        margin: 20px auto;
+    }
+
+    #list-content {
+        width: 100%; /* Ocupa todo el ancho */
+        height: auto; /* Ajusta automáticamente la altura */
+    }
+
+    .col-8, .col-4 {
+        width: 100%; /* Cada columna ocupa todo el ancho */
+        text-align: center; /* Centra el contenido */
+    }
+
+    button {
+        width: 100%; /* Los botones ocupan todo el ancho */
+        margin-top: 10px;
+    }
+}
+
+/* Pantallas medianas (tabletas, entre 576px y 768px) */
+@media (max-width: 768px) {
+    .videoBox {
+        width: 80%;
+        height: auto;
+        margin: 0 auto; /* Centra el video */
+    }
+
+    #emoFrame {
+        width: 80%;
+        margin: 20px auto;
+    }
+
+    #list-content {
+        width: 80%; /* Ocupa la mayor parte del ancho */
+        margin: 0 auto;
+    }
+}
+
+/* Pantallas grandes (escritorios, mayor a 768px) */
+@media (min-width: 769px) {
+    #container-fluid-fr {
+        margin-top: 50px;
+    }
+
+    .videoBox {
+        width: 700px;
+        height: 550px;
+    }
+
+    #emoFrame {
+        width: 370px;
+    }
+
+    #list-content {
+        width: 330px;
+        height: 225px;
+    }
+}
