@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log(result);
     
             if (response.ok) {
-                location.href = '/perfil'; // Redirige desde el cliente
+                location.href = '/perfil';
             } else {
                 alert(result.message || 'Error al actualizar los datos.');
             }
@@ -77,8 +77,8 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error('Error al conectar con el servidor:', err);
             alert('Error al conectar con el servidor.');
         }
-    });    
-
+    });
+    
     document.querySelector('input[type="file"]').addEventListener('change', function(event) {
         const file = event.target.files[0];
         if (file) {

@@ -1,23 +1,44 @@
 const express = require('express');
 const router = express.Router();
-const { getDb } = require('../db/conn');
-
+const { getDb, ObjectId } = require('../db/conn');
 
 // Ruta para renderizar el dashboard
 router.get('/', async (req, res) => {
   try {
     const db = getDb();
+
+    // Obtener las publicaciones
     const posts = await db.collection('posts').find().sort({ timestamp: -1 }).toArray();
+
+    // Enriquecer las publicaciones con la información del usuario
+    const enrichedPosts = await Promise.all(
+      posts.map(async (post) => {
+        try {
+          const user = await db.collection('usuarios').findOne({ _id: new ObjectId(post.userID) });
+
+          return {
+            ...post,
+            profilePicture: user?.perfilImagen
+              ? `data:image/jpeg;base64,${user.perfilImagen.toString('base64')}`
+              : '/images/default-profile.jpg', // Imagen predeterminada
+          };
+        } catch (err) {
+          console.error(`Error al enriquecer el post con ID ${post._id}:`, err);
+          return { ...post, profilePicture: '/images/default-profile.jpg' };
+        }
+      })
+    );
 
     res.render('dashboard', {
       user: req.session.user,
-      posts: posts
+      posts: enrichedPosts,
     });
   } catch (error) {
     console.error('Error al obtener los posts:', error);
     res.status(500).send('Error al obtener los posts');
   }
 });
+
 
 // Ruta para agregar un nuevo post
 router.post('/add', async (req, res) => {
@@ -33,7 +54,6 @@ router.post('/add', async (req, res) => {
       userName: req.session.user.nombre,
       userSurname: req.session.user.apellidos,
       content: req.body.content,
-      profilePicture: req.session.user.profilePicture || '/images/default-profile.jpg',
       timestamp: new Date(),
     };
 
@@ -44,8 +64,5 @@ router.post('/add', async (req, res) => {
     res.status(500).send('Error al agregar un nuevo post');
   }
 });
-
-router.post('/delete' ,  async (req,res) => {
-})
 
 module.exports = router;
