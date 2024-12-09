@@ -1,4 +1,8 @@
 <%- include("header", {}) %>
+
+<!-- Incluir SweetAlert2 desde CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <div class="container-fluid mt-4 main-container">
 
     <!-- Formulario para crear una nueva publicación -->
@@ -44,5 +48,17 @@
         </div>
     </section>
 </div>
-<%- include("footer", {}) %>
 
+<!-- Si hay un mensaje de éxito, mostrar la alerta de SweetAlert2 -->
+<% if (successMessage) { %>
+    <script>
+        Swal.fire({
+            title: '¡Publicación Exitosa!',
+            text: '<%= successMessage %>',
+            icon: 'success',
+            confirmButtonText: '¡Genial!',
+        });
+    </script>
+<% } %>
+
+<%- include("footer", {}) %>
