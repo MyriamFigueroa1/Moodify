@@ -5,14 +5,23 @@
 </div>
 
 <div class="container-profile">
+    <!-- Mostrar mensaje si está presente en la sesión -->
+    <% if (message) { %>
+        <script>
+            Swal.fire({
+                icon: '<%= messageType %>', // 'success', 'error', etc.
+                title: '<%= message %>', // El mensaje que pasaste en la sesión
+                showConfirmButton: true
+            });
+        </script>
+    <% } %>
+
     <!-- Sección de la imagen de perfil -->
     <div class="left-section">
         <form action="/perfil/upload" method="POST" enctype="multipart/form-data">
             <div class="image-container">
-                <!-- Mostrar la imagen del usuario si existe, de lo contrario, no mostrar nada -->
                 <% if (perfilImagen) { %>
                     <img id="preview" src="<%= perfilImagen %>" alt="Imagen de perfil" class="preview" />
-                    
                 <% } else { %>
                     <p>No has subido una imagen de perfil aún.</p>
                 <% } %>
@@ -21,15 +30,14 @@
             <!-- Contenedor para el botón de subir imagen y el input -->
             <div class="file-upload-container">
                 <!-- Este label simula un botón para seleccionar el archivo -->
-                <label for="profileImage" class="custom-file-label">Seleccionar Imagen</label>
+                <label for="profileImage" class="select-image-button">Seleccionar Imagen</label>
                 <input type="file" id="profileImage" name="profileImage" required onchange="previewImage(event)" />
             </div>
             
             <!-- Botón para enviar el formulario -->
-            <button type="submit" class="btn btn-custom">Subir Imagen</button>
+            <button type="submit" class="btn upload-image-button">Subir Imagen</button>
         </form>
     </div>
-    
 
     <!-- Sección de la información personal -->
     <div class="right-section">
@@ -39,10 +47,9 @@
                 <p><strong>Nombre:</strong> <%= nombre %></p>
                 <p><strong>Apellido:</strong> <%= apellido %></p>
                 <p><strong>Email:</strong> <%= email %></p>
-                <button id="editButton" class="custom-button mt-3">Editar Información</button>
+                <button id="editButton" class="edit-info-button mt-3">Editar Información</button>
             </div>
 
-            <!-- Formulario de edición -->
             <form id="editForm" style="display: none;" method="POST" action="/perfil/update">
                 <div class="form-group">
                     <label for="editNombre">Nombre:</label>
@@ -56,7 +63,7 @@
                     <label for="editEmail">Correo Electrónico:</label>
                     <input type="email" id="editEmail" name="email" class="form-control" value="<%= email %>">
                 </div>
-                <button id= "guardar" type="submit" class="submit-btn">Guardar Cambios</button>
+                <button id="guardar" type="submit" class="submit-btn">Guardar Cambios</button>
                 <button type="button" id="cancelButton" class="custom-button mt-3">Cancelar</button>
             </form>
         </div>

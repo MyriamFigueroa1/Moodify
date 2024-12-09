@@ -35,18 +35,21 @@ router.get('/', async (req, res) => {
           return { ...post }; // Devuelve el post sin modificar si hay un error
         }
       })
-    );    
+    );
+
+    // Si hay un mensaje de éxito, pasarlo al renderizar el dashboard
+    const successMessage = req.query.successMessage || null;
 
     res.render('dashboard', {
       user: req.session.user,
       posts: enrichedPosts,
+      successMessage, // Pasar el mensaje de éxito para mostrarlo en la vista
     });
   } catch (error) {
     console.error('Error al obtener los posts:', error);
     res.status(500).send('Error al obtener los posts');
   }
 });
-
 
 // Ruta para agregar un nuevo post
 router.post('/add', async (req, res) => {
@@ -70,14 +73,13 @@ router.post('/add', async (req, res) => {
 
     // Insertar el nuevo post en la colección 'posts'
     await db.collection('posts').insertOne(newPost);
-    res.redirect('/dashboard'); // Redirigir a la página del dashboard
 
+    // Redirigir al dashboard con un mensaje de éxito
+    res.redirect('/dashboard?successMessage=Tu publicación se ha realizado correctamente.');
   } catch (error) {
     console.error('Error al agregar un nuevo post:', error);
     res.status(500).send('Error al agregar un nuevo post');
   }
 });
-
-
 
 module.exports = router;

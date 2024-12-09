@@ -1,16 +1,234 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Rubik:wght@300..900&display=swap');
 
 :root {
-    --primary-color: #1f232a;
-    --secondary-color: #1d2b23;
-    --accent-color: #FF6A3D;
-    --background-color: #f9f9f9;
-    --text-color: #e6e6e6;
+    --primary-color: #2b3945; /* Azul grisáceo oscuro */
+    --secondary-color: #ff4c60; /* Rojo coral vibrante */
+    --accent-color: #4caf50; /* Verde menta */
+    --background-color: #f5f7fa; /* Gris claro */
+    --text-color: #333333; /* Gris oscuro */
 }
 
 body {
-    background-color: var(--background-color);
+    background: linear-gradient(135deg, var(--background-color), #e4ebf5); /* Fondo degradado */
     color: var(--text-color);
+    font-family: 'Rubik', sans-serif;
+}
+
+#wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    display: none;
+    width: 250px;
+}
+
+
+#sidebar-wrapper {
+    display: none;
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    background-color: var(--primary-color);
+}
+
+#sidebar-wrapper .list-group-item {
+    color: var(--background-color);
+    transition: background-color 0.3s ease, color 0.3s ease, font-weight 0.3s ease;
+}
+
+#sidebar-wrapper .list-group-item:hover {
+    background-color: var(--secondary-color);
+    color: var(--background-color);
+    font-weight: bold;
+    box-shadow: inset 5px 0 0 var(--accent-color);
+}
+
+.navbar {
+    background-color: var(--primary-color);
+}
+
+.nav-item .badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--accent-color);
+    color: var(--background-color);
+}
+
+.navbar-brand, .navbar-nav .nav-link {
+    color: var(--background-color) !important; /* Ensure enough contrast for accessibility */
+}
+
+.navbar-brand, .sidebar-heading {
+    font-family: 'Pacifico', cursive;
+}
+
+.navbar-brand {
+    font-size: 2rem;
+    font-family: 'Pacifico', cursive;
+    color: var(--background-color) !important;
+}
+
+.navbar-toggler-icon {
+    color: var(--secondary-color);
+}
+
+#sidebar-wrapper .list-group-item.active {
+    background-color: var(--secondary-color);
+    color: #FFF;
+    border-left: 5px solid var(--accent-color);
+}
+
+/* Icono del menú lateral */
+#menu-toggle {
+    background-color: var(--primary-color);
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+#menu-toggle:hover {
+    background-color: var(--accent-color);
+    color: var(--background-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#wrapper {
+    display: none;
+    flex-wrap: nowrap;
+}
+
+#page-content-wrapper {
+    flex: 1;
+}
+
+#page-content-wrapper {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.btn {
+    font-weight: 500;
+    box-shadow: none;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    font-weight: 500;
+}
+
+button {
+    background-color: var(--secondary-color);
+    color: #fff;
+    border-radius: 5px;
+    padding: 8px 16px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: var(--accent-color);
+}
+
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-name {
+    font-size: 1rem;
+    color: white;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.user-email {
+    font-size: 0.85rem;
+    color: #cccccc; /* Color para diferenciar el correo del nombre */
+}
+
+.logo{
+    width: 60px; 
+    height: auto; 
+    margin-right: 10px;
+}
+
+.custom-icon{
+    font-size: 1.5rem;
+}
+
+.title{
+    color: black;
+    margin-top: 50px;
+}
+
+.subtitle{
+    color: var(--primary-color);
+}
+
+.carousel-control-prev, .carousel-control-next{
+    background-color: transparent;
+}
+
+.carousel-control-prev:hover, .carousel-control-next:hover{
+    background-color: transparent;
+}
+
+.carousel-item{
+    margin-top: 40px;
+    margin-left: 50px;
+}
+
+.carousel-control-prev-icon{
+    margin-left: 50px;
+}
+
+.carousel-control-next-icon{
+    margin-left: 50px;
+}
+
+.user-icon img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff; /* Opcional: borde blanco alrededor */
+}
+
+
+/* Ocultar menú lateral en pantallas pequeñas usando una clase */
+@media (max-width: 768px) {
+    #sidebar-wrapper {
+        width: 0;
+        display: none;
+        transition: width 0.3s ease;
+    }
+}@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Rubik:wght@300..900&display=swap');
+
+:root {
+    --primary-color: #2b3945; /* Azul grisáceo oscuro */
+    --secondary-color: #ff4c60; /* Rojo coral vibrante */
+    --accent-color: #4caf50; /* Verde menta */
+    --background-color: #f5f7fa; /* Gris claro */
+    --text-color: #333333; /* Gris oscuro */
+}
+
+body {
+    background: linear-gradient(135deg, var(--background-color), #e4ebf5); /* Fondo degradado */
+    color: var(--text-color);
+    font-family: 'Rubik', sans-serif;
 }
 
 #wrapper {

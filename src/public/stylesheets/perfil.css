@@ -48,13 +48,15 @@ body {
 .preview {
   width: 180px;
   height: 180px;
-  border: 2px solid var(--accent-color);
-  transition: transform 0.3s ease;
+  border: 3px solid var(--accent-color);
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .preview:hover {
   transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
-
 /* Sección derecha: Información personal */
 .right-section {
   order: 2;
@@ -66,20 +68,6 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.custom-button {
-  background: #ff5733; /* Color naranja */
-  color: white;
-  font-size: 16px;
-  padding: 12px 24px;
-  border-radius: 30px;
-  border: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-.custom-button:hover {
-  background: #e04d29; /* Naranja más oscuro */
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-}
 
 /* Información Personal */
 .info-box {
@@ -98,6 +86,61 @@ body {
   text-align: center;
 }
 
+/* Personalizar el botón "Seleccionar Imagen" */
+.select-image-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--secondary-color);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 10px;
+}
+.select-image-button:hover {
+  background-color: #e04154; /* Rojo más oscuro */
+  transform: scale(1.05);
+}
+
+/* Botón "Subir Imagen" */
+.upload-image-button {
+  margin-top: 10px;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 14px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.upload-image-button:hover {
+  background-color: var(--secondary-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.edit-info-button {
+  background: var(--secondary-color);
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border-radius: 30px;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+.edit-info-button:hover {
+  background: #e04154; /* Rojo más oscuro */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Ocultar el input file */
+#profileImage {
+  display: none;
+}
+
+
 /* Responsividad */
 @media (max-width: 768px) {
   .container-profile {
@@ -111,22 +154,3 @@ body {
   }
 }
 
-/* Personalizar el botón "Seleccionar Imagen" */
-.custom-file-label {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #ff5733; /* Color naranja */
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: all 0.3s ease;
-}
-.custom-file-label:hover {
-  background-color: #e04d29; /* Naranja más oscuro */
-}
-
-/* Ocultar el input file */
-#profileImage {
-  display: none;
-}

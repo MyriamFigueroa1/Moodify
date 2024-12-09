@@ -35,8 +35,13 @@ router.get('/', ensureAuthenticated, async (req, res) => {
             nombre: user.nombre,
             apellido: user.apellidos,
             email: user.email,
-            perfilImagen
+            perfilImagen,
+            message: req.session.message, // Pasar el mensaje de la sesión
+            messageType: req.session.messageType 
         });
+        req.session.message = null;
+        req.session.messageType = null;
+
     } catch (err) {
         console.error('Error al cargar el perfil:', err);
         res.status(500).send('Error al cargar el perfil.');
@@ -49,7 +54,10 @@ router.get('/', ensureAuthenticated, async (req, res) => {
 router.post('/upload', upload.single('profileImage'), async (req, res) => {
     try {
         if (!req.file) {
-            return res.status(400).json({ message: 'No se ha subido ninguna imagen.' });
+             // Si no se ha subido ninguna imagen
+             req.session.message = 'No se ha subido ninguna imagen.'; 
+             req.session.messageType = 'danger'; 
+             return res.redirect('/perfil'); 
         }
 
         const db = getDb();
@@ -58,12 +66,20 @@ router.post('/upload', upload.single('profileImage'), async (req, res) => {
         // Guardar el archivo como binario en la base de datos
         await db.collection('usuarios').updateOne(
             { email },
-            { $set: { perfilImagen: req.file.buffer } } // Guarda el buffer binario
+            { $set: { perfilImagen: req.file.buffer } } 
         );
+
+        req.session.message = 'Imagen subida con éxito'; 
+        req.session.messageType = 'success'; 
+
         console.log('Imagen subida y guardada en la base de datos:');
+        console.log(`Imagen subida por el usuario: ${email}`);
         res.redirect('/perfil'); // Redirigir a la página de perfil
     } catch (err) {
         console.error('Error al actualizar la información:', err);
+        req.session.message = 'Error al actualizar la información.'; 
+        req.session.messageType = 'danger'; 
+        res.redirect('/perfil'); 
         res.status(500).json({ message: 'Error al actualizar la información.' });
     }
 });
