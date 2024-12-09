@@ -52,7 +52,8 @@ router.post('/upload', upload.single('profileImage'), async (req, res) => {
             { email },
             { $set: { perfilImagen: req.file.buffer } } // Guarda el buffer binario
         );
-        console.log('Imagen subida y guardada en la base de datos:', imagePath);
+        console.log('Imagen subida y guardada en la base de datos:');
+        console.log(`Imagen subida por el usuario: ${email}`);
         res.redirect('/perfil'); // Redirigir a la página de perfil
     } catch (err) {
         console.error('Error al actualizar la información:', err);
