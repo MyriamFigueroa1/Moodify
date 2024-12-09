@@ -88,4 +88,9 @@
     cursor: pointer;
 }
 
+input.is-invalid {
+    border-color: red;
+}
+  
+
 
