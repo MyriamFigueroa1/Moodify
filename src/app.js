@@ -53,7 +53,8 @@ app.use((req, res, next) => {
   res.locals.user = req.session.user || null;
   res.locals.messageType = req.session.messageType || null;
   res.locals.mensaje = req.session.mensaje || null;
-  res.locals.perfilImagen = req.session.user ? req.session.user.perfilImagen || '/images/default-profile.jpg' : '/images/default-profile.jpg';
+  res.locals.perfilImagen = req.session.user ? req.session.user.perfilImagen || '/images/default-profile.jpg' 
+  : '/images/default-profile.jpg';
   delete req.session.mensaje;
   delete req.session.messageType;
   next();
