@@ -11,9 +11,23 @@ router.get('/', (req, res) => {
   });
 });
 
-// Manejo de registro o login
+// Función para validar la contraseña
+function validarContrasena(password) {
+  const requisitos = [
+    { regex: /.{8,}/, mensaje: "Debe tener al menos 8 caracteres." },
+    { regex: /[A-Z]/, mensaje: "Debe incluir al menos una letra mayúscula." },
+    { regex: /[a-z]/, mensaje: "Debe incluir al menos una letra minúscula." },
+    { regex: /[0-9]/, mensaje: "Debe incluir al menos un número." },
+    { regex: /[^A-Za-z0-9]/, mensaje: "Debe incluir al menos un carácter especial." }
+  ];
+
+  const errores = requisitos.filter(r => !r.regex.test(password)).map(r => r.mensaje);
+  return errores;
+}
+
+// Manejo de registro
 router.post('/', async (req, res) => {
-  const { email, password, nombre, apellidos, usuario } = req.body;
+  const { email, password, confirmPassword, nombre, apellidos, usuario } = req.body;
 
   if (!email || !password) {
     return res.render('login_registration', {
@@ -22,8 +36,24 @@ router.post('/', async (req, res) => {
     });
   }
 
-  // Si el formulario incluye "nombre", asumimos que es registro
   if (nombre && apellidos && usuario) {
+    // Validación de contraseñas
+    if (password !== confirmPassword) {
+      return res.render('login_registration', { 
+        message: 'Las contraseñas no coinciden.',
+        messageType: 'danger'
+      });
+    }
+
+    // Validar requisitos de contraseña
+    const erroresContrasena = validarContrasena(password);
+    if (erroresContrasena.length > 0) {
+      return res.render('login_registration', {
+        message: `Error en la contraseña: ${erroresContrasena.join(' ')}`,
+        messageType: 'danger'
+      });
+    }
+
     try {
       const db = getDb();
       const existingUser = await db.collection('usuarios').findOne({ email });
@@ -42,7 +72,7 @@ router.post('/', async (req, res) => {
         email,
         password: hashedPassword,
         createdAt: new Date(),
-        tipo: email === "admin@gmail.com" ? "admin" : "user" // Diferenciar el tipo de usuario
+        tipo: email === "admin@gmail.com" ? "admin" : "user"
       };
 
       await db.collection('usuarios').insertOne(newUser);
@@ -122,6 +152,5 @@ router.post('/', async (req, res) => {
     });
   }
 });
-
 
 module.exports = router;
