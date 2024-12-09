@@ -29,11 +29,13 @@
     
             <!-- Contenedor para el botón de subir imagen y el input -->
             <div class="file-upload-container">
-                <label for="profileImage" class="custom-file-label">Seleccionar Imagen</label>
+                <!-- Este label simula un botón para seleccionar el archivo -->
+                <label for="profileImage" class="select-image-button">Seleccionar Imagen</label>
                 <input type="file" id="profileImage" name="profileImage" required onchange="previewImage(event)" />
             </div>
             
-            <button type="submit" class="btn btn-custom">Subir Imagen</button>
+            <!-- Botón para enviar el formulario -->
+            <button type="submit" class="btn upload-image-button">Subir Imagen</button>
         </form>
     </div>
 
@@ -45,7 +47,7 @@
                 <p><strong>Nombre:</strong> <%= nombre %></p>
                 <p><strong>Apellido:</strong> <%= apellido %></p>
                 <p><strong>Email:</strong> <%= email %></p>
-                <button id="editButton" class="custom-button mt-3">Editar Información</button>
+                <button id="editButton" class="edit-info-button mt-3">Editar Información</button>
             </div>
 
             <form id="editForm" style="display: none;" method="POST" action="/perfil/update">
