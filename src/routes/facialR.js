@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const dbo = require('../db/conn');
+const { getDb } = require('../db/conn');
 const ObjectId = require('mongodb').ObjectId;
 const multer = require('multer');
 const path = require('path');
@@ -11,12 +11,38 @@ const chatGPT = require('../openai/openai');
 
 let emotion = ""; 
 let musicList = [];
-router.get('/', async (req, res) => {
-  try {
-    res.render('facialR');  
-  } catch (err) {
-    res.status(400).json({ error: 'Error al buscar álbumes' });
+const ensureAuthenticated = (req, res, next) => {
+  if (req.session && req.session.user) {
+      return next();
+  } else {
+      return res.redirect('/login_registration');
   }
+};
+
+router.get('/', ensureAuthenticated, async (req, res) => {
+  try {
+        const db = getDb();
+        const user = await db.collection('usuarios').findOne({ email: req.session.user.email });
+
+        if (!user) {
+            req.session.destroy(() => res.redirect('/login_registration'));
+            return;
+        }
+        const perfilImagen = user.perfilImagen
+            ? `data:image/jpeg;base64,${user.perfilImagen.toString('base64')}`
+            : '/images/default-profile.jpg'; // Imagen predeterminada
+        // Convertir la imagen binaria a base64 si existe
+        console.log('prueba: ');
+        res.render('facialR', {
+            nombre: user.nombre,
+            apellido: user.apellidos,
+            email: user.email,
+            perfilImagen
+        });
+    } catch (err) {
+        console.error('Error al cargar el perfil:', err);
+        res.status(500).send('Error al cargar el perfil.');
+    }
 });
 
 const storage = multer.memoryStorage();

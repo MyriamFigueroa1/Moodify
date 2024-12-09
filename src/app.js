@@ -88,6 +88,26 @@ app.use(function (req, res, next) {
   next(createError(404));
 });
 
+app.use(async (req, res, next) => {
+  if (req.session && req.session.user) {
+      try {
+          const db = getDb();
+          const user = await db.collection('usuarios').findOne({ email: req.session.user.email });
+
+          // Convertir imagen binaria a base64 si existe
+          res.locals.perfilImagen = user?.perfilImagen
+              ? `data:image/jpeg;base64,${user.perfilImagen.toString('base64')}`
+              : '/images/default-profile.jpg'; // Imagen predeterminada
+      } catch (err) {
+          console.error('Error al cargar la imagen de perfil:', err);
+          res.locals.perfilImagen = '/images/default-profile.jpg';
+      }
+  } else {
+      res.locals.perfilImagen = '/images/default-profile.jpg';
+  }
+  next(); // Continuar con la siguiente función middleware o ruta
+});
+
 app.use(function (err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
