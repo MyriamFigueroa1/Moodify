@@ -59,29 +59,32 @@ router.get('/', ensureAuthenticated, async (req, res) => {
 });
 
 // Ruta para subir la imagen de perfil
-router.post('/upload', ensureAuthenticated, upload.single('profileImage'), async (req, res) => {
+router.post('/update', ensureAuthenticated, async (req, res) => {
+    console.log('Ruta /perfil/update alcanzada');  
     try {
-        if (!req.file) {
-            return res.status(400).json({ message: 'No se ha subido ninguna imagen.' });
-        }
-
-        const imagePath = `/uploads/${req.file.filename}`; // Ruta relativa
+        const { nombre, apellidos, email } = req.body;
+        console.log('Datos del formulario:', req.body);
         const db = getDb();
 
-        // Guardar la ruta de la imagen en la base de datos
         await db.collection('usuarios').updateOne(
             { email: req.session.user.email },
-            { $set: { perfilImagen: imagePath } }
+            { $set: { nombre: nombre, apellidos: apellidos, email: email } }
         );
 
-        console.log('Imagen subida y guardada en la base de datos:', imagePath);
-        res.redirect('/perfil'); // Redirigir a la página de perfil
+        req.session.user.nombre = nombre;
+        req.session.user.apellidos = apellidos;
+        req.session.user.email = email;
+
+        console.log("Datos de la sesión actualizados:", req.session.user); 
+
+        // Enviar respuesta JSON en lugar de redireccionar
+        res.json({ message: 'Información actualizada correctamente.', ok: true });
     } catch (err) {
-        console.error('Error al subir la imagen:', err);
-        res.status(500).json({ message: 'Error al subir la imagen.' });
+        console.error('Error al actualizar la información:', err);
+        res.status(500).json({ message: 'Error al actualizar la información.' });
     }
-}
-);
+});
+
 // Ruta para actualizar los datos del perfil
 router.post('/update', ensureAuthenticated, async (req, res) => {
     console.log('Ruta /perfil/update alcanzada');  // Log para verificar si la ruta está siendo llamada

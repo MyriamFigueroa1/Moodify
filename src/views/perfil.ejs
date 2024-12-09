@@ -64,31 +64,3 @@
 </div>
 
 <%- include("footer", {}) %>
-
-<script>
-    // Mostrar el formulario de edición
-    document.getElementById('editButton').addEventListener('click', () => {
-        document.getElementById('editForm').style.display = 'block';
-        document.getElementById('userInfo').style.display = 'none';
-    });
-
-    // Cancelar la edición
-    document.getElementById('cancelButton').addEventListener('click', () => {
-        document.getElementById('editForm').style.display = 'none';
-        document.getElementById('userInfo').style.display = 'block';
-    });
-    function previewImage(event) {
-        const preview = document.getElementById('preview'); // El contenedor de la imagen
-        const file = event.target.files[0]; // El archivo seleccionado
-
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function() {
-                // Mostrar la imagen seleccionada en la vista previa
-                preview.src = reader.result;
-                preview.style.display = 'block'; // Asegúrate de que la imagen se muestre
-            };
-            reader.readAsDataURL(file); // Leer el archivo como URL
-        }
-    }
-</script>

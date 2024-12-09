@@ -30,10 +30,10 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById('editEmail').value = userData.email;
     });
 
-    guardar.addEventListener('click', function() {
+    /*guardar.addEventListener('click', function() {
         // Esto recargará la página cuando el botón se haga clic
         location.reload();
-    });
+    });*/
 
 
     cancelButton.addEventListener('click', () => {
@@ -54,25 +54,22 @@ document.addEventListener("DOMContentLoaded", function() {
     // Enviar los datos actualizados al servidor
     editForm.addEventListener('submit', async (event) => {
         event.preventDefault();
-
-        const updatedData = {
-            nombre: document.getElementById('editNombre').value,
-            apellidos: document.getElementById('editApellido').value,
-            email: document.getElementById('editEmail').value,
-        };
-
+    
+        const formData = new FormData(editForm);
+        const updatedData = Object.fromEntries(formData.entries());
+    
         try {
             const response = await fetch('/perfil/update', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(updatedData),
             });
-
+    
             const result = await response.json();
-
+            console.log(result);
+    
             if (response.ok) {
-                alert(result.message || 'Información actualizada correctamente.');
-                location.reload(); // Recargar la página para mostrar los datos actualizados
+                location.href = '/perfil'; // Redirige desde el cliente
             } else {
                 alert(result.message || 'Error al actualizar los datos.');
             }
@@ -80,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error('Error al conectar con el servidor:', err);
             alert('Error al conectar con el servidor.');
         }
-    });
+    });    
 
     document.querySelector('input[type="file"]').addEventListener('change', function(event) {
         const file = event.target.files[0];

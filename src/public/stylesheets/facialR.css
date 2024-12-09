@@ -165,7 +165,7 @@
 #mensaje {
     display: none;
     position: fixed; /* Fija el mensaje en una posición constante */
-    top: 10px;       /* Coloca el mensaje a 10px desde la parte superior */
+    top: 75px;       /* Coloca el mensaje a 10px desde la parte superior */
     left: 50%;       /* Centra el mensaje horizontalmente */
     transform: translateX(-50%); /* Ajusta la posición horizontal al centro */
     z-index: 9999;   /* Asegura que el mensaje se coloque sobre todos los elementos */
