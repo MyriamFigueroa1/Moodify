@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const editButton = document.getElementById('editButton');
     const editForm = document.getElementById('editForm');
     const cancelButton = document.getElementById('cancelButton');
+    const guardar = document.getElementById ('guardar');
 
     editButton.addEventListener('click', () => {
         document.getElementById('userInfo').style.display = 'none';
@@ -29,12 +30,18 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById('editEmail').value = userData.email;
     });
 
+    guardar.addEventListener('click', function() {
+        // Esto recargará la página cuando el botón se haga clic
+        location.reload();
+    });
+
+
     cancelButton.addEventListener('click', () => {
         editForm.style.display = 'none';
         document.getElementById('userInfo').style.display = 'block';
     });
 
-    // Validación del formulario antes de enviarlo
+    // Validación cdel formulario antes de enviarlo
     editForm.addEventListener('submit', (event) => {
         const emailField = document.getElementById('editEmail');
         if (!emailField.value.includes('@')) {

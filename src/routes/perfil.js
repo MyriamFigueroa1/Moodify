@@ -82,6 +82,33 @@ router.post('/upload', ensureAuthenticated, upload.single('profileImage'), async
     }
 }
 );
+// Ruta para actualizar los datos del perfil
+router.post('/update', ensureAuthenticated, async (req, res) => {
+    console.log('Ruta /perfil/update alcanzada');  // Log para verificar si la ruta está siendo llamada
+    try {
+        const { nombre, apellidos, email } = req.body;
+        console.log('Datos del formulario:', req.body);
+        const db = getDb();
+
+       
+        await db.collection('usuarios').updateOne(
+            { email: req.session.user.email },
+            { $set: { nombre: nombre, apellidos: apellidos, email: email } }
+        );
+
+
+        req.session.user.nombre = nombre;
+        req.session.user.apellidos = apellidos;
+        req.session.user.email = email;
+
+        console.log("Datos de la sesión actualizados:", req.session.user); // Verifica los datos de la sesión aquí
+
+        res.redirect('/perfil'); // Redirigir al perfil
+    } catch (err) {
+        console.error('Error al actualizar la información:', err);
+        res.status(500).send('Error al actualizar la información.');
+    }
+});
 
 
 module.exports = router;
