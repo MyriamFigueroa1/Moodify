@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
         nombre: userInfo.dataset.nombre,
         apellido: userInfo.dataset.apellido,
         email: userInfo.dataset.email,
+        perfilImagen: userInfo.dataset.perfilimagen, 
     };
 
     // Mostrar los datos iniciales en el perfil

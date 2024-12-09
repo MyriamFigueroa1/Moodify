@@ -52,8 +52,8 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <div class="user-icon">
-                                            <img src="<%= perfilImagen || '/images/default-profile.jpg' %>" alt="Imagen de perfil" class="profile-icon">
-                                        </div>
+                                            <img src="<%= user && user.perfilImagen ? user.perfilImagen : '/images/default-profile.jpg' %>" alt="Imagen de perfil" class="profile-icon">
+                                      </div>
                                         <span class="user-name ms-2"><%= user ? user.nombre : 'Usuario' %></span>
                                     </a>
                                     </a>
