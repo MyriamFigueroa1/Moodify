@@ -1,4 +1,5 @@
-# Moodify
+# Moodify ![moodify_logo_blue_backgr](https://github.com/user-attachments/assets/324b215a-a722-4d9e-8674-721c215abefd)
+
 
 ## Miembros del proyecto
 + Yolanda Llop Pellisa
@@ -66,5 +67,7 @@ El frontend fue alojado en **Azure Static Web Apps**, lo que asegura tiempos de 
 A pesar de estar desplegado en Azure, el backend sigue interactuando con:
 - **OpenAI**: Para el reconocimiento facial.
 - **AWS**: Para funcionalidades adicionales como almacenamiento.
+  
+![moodify_logo_blue_backgr](https://github.com/user-attachments/assets/9ec08d0f-eb88-4018-b3dc-abc28249f5d3)
 
 
