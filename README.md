@@ -24,9 +24,6 @@ Antes de comenzar, asegúrate de tener instalados:
 - Una cuenta y claves API para los servicios de:
   - [OpenAI](https://platform.openai.com/)
   - [AWS](https://aws.amazon.com/)
-
----
-
 ### **2. Clonar el repositorio**
 Clona este repositorio en tu máquina local:
 ```bash
@@ -47,6 +44,7 @@ npm start
 ```
 El servidor estará disponible en http://localhost:3000.
 
+---
 
 ## **Despliegue en Azure**
 
