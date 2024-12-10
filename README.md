@@ -69,6 +69,7 @@ A pesar de estar desplegado en Azure, el backend sigue interactuando con:
 - **OpenAI**: Para el reconocimiento facial.
 - **AWS**: Para funcionalidades adicionales como almacenamiento.
   
-![moodify_logo_blue_backgr](https://github.com/user-attachments/assets/9ec08d0f-eb88-4018-b3dc-abc28249f5d3)
+---
+![output-onlinepngtools-removebg-preview](https://github.com/user-attachments/assets/a5575b3a-aa78-4cf0-9223-445bfff3a0e8)
 
 
