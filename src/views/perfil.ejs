@@ -43,29 +43,33 @@
     <div class="right-section">
         <div class="info-box">
             <h2 class="section-title">Información Personal</h2>
-            <div id="userInfo">
+            <div id="userInfo" 
+                data-nombre="<%= nombre || '' %>" 
+                data-apellido="<%= apellido || '' %>" 
+                data-email="<%= email || '' %>" 
+                data-perfilimagen="<%= perfilImagen || '' %>">
                 <p><strong>Nombre:</strong> <%= nombre %></p>
                 <p><strong>Apellido:</strong> <%= apellido %></p>
                 <p><strong>Email:</strong> <%= email %></p>
                 <button id="editButton" class="edit-info-button mt-3">Editar Información</button>
             </div>
-
             <form id="editForm" style="display: none;" method="POST" action="/perfil/update">
                 <div class="form-group">
                     <label for="editNombre">Nombre:</label>
-                    <input type="text" id="editNombre" name="nombre" class="form-control" value="<%= nombre %>">
+                    <input type="text" id="editNombre" name="nombre" class="form-control" value="<%= nombre || '' %>">
                 </div>
                 <div class="form-group">
                     <label for="editApellido">Apellido:</label>
-                    <input type="text" id="editApellido" name="apellidos" class="form-control" value="<%= apellido %>">
+                    <input type="text" id="editApellido" name="apellidos" class="form-control" value="<%= apellido || '' %>">
                 </div>
                 <div class="form-group">
                     <label for="editEmail">Correo Electrónico:</label>
-                    <input type="email" id="editEmail" name="email" class="form-control" value="<%= email %>">
+                    <input type="email" id="editEmail" name="email" class="form-control" value="<%= email || '' %>">
                 </div>
                 <button id="guardar" type="submit" class="submit-btn">Guardar Cambios</button>
                 <button type="button" id="cancelButton" class="custom-button mt-3">Cancelar</button>
             </form>
+            
         </div>
     </div>
 </div>
