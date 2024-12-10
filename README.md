@@ -1,4 +1,4 @@
-# Moodify ![moodify_logo_blue_backgr](https://github.com/user-attachments/assets/324b215a-a722-4d9e-8674-721c215abefd)
+# Moodify
 
 
 ## Miembros del proyecto
