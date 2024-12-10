@@ -1,5 +1,6 @@
 # Moodify
 
+![output-onlinepngtools-removebg-preview (3)](https://github.com/user-attachments/assets/940ff865-7497-4a78-a09e-125e07d91e1a)
 
 ## Miembros del proyecto
 + Yolanda Llop Pellisa
