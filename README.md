@@ -48,7 +48,7 @@ El servidor estará disponible en http://localhost:3000.
 
 ## **Despliegue en Azure**
 
-El proyecto está desplegado en **Microsoft Azure** para asegurar una infraestructura escalable y confiable, a través de la url: [https://moodify-demo.azurewebsites.net/](url)
+El proyecto está desplegado en **Microsoft Azure** para asegurar una infraestructura escalable y confiable, a través de la url: https://moodify-demo.azurewebsites.net/
 
 Resumen del proceso de despliegue:
 ### **1. Backend**
