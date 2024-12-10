@@ -30,7 +30,11 @@
         <aside class="bg-dark text-white" id="sidebar-wrapper" role="navigation" aria-label="Menú lateral">
             <header class="sidebar-heading py-4 text-center fs-4">Moodify</header>
             <nav class="list-group list-group-flush">
+            <% if (user.email == 'admin@gmail.com') { %> 
+                <a href="dashboardAdmin" class="list-group-item list-group-item-action bg-dark text-white"><i class="bi bi-house-door"></i> Inicio</a>
+            <% } else { %>
                 <a href="dashboard" class="list-group-item list-group-item-action bg-dark text-white active" aria-current="page"><i class="bi bi-house-door"></i> Inicio</a>
+            <% } %>
                 <a href="perfil" class="list-group-item list-group-item-action bg-dark text-white"><i class="bi bi-person"></i> Perfil</a>
                 <a href="facialR" class="list-group-item list-group-item-action bg-dark text-white"><i class="bi bi-camera"></i> Reconocimiento Facial</a>
                 <a href="/logout" class="list-group-item list-group-item-action bg-dark text-white"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</a>
