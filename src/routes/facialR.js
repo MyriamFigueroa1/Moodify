@@ -99,7 +99,6 @@ router.post('/procesar-imagen', upload.single('image'), async (req, res) => {
 });
 
 router.post('/publicar_canciones', async (req, res) => {
-  console.log('bug 2');
   try {
       const user = req.session.user;
       const db = getDb();
@@ -111,15 +110,12 @@ router.post('/publicar_canciones', async (req, res) => {
           postImage: userDb.perfilImagen,
           timestamp: new Date(),
       };
-      console.log('bug 3');
       const dbConnect = getDb();
       await dbConnect.collection('posts').insertOne(newPost);
-      console.log('bug 4');
       req.session.messageType = 'success';
       req.session.mensaje = '¡Tu playlist se ha publicado!';
       res.json({ mensaje: 'Tu playlist ha sido publicada!', messageType: 'success' });
-      console.log('bug 5');
-      console.log('bug 6');
+      
   } catch (error) {
       console.error('Error al publicar canciones:', error);
       res.status(500).send('Error al publicar canciones');
