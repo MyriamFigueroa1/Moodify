@@ -66,8 +66,8 @@ El frontend fue alojado en **Azure Static Web Apps**, lo que asegura tiempos de 
 
 ### **4. Servicios Externos**
 A pesar de estar desplegado en Azure, el backend sigue interactuando con:
-- **OpenAI**: Para el reconocimiento facial.
-- **AWS**: Para funcionalidades adicionales como almacenamiento.
+- **OpenAI**: Para generar la lista de canciones.
+- **AWS**: Para para el reconocimiento facial y análisis de emociones.
   
 ---
 ![output-onlinepngtools-removebg-preview](https://github.com/user-attachments/assets/a5575b3a-aa78-4cf0-9223-445bfff3a0e8)
