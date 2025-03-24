@@ -9,9 +9,7 @@
 
 **Moodify** es una aplicación que permite a los usuarios registrar sus emociones diarias, conectar con amigos, compartir su estado de ánimo acompañado de listas de canciones, y obtener recomendaciones musicales basadas en análisis emocional y reconocimiento facial.
 
-<div align="center">
-  <img src="https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif" height="180" alt="music gif" />
-</div>
+![Animación musical](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExb2xsd3E3MzZiaG5zazQ5a3M0eTV0MW5kdTlrMjhyZTFndTBqN3JzcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/X4eOmwrQHkiIemT6jj/giphy.gif)
 
 ---
 
