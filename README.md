@@ -1,5 +1,3 @@
-![output-onlinepngtools-removebg-preview (3)](https://github.com/user-attachments/assets/940ff865-7497-4a78-a09e-125e07d91e1a)
-
 # 🎵 Moodify – Tu Diario Emocional Musical
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue)
@@ -8,6 +6,10 @@
 ## 🚀 Descripción
 
 **Moodify** es una aplicación que permite a los usuarios registrar sus emociones diarias, conectar con amigos, compartir su estado de ánimo acompañado de listas de canciones, y obtener recomendaciones musicales basadas en análisis emocional y reconocimiento facial.
+
+<div align="center">
+  <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExb2xsd3E3MzZiaG5zazQ5a3M0eTV0MW5kdTlrMjhyZTFndTBqN3JzcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/X4eOmwrQHkiIemT6jj/giphy.gif" alt="Moodify gif" height="200"/>
+</div>
 
 ![Animación musical](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExb2xsd3E3MzZiaG5zazQ5a3M0eTV0MW5kdTlrMjhyZTFndTBqN3JzcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/X4eOmwrQHkiIemT6jj/giphy.gif)
 
@@ -87,3 +89,6 @@ MIT License – Libre uso con atribución
 [Ver licencia](https://opensource.org/licenses/MIT)
 
 ---
+
+![output-onlinepngtools-removebg-preview (3)](https://github.com/user-attachments/assets/940ff865-7497-4a78-a09e-125e07d91e1a)
+
