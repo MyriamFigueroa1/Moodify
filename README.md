@@ -1,75 +1,91 @@
-# Moodify
-
 ![output-onlinepngtools-removebg-preview (3)](https://github.com/user-attachments/assets/940ff865-7497-4a78-a09e-125e07d91e1a)
 
-## Miembros del proyecto
-+ Yolanda Llop Pellisa
-+ Karen Cebreros López
-+ Myriam Lizeth Figueroa Morales
-+ Marta Canino Romero
-+ Xavier Alexander Mora Peraza
+# 🎵 Moodify – Tu Diario Emocional Musical
 
-## Descripción 
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
- Moodify es una aplicación web que permite a los usuarios registrar sus emociones diarias, conectar con amigos, compartir su estado de ánimo acompañado de listas de canciones, y obtener recomendaciones musicales basadas en análisis emocional y reconocimiento facial. La plataforma ofrece funcionalidades en tiempo real para que los usuarios puedan interactuar instantáneamente y visualizar los estados de ánimo de sus amigos. Además, cuenta con un sistema de moderación administrado para garantizar un ambiente seguro y amigable.  
+## 🚀 Descripción
+
+**Moodify** es una aplicación que permite a los usuarios registrar sus emociones diarias, conectar con amigos, compartir su estado de ánimo acompañado de listas de canciones, y obtener recomendaciones musicales basadas en análisis emocional y reconocimiento facial.
+
+<div align="center">
+  <img src="https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif" height="180" alt="music gif" />
+</div>
 
 ---
 
-## **Ejecución Local**
+## 🧩 Tecnologías Utilizadas
 
-Sigue estos pasos para ejecutar el proyecto localmente en tu máquina:
+![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white&style=for-the-badge)
+![Express.js](https://img.shields.io/badge/Express.js-000000?logo=express&logoColor=white&style=for-the-badge)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?logo=mongodb&logoColor=white&style=for-the-badge)
+![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black&style=for-the-badge)
+![Socket.io](https://img.shields.io/badge/Socket.io-010101?logo=socket.io&logoColor=white&style=for-the-badge)
+![TensorFlow.js](https://img.shields.io/badge/TensorFlow.js-FF6F00?logo=tensorflow&logoColor=white&style=for-the-badge)
+![Spotify API](https://img.shields.io/badge/Spotify-1DB954?logo=spotify&logoColor=white&style=for-the-badge)
+![Android](https://img.shields.io/badge/Android-3DDC84?logo=android&logoColor=white&style=for-the-badge)
 
-### **1. Requisitos previos**
-Antes de comenzar, asegúrate de tener instalados:
-- [Node.js](https://nodejs.org/) (v14 o superior).
-- [MongoDB](https://www.mongodb.com/) instalado y ejecutándose localmente o accesible a través de la nube.
-- Una cuenta y claves API para los servicios de:
-  - [OpenAI](https://platform.openai.com/)
-  - [AWS](https://aws.amazon.com/)
-### **2. Clonar el repositorio**
-Clona este repositorio en tu máquina local:
+---
+
+## 🎯 Funcionalidades Principales
+
+- 📝 Registro de emociones y estados de ánimo.
+- 👥 Conexión e interacción con amigos.
+- 🎶 Recomendaciones musicales personalizadas.
+- 🤖 Análisis emocional por reconocimiento facial.
+- 🔔 Comunicación en tiempo real con Socket.io.
+- 📱 App móvil Android disponible.
+
+---
+
+## ⚙️ Instalación y Configuración
+
+1. Clonar repositorio e instalar dependencias backend:
 ```bash
-git clone [https://github.com/MyriamFigueroa1/Moodify.git](url)
-cd Moodify/src
-```
-### **3.  Instalar dependencias**
-Ejecuta el siguiente comando para instalar las dependencias necesarias:
-```bash
+git clone https://github.com/MyriamFigueroa1/Moodify.git
+cd Moodify/backend
 npm install
 ```
-### **4.  Configurar variables de entorno**
-Crea o importa el archivo .env en la raíz del proyecto (dentro de /src) con las variables de entorno necesarias: MongoDB, OpenAI, AWS:
-### **5.  Ejecutar el proyecto**
-Inicia el servidor utilizando el siguiente comando:
+
+2. Crear archivo `.env` en `backend`:
+```
+PORT=5000
+MONGO_URI=tu_uri_mongodb
+JWT_SECRET=tu_clave_secreta
+SPOTIFY_CLIENT_ID=tu_spotify_client_id
+SPOTIFY_CLIENT_SECRET=tu_spotify_client_secret
+```
+
+3. Iniciar backend:
 ```bash
 npm start
 ```
-El servidor estará disponible en http://localhost:3000.
+
+4. Instalar frontend:
+```bash
+cd ../frontend
+npm install
+npm start
+```
+
+5. App Android: Descomprime `moodify.apk.zip` y transfiere a tu dispositivo.
 
 ---
 
-## **Despliegue en Azure**
+## 👨‍💻 Equipo
 
-El proyecto está desplegado en **Microsoft Azure** para asegurar una infraestructura escalable y confiable, a través de la url: https://moodify-demo.azurewebsites.net/
+- Yolanda Llop Pellisa  
+- Karen Cebreros López  
+- Myriam Lizeth Figueroa Morales  
+- Marta Canino Romero  
+- Xavier Alexander Mora Peraza  
 
-Resumen del proceso de despliegue:
-### **1. Backend**
-El servidor Node.js fue desplegado en **Azure App Service**. El despliegue se realizó siguiendo estos pasos:
-1. Configuración del servicio en el portal de Azure.
-2. Uso de Git o una herramienta de CI/CD (como GitHub Actions) para realizar el despliegue automático.
-
-### **2. Base de datos**
-La base de datos se mantiene en MongoDB.
-
-### **3. Frontend**
-El frontend fue alojado en **Azure Static Web Apps**, lo que asegura tiempos de carga rápidos y una distribución eficiente de los recursos.
-
-### **4. Servicios Externos**
-A pesar de estar desplegado en Azure, el backend sigue interactuando con:
-- **OpenAI**: Para generar la lista de canciones.
-- **AWS**: Para para el reconocimiento facial y análisis de emociones.
-  
 ---
-![output-onlinepngtools-removebg-preview](https://github.com/user-attachments/assets/a5575b3a-aa78-4cf0-9223-445bfff3a0e8)
 
+## 📄 Licencia
 
+MIT License – Libre uso con atribución  
+[Ver licencia](https://opensource.org/licenses/MIT)
+
+---
