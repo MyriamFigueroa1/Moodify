@@ -11,8 +11,6 @@
   <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExb2xsd3E3MzZiaG5zazQ5a3M0eTV0MW5kdTlrMjhyZTFndTBqN3JzcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/X4eOmwrQHkiIemT6jj/giphy.gif" alt="Moodify gif" height="200"/>
 </div>
 
-![Animación musical](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExb2xsd3E3MzZiaG5zazQ5a3M0eTV0MW5kdTlrMjhyZTFndTBqN3JzcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/X4eOmwrQHkiIemT6jj/giphy.gif)
-
 ---
 
 ## 🧩 Tecnologías Utilizadas
